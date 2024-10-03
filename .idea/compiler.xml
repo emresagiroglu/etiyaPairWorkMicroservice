@@ -9,16 +9,14 @@
         <outputRelativeToContentRoot value="true" />
         <module name="customerservice" />
         <module name="productservice" />
+        <module name="gatewayservice" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="customerservice" target="19" />
-      <module name="productservice" target="19" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="customerservice" options="-parameters" />
+      <module name="gatewayservice" options="-parameters" />
       <module name="productservice" options="-parameters" />
     </option>
   </component>
