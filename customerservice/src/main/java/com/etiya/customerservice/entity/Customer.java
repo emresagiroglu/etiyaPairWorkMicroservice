@@ -12,7 +12,6 @@ import java.util.Date;
 @NoArgsConstructor
 @Data
 @MappedSuperclass
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Customer {
 
     @Id
