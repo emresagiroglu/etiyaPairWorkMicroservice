@@ -18,6 +18,7 @@ import java.util.Date;
 @Data
 @Entity
 @Table(name = "IndividualCustomers")
+@PrimaryKeyJoinColumn(name = "customer_id")
 public class IndividualCustomer extends Customer {
 
     @Column(name = "FirstName")

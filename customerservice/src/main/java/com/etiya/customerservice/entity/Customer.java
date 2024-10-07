@@ -11,7 +11,9 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@MappedSuperclass
+@Table(name = "customers")
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Customer {
 
     @Id
