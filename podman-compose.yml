@@ -6,6 +6,8 @@ services:
    container_name: congfigserver
    ports:
     - 8001:8001
+   networks:
+     - common
 
   eureka:
    image: localhost/eureka
@@ -17,7 +19,8 @@ services:
     - configserver
    environment:
     - SPRING_PROFILES_ACTIVE=docker
-
+   networks:
+     - common
   gateway:
    image: "localhost/gateway"
    build: ./gatewayservice
@@ -30,34 +33,34 @@ services:
    depends_on:
      - eureka
 
-  customer:
+  customerservice:
     image: "localhost/customerservice"
-    container_name: "customerservice"
     build : ./customerservice
     ports:
-      - 8080:8080
+      - 8081:8081
     networks:
       - common
     environment:
-      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8888/eureka/
+      - SPRING_PROFILES_ACTIVE=docker
     depends_on:
       - eureka
-      - mysql
-  product:
+      - configserver
+  productservice:
     image: "localhost/productservice"
-    container_name: "productservice"
     build: ./productservice
     ports:
-      - "8081:8081"
+      - "8080:8080"
     networks:
       - common
     environment:
+      - SPRING_PROFILES_ACTIVE=docker
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8888/eureka/
     depends_on:
       - eureka
-      - postgresql
+      - configserver
   mysql:
    image: docker.io/library/mysql:latest
+   container_name: mysql
    environment:
      MYSQL_ROOT_PASSWORD: test
      MYSQL_DATABASE: customer_db
@@ -67,8 +70,11 @@ services:
      - "3306:3306"
    volumes:
      - mysql_data:/var/lib/mysql
+   networks:
+     - common
+
   postgresql:
-   image: docker.io/library/postgres:latest
+   image: postgres:16.0
    environment:
      POSTGRES_DB: postgres
      POSTGRES_USER: postgres
@@ -77,6 +83,8 @@ services:
      - postgres_data:/var/lib/postgresql/data
    ports:
      - "5432:5432"
+   networks:
+     - common
 
 volumes:
   mysql_data:
