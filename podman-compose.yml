@@ -30,6 +30,32 @@ services:
    depends_on:
      - eureka
 
+  customer:
+    image: "localhost/customerservice"
+    container_name: "customerservice"
+    build : ./customerservice
+    ports:
+      - 8080:8080
+    networks:
+      - common
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8888/eureka/
+    depends_on:
+      - eureka
+      - mysql
+  product:
+    image: "localhost/productservice"
+    container_name: "productservice"
+    build: ./productservice
+    ports:
+      - "8081:8081"
+    networks:
+      - common
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8888/eureka/
+    depends_on:
+      - eureka
+      - postgresql
   mysql:
    image: docker.io/library/mysql:latest
    environment:
