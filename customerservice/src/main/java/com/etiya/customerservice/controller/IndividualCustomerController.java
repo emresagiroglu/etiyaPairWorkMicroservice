@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/individual-customers")
+@RequestMapping("/api/customers/individual")
 public class IndividualCustomerController {
 
     private final IndividualCustomerService individualCustomerService;
