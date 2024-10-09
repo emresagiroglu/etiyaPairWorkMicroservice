@@ -8,12 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-
+@RequiredArgsConstructor
 public class CorporateCustomerServiceImpl implements CorporateCustomerService {
     private final CorporateCustomerRepository corporateCustomerRepository;
-    @Autowired
-    public CorporateCustomerServiceImpl(CorporateCustomerRepository corporateCustomerRepository)
-    {
-        this.corporateCustomerRepository = corporateCustomerRepository;
-    }
+
 }

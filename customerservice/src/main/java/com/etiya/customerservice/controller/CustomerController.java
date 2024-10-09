@@ -8,16 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/customers")
 public class CustomerController {
 
     private final CustomerService customerService;
 
-    @Autowired
-    public CustomerController(CustomerService customerService)
-    {
-        this.customerService = customerService;
-    }
     @GetMapping()
     public String hello(){
         return "Hi from Customer Service";

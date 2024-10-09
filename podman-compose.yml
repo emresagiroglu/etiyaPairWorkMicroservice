@@ -32,7 +32,8 @@ services:
      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8888/eureka/
    depends_on:
      - eureka
-
+   #entrypoint: ["./wait-for-it.sh","eureka:8888","--timeout=60","--","java","jar","gateway.jar"]
+   #healtcheck arastir!
   customerservice:
     image: "localhost/customerservice"
     build : ./customerservice
@@ -58,6 +59,7 @@ services:
     depends_on:
       - eureka
       - configserver
+
   mysql:
    image: docker.io/library/mysql:latest
    container_name: mysql
@@ -86,9 +88,23 @@ services:
    networks:
      - common
 
+
+  mongo:
+    image: mongo
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+
+
 volumes:
   mysql_data:
   postgres_data:
+  mongodb_data:
 
 networks:
   common:
