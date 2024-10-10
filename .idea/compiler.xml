@@ -9,10 +9,10 @@
         <outputRelativeToContentRoot value="true" />
         <module name="configserver" />
         <module name="eureka" />
-        <module name="productservice" />
         <module name="gatewayservice" />
+        <module name="orderservice" />
       </profile>
-      <profile name="Annotation profile for customerservice" enabled="true">
+      <profile name="Annotation profile for productservice" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -20,6 +20,7 @@
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.34/lombok-1.18.34.jar" />
         </processorPath>
         <module name="customerservice" />
+        <module name="productservice" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -32,6 +33,7 @@
       <module name="customerservice" options="-parameters" />
       <module name="eureka" options="-parameters" />
       <module name="gatewayservice" options="-parameters" />
+      <module name="orderservice" options="-parameters" />
       <module name="productservice" options="-parameters" />
     </option>
   </component>

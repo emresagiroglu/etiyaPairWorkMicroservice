@@ -5,6 +5,9 @@
     <file url="file://$PROJECT_DIR$/customerservice/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/eureka/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/gatewayservice/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/orderservice/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/productservice/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../etiya9.microservices/orderservice/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../etiya9.microservices/orderservice/src/main/resources" charset="UTF-8" />
   </component>
 </project>
