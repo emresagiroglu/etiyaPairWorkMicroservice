@@ -9,12 +9,12 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class CreateCorporateCustomerResponseDto {
+public class ListCorporateCustomerResponseDto {
+
 
 
     private UUID id;
     private Long taxNumber;
     private String contactName;
     private String companyName;
-
 }

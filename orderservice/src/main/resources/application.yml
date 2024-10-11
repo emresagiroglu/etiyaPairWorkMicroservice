@@ -7,4 +7,4 @@ spring:
     config:
       uri: http://localhost:8001
       profile: local
-      label: mainka/
+      label: main
