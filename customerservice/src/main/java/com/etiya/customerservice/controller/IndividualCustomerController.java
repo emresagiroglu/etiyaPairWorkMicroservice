@@ -1,15 +1,12 @@
 package com.etiya.customerservice.controller;
 
-import com.etiya.customerservice.entity.CorporateCustomer;
-import com.etiya.customerservice.entity.IndividualCustomer;
-import com.etiya.customerservice.services.abstracts.IndividualCustomerService;
+import com.etiya.customerservice.dto.corporatecustomer.*;
+import com.etiya.customerservice.dto.individualcustomer.*;
+import com.etiya.customerservice.services.CustomerService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -19,17 +16,38 @@ import java.util.UUID;
 @RequestMapping("/api/customers/individual")
 public class IndividualCustomerController {
 
-    private final IndividualCustomerService individualCustomerService;
-
-    @GetMapping("/{id}")
-    public ResponseEntity<IndividualCustomer> getById(@PathVariable UUID id){
-        return ResponseEntity.ok(individualCustomerService.getById(id));
-    }
+    private final CustomerService customerService;
 
     @GetMapping()
-    public ResponseEntity<List<IndividualCustomer>> getAll()
+    public ResponseEntity<List<ListIndividualCustomerResponseDto>> getAll()
     {
-        return ResponseEntity.ok(individualCustomerService.getAll());
+        return ResponseEntity.ok(customerService.getIndividualCustomersAll());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<GetIndividualCustomerResponseDto> getById(@PathVariable UUID id){
+        return ResponseEntity.ok(customerService.getIndividualCustomerById(id));
+    }
+
+    @PostMapping
+    public ResponseEntity<CreateIndividualCustomerResponseDto> createCustomer(@RequestBody CreateIndividualCustomerRequestDto createIndividualCustomerRequestDto)
+    {
+        return ResponseEntity.ok(customerService.saveIndividualCustomer(createIndividualCustomerRequestDto));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<UpdateIndividualCustomerResponseDto> updateIndividualCustomer(
+            @PathVariable UUID id,
+            @RequestBody UpdateIndividualCustomerRequestDto updateIndividualCustomerRequestDto)
+    {
+        return ResponseEntity.ok(customerService.updateIndividualCustomer(updateIndividualCustomerRequestDto,id));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteIndividualCustomer(@PathVariable UUID id)
+    {
+        customerService.deleteIndividualCustomer(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }

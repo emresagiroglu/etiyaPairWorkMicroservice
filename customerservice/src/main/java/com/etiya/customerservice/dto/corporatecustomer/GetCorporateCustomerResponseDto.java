@@ -1,4 +1,4 @@
-package com.etiya.customerservice.dto.corpatecustomer;
+package com.etiya.customerservice.dto.corporatecustomer;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

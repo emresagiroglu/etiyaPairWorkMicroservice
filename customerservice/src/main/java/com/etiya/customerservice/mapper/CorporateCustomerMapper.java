@@ -1,8 +1,7 @@
 package com.etiya.customerservice.mapper;
 
-import com.etiya.customerservice.dto.corpatecustomer.*;
+import com.etiya.customerservice.dto.corporatecustomer.*;
 import com.etiya.customerservice.entity.CorporateCustomer;
-import com.etiya.customerservice.services.abstracts.CorporateCustomerService;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -22,6 +21,12 @@ public interface CorporateCustomerMapper {
     List<ListCorporateCustomerResponseDto> getAllCorporateCustomersResponseDtoFromCorporateCustomers
             (List<CorporateCustomer> corporateCustomers);
 
-    CorporateCustomer corporateCustomerFromUpdateRequestDto(UpdateCustomerRequestDto dto);
-    UpdateCustomerResponseDto updateCustomerResponseDto(CorporateCustomer corporateCustomer);
+    CorporateCustomer corporateCustomerFromUpdateRequestDto(UpdateCorporateCustomerRequestDto dto);
+    CreateCorporateCustomerResponseDto createCorporateCustomerResponseDtoFromCorporateCustomer
+            (CorporateCustomer corporateCustomer);
+
+    CorporateCustomer corporateCustomerFromUpdateCustomerRequestDto(UpdateCorporateCustomerRequestDto updateCorporateCustomerRequestDto);
+
+    UpdateCorporateCustomerResponseDto updateCustomerResponseDtoFromCorporateCustomer(CorporateCustomer corporateCustomer);
+
 }

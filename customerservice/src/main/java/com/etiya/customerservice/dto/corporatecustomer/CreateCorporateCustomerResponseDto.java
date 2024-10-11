@@ -1,4 +1,4 @@
-package com.etiya.customerservice.dto.corpatecustomer;
+package com.etiya.customerservice.dto.corporatecustomer;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,12 +9,12 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class ListCorporateCustomerResponseDto {
-
+public class CreateCorporateCustomerResponseDto {
 
 
     private UUID id;
     private Long taxNumber;
     private String contactName;
     private String companyName;
+
 }
