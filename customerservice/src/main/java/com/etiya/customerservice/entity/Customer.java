@@ -36,14 +36,11 @@ public class Customer {
 
 
     @OneToMany(mappedBy = "customer_id")
-    @Column(name = "ADDRESSES")
     private List<Address> addresses;
 
     @OneToMany(mappedBy = "customer_id")
-    @Column(name = "CNC_INFO")
     private List<ContactInformation> contactInformations;
 
-//    @OneToMany(mappedBy = "customerId")
-//    @Column(name = "BIL_INFO_ACCNT")
-//    private List<BillingAccount> billingAccounts;
+    @OneToMany(mappedBy = "customerId")
+    private List<BillingAccount> billingAccounts;
 }

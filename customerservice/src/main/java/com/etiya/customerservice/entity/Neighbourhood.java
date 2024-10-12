@@ -29,7 +29,6 @@ public class Neighbourhood {
     private District district_id;
 
     @OneToMany(mappedBy = "neighbourhood_id")
-    @Column(name = "ADDRESSES")
     private List<Address> addresses;
 
 }

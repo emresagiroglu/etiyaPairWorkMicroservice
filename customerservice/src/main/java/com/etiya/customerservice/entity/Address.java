@@ -40,8 +40,7 @@ public class Address {
     @Column(name = "DDate")
     private Date dDate;
 
-//    @OneToMany(mappedBy = "addressId")
-//    @Column(name = "BIL_INFO_ACCNT")
-//    private List<BillingAccount> billingAccounts;
+    @OneToMany(mappedBy = "addressId")
+    private List<BillingAccount> billingAccounts;
 
 }

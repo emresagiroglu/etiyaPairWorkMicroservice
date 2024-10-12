@@ -45,7 +45,6 @@ public class ContactInformation {
     private Date deletedDate;
 
     @OneToMany(mappedBy = "contactId")
-    @Column(name = "BIL_ACCNT")
     private List<BillingAccount> billingAccounts;
 
 }

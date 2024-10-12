@@ -26,6 +26,5 @@ public class City {
 
 
     @OneToMany(mappedBy = "city_id")
-    @Column(name = "Districts")
     private List<District> districts;
 }

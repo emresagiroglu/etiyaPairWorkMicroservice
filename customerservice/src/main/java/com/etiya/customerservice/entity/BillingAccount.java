@@ -34,7 +34,7 @@ public class BillingAccount {
     private String accountName;
     @Column(name = "BIL_ACCNT_TP")
     private String type;
-    @Column(name = "DESC")
+    @Column(name = "DESCRIPTION")
     private String desc;
     @Column(name = "TAX_NUMBER")
     private Integer taxNumber;
