@@ -1,6 +1,9 @@
 package com.etiya.customerservice.services.concretes;
 
+import com.etiya.customerservice.dto.city.CityDto;
 import com.etiya.customerservice.entity.City;
+import com.etiya.customerservice.mapper.CityMapper;
+import com.etiya.customerservice.repositories.CityRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,10 +14,11 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class CityServiceImpl {
     private final CityRepository cityRepository;
+    private final CityMapper cityMapper;
 
     public List<CityDto> getAll() {
         List<City> cityList = cityRepository.findAll();
-        return CityMapper.INSTANCE.getAllCityDtoFromCity(cityList);
+        return CityMapper.INSTANCE.getAllCityFromCityDto(cityList);
     }
     public CityDto getById(UUID id) {
         City city = cityRepository.findById(id).orElseThrow();

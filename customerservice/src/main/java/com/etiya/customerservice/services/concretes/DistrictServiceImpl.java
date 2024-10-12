@@ -1,6 +1,9 @@
 package com.etiya.customerservice.services.concretes;
 
+import com.etiya.customerservice.dto.disctrict.*;
 import com.etiya.customerservice.entity.District;
+import com.etiya.customerservice.mapper.DistrictMapper;
+import com.etiya.customerservice.repositories.DistrictRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,24 +15,24 @@ import java.util.UUID;
 public class DistrictServiceImpl {
     private final DistrictRepository districtRepository;
 
-    public List<DistrictDto> getAll() {
+    public List<ListDistrictResponseDto> getAll() {
         List<District> districtList = districtRepository.findAll();
-        return DistrictMapper.INSTANCE.getAllDistrictDtoFromDistrict(districtList);
+        return DistrictMapper.INSTANCE.getAllDistrictsResponseDtoFromDistricts(districtList);
     }
-    public DistrictDto getById(UUID id) {
+    public GetDistrictResponseDto getById(UUID id) {
         District district = districtRepository.findById(id).orElseThrow();
-        return DistrictMapper.INSTANCE.getDistrictDtoFromDistrict(district);
+        return DistrictMapper.INSTANCE.getDistrictResponseDtoFromDistrict(district);
     }
-    public DistrictDto save(DistrictDto districtDto) {
-        District district = DistrictMapper.INSTANCE.getDistrictFromDistrictDto(districtDto);
+    public CreateDistrictResponseDto save(CreateDistrictRequestDto createDistrictRequestDto) {
+        District district = DistrictMapper.INSTANCE.createDistrictFromCreateDistrictRequestDto(createDistrictRequestDto);
         districtRepository.save(district);
-        return DistrictMapper.INSTANCE.getDistrictDtoFromDistrict(district);
+        return DistrictMapper.INSTANCE.createDistrictResponseDtoFromDistrict(district);
     }
-    public DistrictDto update(DistrictDto districtDto, UUID id) {
-        District district = DistrictMapper.INSTANCE.getDistrictFromDistrictDto(districtDto);
+    public UpdateDistrictResponseDto update(UpdateDistrictRequestDto updateDistrictRequestDto, UUID id) {
+        District district = DistrictMapper.INSTANCE.districtFromUpdateRequestDto(updateDistrictRequestDto);
         district.setId(id);
         districtRepository.save(district);
-        return DistrictMapper.INSTANCE.getDistrictDtoFromDistrict(district);
+        return DistrictMapper.INSTANCE.updateDistrictResponseDtoFromDistrict(district);
     }
     public void delete(UUID id) {
         districtRepository.deleteById(id);

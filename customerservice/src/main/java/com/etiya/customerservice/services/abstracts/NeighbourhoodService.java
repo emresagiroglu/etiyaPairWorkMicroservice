@@ -1,9 +1,14 @@
 package com.etiya.customerservice.services.abstracts;
 
+import com.etiya.customerservice.dto.neighbourhood.*;
+
+import java.util.List;
+import java.util.UUID;
+
 public interface NeighbourhoodService {
-    List<NeighbourhoodDto> getAll();
-    NeighbourhoodDto getById(UUID id);
-    NeighbourhoodDto save(NeighbourhoodDto neighbourhoodDto);
-    NeighbourhoodDto update(NeighbourhoodDto neighbourhoodDto, UUID id);
+    List<ListNeighbourhoodResponseDto> getAll();
+    GetNeighbourhoodResponseDto getById(UUID id);
+    CreateNeighbourhoodResponseDto save(CreateNeighbourhoodRequestDto createNeighbourhoodRequestDto);
+    UpdateNeighbourhoodResponseDto update(UpdateNeighbourhoodRequestDto updateNeighbourhoodRequestDto, UUID id);
     void delete(UUID id);
 }

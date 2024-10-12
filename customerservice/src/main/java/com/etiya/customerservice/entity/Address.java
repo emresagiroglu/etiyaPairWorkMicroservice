@@ -23,10 +23,10 @@ public class Address {
     private UUID id;
     @ManyToOne
     @JoinColumn(name = "CUST_ID")
-    private Customer customer_id;
+    private Customer customerId;
     @ManyToOne
     @JoinColumn(name = "NEIGHBOURHOOD_ID")
-    private Neighbourhood neighbourhood_id;
+    private Neighbourhood neighbourhoodId;
     @Column(name = "ADDR_NAME")
     private String addressName;
     @Column(name = "STREET")

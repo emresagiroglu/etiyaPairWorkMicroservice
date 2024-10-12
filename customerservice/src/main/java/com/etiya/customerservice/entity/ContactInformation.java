@@ -23,10 +23,10 @@ public class ContactInformation {
     @GeneratedValue
     @UuidGenerator
     @Column(name = "CNC_INFO_ID")
-    private UUID cntInfoId;
+    private UUID id;
     @ManyToOne
     @JoinColumn(name = "CUST_ID")
-    private Customer customer_id;
+    private Customer customerId;
     @Column(name = "CNC_NAME")
     private String contactName;
     @Column(name = "EMAIL")

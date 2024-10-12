@@ -23,7 +23,7 @@ public class Customer {
     @GeneratedValue
     @UuidGenerator
     @Column(name = "customer_id")
-    private UUID customer_id;
+    private UUID customerId;
 
     @Column(name = "CreatedDate")
     private Date createdDate;
@@ -35,10 +35,10 @@ public class Customer {
     private Date deletedDate;
 
 
-    @OneToMany(mappedBy = "customer_id")
+    @OneToMany(mappedBy = "customerId")
     private List<Address> addresses;
 
-    @OneToMany(mappedBy = "customer_id")
+    @OneToMany(mappedBy = "customerId")
     private List<ContactInformation> contactInformations;
 
     @OneToMany(mappedBy = "customerId")

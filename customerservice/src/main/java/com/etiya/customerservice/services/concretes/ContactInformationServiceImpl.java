@@ -1,6 +1,9 @@
 package com.etiya.customerservice.services.concretes;
 
+import com.etiya.customerservice.dto.contactinformation.*;
 import com.etiya.customerservice.entity.ContactInformation;
+import com.etiya.customerservice.mapper.ContactInformationMapper;
+import com.etiya.customerservice.repositories.ContactInformationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,24 +15,24 @@ import java.util.UUID;
 public class ContactInformationServiceImpl {
     private final ContactInformationRepository contactInformationRepository;
 
-    public List<ContactInformationDto> getAll() {
+    public List<ListContactInformationResponseDto> getAll() {
         List<ContactInformation> contactInformationList = contactInformationRepository.findAll();
-        return ContactInformationMapper.INSTANCE.getAllContactInformationDtoFromContactInformation(contactInformationList);
+        return ContactInformationMapper.INSTANCE.getAllContactInformationsResponseDtoFromContactInformations(contactInformationList);
     }
-    public ContactInformationDto getById(UUID id) {
+    public GetContactInformationResponseDto getById(UUID id) {
         ContactInformation contactInformation = contactInformationRepository.findById(id).orElseThrow();
-        return ContactInformationMapper.INSTANCE.getContactInformationDtoFromContactInformation(contactInformation);
+        return ContactInformationMapper.INSTANCE.getContactInformationResponseDtoFromContactInformation(contactInformation);
     }
-    public ContactInformationDto save(ContactInformationDto contactInformationDto) {
-        ContactInformation contactInformation = ContactInformationMapper.INSTANCE.getContactInformationFromContactInformationDto(contactInformationDto);
+    public CreateContactInformationResponseDto save(CreateContactInformationRequestDto contactInformationDto) {
+        ContactInformation contactInformation = ContactInformationMapper.INSTANCE.createContactInformationFromCreateContactInformationRequestDto(contactInformationDto);
         contactInformationRepository.save(contactInformation);
-        return ContactInformationMapper.INSTANCE.getContactInformationDtoFromContactInformation(contactInformation);
+        return ContactInformationMapper.INSTANCE.createContactInformationResponseDtoFromContactInformation(contactInformation);
     }
-    public ContactInformationDto update(ContactInformationDto contactInformationDto, UUID id) {
-        ContactInformation contactInformation = ContactInformationMapper.INSTANCE.getContactInformationFromContactInformationDto(contactInformationDto);
+    public UpdateContactInformationResponseDto update(UpdateContactInformationRequestDto contactInformationDto, UUID id) {
+        ContactInformation contactInformation = ContactInformationMapper.INSTANCE.contactInformationFromUpdateRequestDto(contactInformationDto);
         contactInformation.setId(id);
         contactInformationRepository.save(contactInformation);
-        return ContactInformationMapper.INSTANCE.getContactInformationDtoFromContactInformation(contactInformation);
+        return ContactInformationMapper.INSTANCE.updateContactInformationResponseDtoFromContactInformation(contactInformation);
     }
     public void delete(UUID id) {
         contactInformationRepository.deleteById(id);

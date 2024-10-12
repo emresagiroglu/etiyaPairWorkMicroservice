@@ -28,7 +28,7 @@ public class Neighbourhood {
     @JoinColumn(name = "DISTRICT_ID")
     private District district_id;
 
-    @OneToMany(mappedBy = "neighbourhood_id")
+    @OneToMany(mappedBy = "neighbourhoodId")
     private List<Address> addresses;
 
 }

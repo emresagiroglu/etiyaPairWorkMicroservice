@@ -1,9 +1,12 @@
 package com.etiya.customerservice.controller;
 
+import com.etiya.customerservice.dto.city.CityDto;
+import com.etiya.customerservice.services.abstracts.CityService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController

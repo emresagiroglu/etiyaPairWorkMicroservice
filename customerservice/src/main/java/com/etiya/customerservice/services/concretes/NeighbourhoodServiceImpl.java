@@ -1,6 +1,9 @@
 package com.etiya.customerservice.services.concretes;
 
+import com.etiya.customerservice.dto.neighbourhood.*;
 import com.etiya.customerservice.entity.Neighbourhood;
+import com.etiya.customerservice.mapper.NeighbourhoodMapper;
+import com.etiya.customerservice.repositories.NeighbourhoodRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,24 +15,24 @@ import java.util.UUID;
 public class NeighbourhoodServiceImpl {
     private final NeighbourhoodRepository neighbourhoodRepository;
 
-    public List<NeighbourhoodDto> getAll() {
+    public List<ListNeighbourhoodResponseDto> getAll() {
         List<Neighbourhood> neighbourhoodList = neighbourhoodRepository.findAll();
-        return NeighbourhoodMapper.INSTANCE.getAllNeighbourhoodDtoFromNeighbourhood(neighbourhoodList);
+        return NeighbourhoodMapper.INSTANCE.getAllNeighbourhoodsResponseDtoFromNeighbourhoods(neighbourhoodList);
     }
-    public NeighbourhoodDto getById(UUID id) {
+    public GetNeighbourhoodResponseDto getById(UUID id) {
         Neighbourhood neighbourhood = neighbourhoodRepository.findById(id).orElseThrow();
-        return NeighbourhoodMapper.INSTANCE.getNeighbourhoodDtoFromNeighbourhood(neighbourhood);
+        return NeighbourhoodMapper.INSTANCE.getNeighbourhoodResponseDtoFromNeighbourhood(neighbourhood);
     }
-    public NeighbourhoodDto save(NeighbourhoodDto neighbourhoodDto) {
-        Neighbourhood neighbourhood = NeighbourhoodMapper.INSTANCE.getNeighbourhoodFromNeighbourhoodDto(neighbourhoodDto);
+    public CreateNeighbourhoodResponseDto save(CreateNeighbourhoodRequestDto neighbourhoodDto) {
+        Neighbourhood neighbourhood = NeighbourhoodMapper.INSTANCE.createNeighbourhoodFromCreateNeighbourhoodRequestDto(neighbourhoodDto);
         neighbourhoodRepository.save(neighbourhood);
-        return NeighbourhoodMapper.INSTANCE.getNeighbourhoodDtoFromNeighbourhood(neighbourhood);
+        return NeighbourhoodMapper.INSTANCE.createNeighbourhoodResponseDtoFromNeighbourhood(neighbourhood);
     }
-    public NeighbourhoodDto update(NeighbourhoodDto neighbourhoodDto, UUID id) {
-        Neighbourhood neighbourhood = NeighbourhoodMapper.INSTANCE.getNeighbourhoodFromNeighbourhoodDto(neighbourhoodDto);
+    public UpdateNeighbourhoodResponseDto update(UpdateNeighbourhoodRequestDto neighbourhoodDto, UUID id) {
+        Neighbourhood neighbourhood = NeighbourhoodMapper.INSTANCE.neighbourhoodFromUpdateRequestDto(neighbourhoodDto);
         neighbourhood.setId(id);
         neighbourhoodRepository.save(neighbourhood);
-        return NeighbourhoodMapper.INSTANCE.getNeighbourhoodDtoFromNeighbourhood(neighbourhood);
+        return NeighbourhoodMapper.INSTANCE.updateNeighbourhoodResponseDtoFromNeighbourhood(neighbourhood);
     }
     public void delete(UUID id) {
         neighbourhoodRepository.deleteById(id);

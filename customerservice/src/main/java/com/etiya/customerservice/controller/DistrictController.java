@@ -1,9 +1,13 @@
 package com.etiya.customerservice.controller;
 
+import com.etiya.customerservice.dto.disctrict.*;
+import com.etiya.customerservice.entity.District;
+import com.etiya.customerservice.services.abstracts.DistrictService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -13,25 +17,25 @@ public class DistrictController {
     private final DistrictService districtService;
 
     @GetMapping()
-    public ResponseEntity<List<DistrictDto>> getAll()
+    public ResponseEntity<List<ListDistrictResponseDto>> getAll()
     {
         return ResponseEntity.ok(districtService.getAll());
     }
     @GetMapping("/{id}")
-    public ResponseEntity<DistrictDto> getById(@PathVariable UUID id){
+    public ResponseEntity<GetDistrictResponseDto> getById(@PathVariable UUID id){
         return ResponseEntity.ok(districtService.getById(id));
     }
     @PostMapping
-    public ResponseEntity<DistrictDto> createDistrict(@RequestBody DistrictDto districtDto)
+    public ResponseEntity<CreateDistrictResponseDto> createDistrict(@RequestBody CreateDistrictRequestDto createDistrictRequestDto)
     {
-        return ResponseEntity.ok(districtService.save(districtDto));
+        return ResponseEntity.ok(districtService.save(createDistrictRequestDto));
     }
     @PutMapping("/{id}")
-    public ResponseEntity<DistrictDto> updateDistrict(
+    public ResponseEntity<UpdateDistrictResponseDto> updateDistrict(
             @PathVariable UUID id,
-            @RequestBody DistrictDto districtDto)
+            @RequestBody UpdateDistrictRequestDto updateDistrictRequestDto)
     {
-        return ResponseEntity.ok(districtService.update(districtDto,id));
+        return ResponseEntity.ok(districtService.update(updateDistrictRequestDto,id));
     }
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteDistrict(@PathVariable UUID id)
