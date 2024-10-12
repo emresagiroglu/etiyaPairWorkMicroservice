@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -21,7 +22,8 @@ public class Customer {
     @Id
     @GeneratedValue
     @UuidGenerator
-    private UUID id;
+    @Column(name = "customer_id")
+    private UUID customer_id;
 
     @Column(name = "CreatedDate")
     private Date createdDate;
@@ -32,4 +34,16 @@ public class Customer {
     @Column(name = "DeletedDate")
     private Date deletedDate;
 
+
+    @OneToMany(mappedBy = "customer_id")
+    @Column(name = "ADDRESSES")
+    private List<Address> addresses;
+
+    @OneToMany(mappedBy = "customer_id")
+    @Column(name = "CNC_INFO")
+    private List<ContactInformation> contactInformations;
+
+//    @OneToMany(mappedBy = "customerId")
+//    @Column(name = "BIL_INFO_ACCNT")
+//    private List<BillingAccount> billingAccounts;
 }
