@@ -1,8 +1,7 @@
-package com.etiya.customerservice.services;
+package com.etiya.customerservice.services.abstracts;
 
 import com.etiya.customerservice.dto.corporatecustomer.*;
 import com.etiya.customerservice.dto.individualcustomer.*;
-import com.etiya.customerservice.entity.IndividualCustomer;
 
 import java.util.List;
 import java.util.UUID;

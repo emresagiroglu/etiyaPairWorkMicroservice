@@ -1,4 +1,4 @@
-package com.etiya.customerservice.services;
+package com.etiya.customerservice.services.concretes;
 
 import com.etiya.customerservice.dto.corporatecustomer.*;
 import com.etiya.customerservice.dto.individualcustomer.*;
@@ -9,10 +9,10 @@ import com.etiya.customerservice.mapper.IndividualCustomerMapper;
 import com.etiya.customerservice.repositories.CorporateCustomerRepository;
 import com.etiya.customerservice.repositories.CustomerRepository;
 import com.etiya.customerservice.repositories.IndividualCustomerRepository;
+import com.etiya.customerservice.services.abstracts.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -30,10 +30,10 @@ public class CustomerServiceImpl implements CustomerService {
         List<CorporateCustomer> corporateCustomerList = corporateCustomerRepository.findAll();
 
         // Gelen cevabı response maple
-        List<ListCorporateCustomerResponseDto> listCorporateCustomerResponseDtoList = CorporateCustomerMapper.INSTANCE.
+        return CorporateCustomerMapper.INSTANCE.
                 getAllCorporateCustomersResponseDtoFromCorporateCustomers(corporateCustomerList);
 
-        return listCorporateCustomerResponseDtoList;
+
     }
 
     @Override

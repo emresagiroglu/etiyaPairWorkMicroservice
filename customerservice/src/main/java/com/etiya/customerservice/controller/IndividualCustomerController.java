@@ -1,8 +1,7 @@
 package com.etiya.customerservice.controller;
 
-import com.etiya.customerservice.dto.corporatecustomer.*;
 import com.etiya.customerservice.dto.individualcustomer.*;
-import com.etiya.customerservice.services.CustomerService;
+import com.etiya.customerservice.services.abstracts.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
