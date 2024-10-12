@@ -60,6 +60,19 @@ services:
       - eureka
       - configserver
 
+  catalogservice:
+    image: "localhost/catalogservice"
+    build: ./catalogservice
+    ports:
+      - "8086:8086"
+    networks:
+      - common
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+      - eureka
+      - configserver
+
   orderservice:
     image: "localhost/orderservice"
     build : ./orderservice
