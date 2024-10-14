@@ -1,13 +1,12 @@
 package com.etiya.catalogservice.entities;
 
 import com.etiya.catalogservice.core.entity.BaseEntity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.UUID;
 
 @Data
 @NoArgsConstructor
@@ -19,6 +18,9 @@ public class CustomerBasedOffer extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "offer_id")
     private Offer offer;
+
+    @Column(name = "customerId")
+    private UUID customerId;
 
     //customer id de var ama orası başka mikroserviste!
 }

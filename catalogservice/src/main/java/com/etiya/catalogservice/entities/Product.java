@@ -34,6 +34,11 @@ public class Product extends BaseEntity {
     @OneToMany(mappedBy = "products")
     private List<ProductProductSpecs> productProductSpecs;
 
+    @ElementCollection
+    private List<Long> orderItems;
+
+    @ElementCollection
+    private List<Long> cartItems;
 
     //Order items ile ilişkili. Başka mikroserviste!
     //Cart item ile ilişkili başka serviste!
