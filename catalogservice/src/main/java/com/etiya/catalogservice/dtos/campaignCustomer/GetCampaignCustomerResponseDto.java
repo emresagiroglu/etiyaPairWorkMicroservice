@@ -9,7 +9,7 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class GetCampaignCustomerByIdResponseDto {
+public class GetCampaignCustomerResponseDto {
     private UUID campaignId;
 
     private UUID customerId;

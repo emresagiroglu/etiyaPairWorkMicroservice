@@ -1,21 +1,20 @@
-package com.etiya.catalogservice.dtos.campaign;
+package com.etiya.catalogservice.dtos.offer;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class GetCampaignByIdResponseDto {
+public class ListOfferResponseDto {
+
+    private UUID id;
 
     private String name;
-
-    private int discountPercentage;
-
-    private String discountDesc;
 
     private LocalDateTime startDate;
 

@@ -1,4 +1,4 @@
-package com.etiya.catalogservice.dtos.campaignCustomer;
+package com.etiya.catalogservice.dtos.customerBasedOffer;
 
 
 import lombok.AllArgsConstructor;
@@ -7,15 +7,12 @@ import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateCampaignCustomerRequestDto {
+public class CreateCustomerBasedOfferRequestDto {
 
-    private UUID campaignId;
+    private UUID offerId;
 
     private UUID customerId;
-
-    private UUID addressId;
 }
