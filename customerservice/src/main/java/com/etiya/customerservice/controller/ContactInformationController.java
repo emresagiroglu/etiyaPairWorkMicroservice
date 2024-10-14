@@ -2,6 +2,7 @@ package com.etiya.customerservice.controller;
 
 import com.etiya.customerservice.dto.contactinformation.*;
 import com.etiya.customerservice.services.abstracts.ContactInformationService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +26,7 @@ public class ContactInformationController {
         return ResponseEntity.ok(contactInformationService.getContactInformationById(id));
     }
     @PostMapping
-    public ResponseEntity<CreateContactInformationResponseDto> createContactInformation(@RequestBody CreateContactInformationRequestDto contactInformationDto)
+    public ResponseEntity<CreateContactInformationResponseDto> createContactInformation(@RequestBody @Valid CreateContactInformationRequestDto contactInformationDto)
     {
         return ResponseEntity.ok(contactInformationService.saveContactInformation(contactInformationDto));
     }

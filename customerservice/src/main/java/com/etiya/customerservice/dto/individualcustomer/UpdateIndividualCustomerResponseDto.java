@@ -14,7 +14,7 @@ public class UpdateIndividualCustomerResponseDto {
     private String middleName;
     private String lastName;
     private Date birthDate;
-    private Character gender;
+    private String gender;
     private String fatherName;
     private String motherName;
     private Boolean nationality;

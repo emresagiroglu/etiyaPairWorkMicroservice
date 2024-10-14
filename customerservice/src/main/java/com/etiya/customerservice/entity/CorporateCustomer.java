@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 public class CorporateCustomer extends Customer {
 
     @Column(name = "TaxNumber")
-    private Long taxNumber;
+    private String taxNumber;
     @Column(name = "ContactName")
     private String contactName;
     @Column(name = "CompanyName")

@@ -14,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -51,6 +52,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CreateCorporateCustomerResponseDto saveCorporateCustomer(CreateCorporateCustomerRequestDto createCorporateCustomerRequestDto) {
+
 
         // gelen requesti corporate customer' a maple
         CorporateCustomer corporateCustomer = CorporateCustomerMapper.INSTANCE.
@@ -124,6 +126,12 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CreateIndividualCustomerResponseDto saveIndividualCustomer(CreateIndividualCustomerRequestDto createIndividualCustomerRequestDto) {
+        Optional<IndividualCustomer> existingCustomer = individualCustomerRepository.
+                findByNationalityId(createIndividualCustomerRequestDto.getNationalityId());
+
+        if(existingCustomer.isPresent()){
+            throw new IllegalArgumentException("Customer with Nationality ID " + createIndividualCustomerRequestDto.getNationalityId() + " already exists.");
+        }
         // gelen requesti Individual customer' a maple
         IndividualCustomer individualCustomer = IndividualCustomerMapper.INSTANCE.
                 createIndividualCustomerFromCreateIndividualCustomerRequestDto(createIndividualCustomerRequestDto);

@@ -14,7 +14,7 @@ public class ListCorporateCustomerResponseDto {
 
 
     private Long id;
-    private Long taxNumber;
+    private String taxNumber;
     private String contactName;
     private String companyName;
 }

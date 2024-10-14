@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class UpdateCorporateCustomerRequestDto {
 
-    private Long taxNumber;
+    private String taxNumber;
     private String contactName;
     private String companyName;
 }

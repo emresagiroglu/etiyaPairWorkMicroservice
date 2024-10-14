@@ -1,6 +1,7 @@
 package com.etiya.customerservice.dto.address;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,29 +15,19 @@ import java.util.Date;
 @Data
 public class CreateAddressRequestDto {
 
-    @NotBlank
     @NotNull
     private Long customerId;
-    @NotBlank
     @NotNull
     private Long neighbourhoodId;
-    @NotBlank
-    @NotNull
+    @NotEmpty
     private String addressName;
-    @NotBlank
-    @NotNull
+    @NotEmpty
     private String street;
-    @NotBlank
     @NotNull
     private Integer houseNumber;
-    @NotBlank
     @NotNull
     private Date cDate;
-    @NotBlank
-    @NotNull
     private Date uDate;
-    @NotBlank
-    @NotNull
     private Date dDate;
 
 }

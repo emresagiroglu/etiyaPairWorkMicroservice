@@ -1,6 +1,7 @@
 package com.etiya.customerservice.dto.contactinformation;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,23 +14,16 @@ import java.util.Date;
 @NoArgsConstructor
 @Data
 public class CreateContactInformationRequestDto {
-    @NotBlank
     @NotNull
     private Long customerId;
     @NotBlank
     @NotNull
     private String contactName;
-    @NotBlank
-    @NotNull
+    @NotEmpty
     private String email;
-    @NotBlank
-    @NotNull
     private Integer homePhone;
-    @NotBlank
     @NotNull
     private Integer mobilePhone;
-    @NotBlank
-    @NotNull
     private Integer fax;
     @NotBlank
     @NotNull

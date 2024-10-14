@@ -3,6 +3,7 @@ package com.etiya.customerservice.controller;
 import com.etiya.customerservice.dto.address.*;
 import com.etiya.customerservice.services.abstracts.AddressService;
 import com.netflix.discovery.converters.Auto;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +27,7 @@ public class AddressController {
         return ResponseEntity.ok(addressService.getById(id));
     }
     @PostMapping
-    public ResponseEntity<CreateAddressResponseDto> createAddress(@RequestBody CreateAddressRequestDto addressDto)
+    public ResponseEntity<CreateAddressResponseDto> createAddress(@RequestBody @Valid CreateAddressRequestDto addressDto)
     {
         return ResponseEntity.ok(addressService.save(addressDto));
     }

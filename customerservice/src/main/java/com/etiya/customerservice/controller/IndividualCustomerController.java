@@ -2,6 +2,7 @@ package com.etiya.customerservice.controller;
 
 import com.etiya.customerservice.dto.individualcustomer.*;
 import com.etiya.customerservice.services.abstracts.CustomerService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +30,7 @@ public class IndividualCustomerController {
     }
 
     @PostMapping
-    public ResponseEntity<CreateIndividualCustomerResponseDto> createCustomer(@RequestBody CreateIndividualCustomerRequestDto createIndividualCustomerRequestDto)
+    public ResponseEntity<CreateIndividualCustomerResponseDto> createCustomer(@RequestBody @Valid CreateIndividualCustomerRequestDto createIndividualCustomerRequestDto)
     {
         return ResponseEntity.ok(customerService.saveIndividualCustomer(createIndividualCustomerRequestDto));
     }
