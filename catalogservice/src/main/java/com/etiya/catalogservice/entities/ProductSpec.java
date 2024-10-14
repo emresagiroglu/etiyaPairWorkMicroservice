@@ -23,6 +23,6 @@ public class ProductSpec extends BaseEntity {
     private Specification specification;
 
     @OneToMany(mappedBy = "product_spec")
-    private List<ProductProductSpecs> productProductSpecs;
+    private List<ProductProductSpec> productProductSpecs;
 
 }

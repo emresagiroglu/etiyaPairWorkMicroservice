@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Table(name = "product_productSpecs")
 @Entity
-public class ProductProductSpecs extends BaseEntity {
+public class ProductProductSpec extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "product_id")
