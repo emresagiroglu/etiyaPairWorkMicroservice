@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -15,10 +16,10 @@ public class CreateAddressRequestDto {
 
     @NotBlank
     @NotNull
-    private Integer customerId;
+    private Long customerId;
     @NotBlank
     @NotNull
-    private Integer neighbourhoodId;
+    private Long neighbourhoodId;
     @NotBlank
     @NotNull
     private String addressName;

@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class UpdateCorporateCustomerResponseDto {
 
+    private Long id;
     private Long taxNumber;
     private String contactName;
     private String companyName;

@@ -15,5 +15,5 @@ public class CreateDistrictRequestDto {
         private String name;
         @NotNull
         @NotBlank
-        private Integer cityId;
+        private Long cityId;
 }

@@ -9,7 +9,7 @@ import org.hibernate.annotations.UuidGenerator;
 
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,10 +20,9 @@ import java.util.UUID;
 public class Customer {
 
     @Id
-    @GeneratedValue
-    @UuidGenerator
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customer_id")
-    private UUID customerId;
+    private Long customerId;
 
     @Column(name = "CreatedDate")
     private Date createdDate;

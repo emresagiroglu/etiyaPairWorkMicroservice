@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.util.List;
-import java.util.UUID;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,10 +17,9 @@ import java.util.UUID;
 @Entity
 public class City {
     @Id
-    @GeneratedValue
-    @UuidGenerator
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "CITY_ID")
-    private UUID id;
+    private Long id;
     @Column(name = "CITY_NAME")
     private String name;
 

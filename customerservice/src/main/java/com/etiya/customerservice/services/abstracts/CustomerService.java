@@ -4,28 +4,28 @@ import com.etiya.customerservice.dto.corporatecustomer.*;
 import com.etiya.customerservice.dto.individualcustomer.*;
 
 import java.util.List;
-import java.util.UUID;
+
 
 public interface CustomerService {
 
-    GetCorporateCustomerResponseDto getCorporateCustomerById(UUID id);
+    GetCorporateCustomerResponseDto getCorporateCustomerById(Long id);
 
     List<ListCorporateCustomerResponseDto> getCorporateCustomersAll();
 
     CreateCorporateCustomerResponseDto saveCorporateCustomer(CreateCorporateCustomerRequestDto createCorporateCustomerRequestDto);
 
-    UpdateCorporateCustomerResponseDto updateCorporateCustomer(UpdateCorporateCustomerRequestDto updateCorporateCustomerRequestDto, UUID id);
+    UpdateCorporateCustomerResponseDto updateCorporateCustomer(UpdateCorporateCustomerRequestDto updateCorporateCustomerRequestDto, Long id);
 
-    void deleteCorporateCustomer(UUID id);
+    void deleteCorporateCustomer(Long id);
 
 
-    GetIndividualCustomerResponseDto getIndividualCustomerById(UUID id);
+    GetIndividualCustomerResponseDto getIndividualCustomerById(Long id);
 
     List<ListIndividualCustomerResponseDto> getIndividualCustomersAll();
 
     CreateIndividualCustomerResponseDto saveIndividualCustomer(CreateIndividualCustomerRequestDto createIndividualCustomerRequestDto);
 
-    UpdateIndividualCustomerResponseDto updateIndividualCustomer(UpdateIndividualCustomerRequestDto updateIndividualCustomerRequestDto, UUID id);
+    UpdateIndividualCustomerResponseDto updateIndividualCustomer(UpdateIndividualCustomerRequestDto updateIndividualCustomerRequestDto, Long id);
 
-    void deleteIndividualCustomer(UUID id);
+    void deleteIndividualCustomer(Long id);
 }

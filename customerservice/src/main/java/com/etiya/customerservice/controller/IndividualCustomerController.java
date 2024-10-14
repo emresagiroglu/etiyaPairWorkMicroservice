@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
+
 
 @RestController
 @RequiredArgsConstructor
@@ -24,7 +24,7 @@ public class IndividualCustomerController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<GetIndividualCustomerResponseDto> getById(@PathVariable UUID id){
+    public ResponseEntity<GetIndividualCustomerResponseDto> getById(@PathVariable Long id){
         return ResponseEntity.ok(customerService.getIndividualCustomerById(id));
     }
 
@@ -36,14 +36,14 @@ public class IndividualCustomerController {
 
     @PutMapping("/{id}")
     public ResponseEntity<UpdateIndividualCustomerResponseDto> updateIndividualCustomer(
-            @PathVariable UUID id,
+            @PathVariable Long id,
             @RequestBody UpdateIndividualCustomerRequestDto updateIndividualCustomerRequestDto)
     {
         return ResponseEntity.ok(customerService.updateIndividualCustomer(updateIndividualCustomerRequestDto,id));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteIndividualCustomer(@PathVariable UUID id)
+    public ResponseEntity<Void> deleteIndividualCustomer(@PathVariable Long id)
     {
         customerService.deleteIndividualCustomer(id);
         return new ResponseEntity<>(HttpStatus.OK);

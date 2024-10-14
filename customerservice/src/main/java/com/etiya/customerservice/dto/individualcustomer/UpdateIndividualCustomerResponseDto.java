@@ -9,6 +9,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UpdateIndividualCustomerResponseDto {
+    private Long id;
     private String firstName;
     private String middleName;
     private String lastName;

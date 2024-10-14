@@ -9,5 +9,5 @@ import lombok.NoArgsConstructor;
 @Data
 public class UpdateNeighbourhoodRequestDto {
     private String name;
-    private Integer districtId;
+    private Long districtId;
 }

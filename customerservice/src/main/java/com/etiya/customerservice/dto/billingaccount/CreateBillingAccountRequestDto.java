@@ -8,19 +8,20 @@ import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class CreateBillingAccountRequestDto {
     @NotBlank
     @NotNull
-    private Integer customerId;
+    private Long customerId;
     @NotBlank
     @NotNull
-    private Integer addressId;
+    private Long addressId;
     @NotBlank
     @NotNull
-    private Integer contactId;
+    private Long contactId;
     @NotBlank
     @NotNull
     private String accountName;

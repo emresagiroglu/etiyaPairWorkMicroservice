@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Primary;
 
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
+
 
 @Entity
 @Data
@@ -20,10 +20,9 @@ import java.util.UUID;
 public class ContactInformation {
 
     @Id
-    @GeneratedValue
-    @UuidGenerator
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "CNC_INFO_ID")
-    private UUID id;
+    private Long id;
     @ManyToOne
     @JoinColumn(name = "CUST_ID")
     private Customer customerId;

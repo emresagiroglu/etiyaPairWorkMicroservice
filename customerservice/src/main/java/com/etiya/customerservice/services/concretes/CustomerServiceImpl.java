@@ -14,7 +14,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.UUID;
+
 
 @Service
 @RequiredArgsConstructor
@@ -37,7 +37,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public GetCorporateCustomerResponseDto getCorporateCustomerById(UUID id) {
+    public GetCorporateCustomerResponseDto getCorporateCustomerById(Long id) {
 
 
         GetCorporateCustomerResponseDto getCorporateCustomerResponseDto =
@@ -67,7 +67,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public UpdateCorporateCustomerResponseDto updateCorporateCustomer(UpdateCorporateCustomerRequestDto updateCorporateCustomerRequestDto, UUID id) {
+    public UpdateCorporateCustomerResponseDto updateCorporateCustomer(UpdateCorporateCustomerRequestDto updateCorporateCustomerRequestDto, Long id) {
 
         // corporateCustomer'ı güncelle
         CorporateCustomer corporateCustomerInDb = corporateCustomerRepository.findById(id).orElseThrow();
@@ -76,6 +76,8 @@ public class CustomerServiceImpl implements CustomerService {
         corporateCustomerInDb.setCompanyName(updateCorporateCustomerRequestDto.getCompanyName());
         corporateCustomerInDb.setTaxNumber(updateCorporateCustomerRequestDto.getTaxNumber());
         corporateCustomerInDb.setContactName(updateCorporateCustomerRequestDto.getContactName());
+
+        corporateCustomerRepository.save(corporateCustomerInDb);
 
         // cevabı response corporateCustomer olarak dön
         UpdateCorporateCustomerResponseDto savedCustomerResponseDto = CorporateCustomerMapper
@@ -86,7 +88,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void deleteCorporateCustomer(UUID id) {
+    public void deleteCorporateCustomer(Long id) {
 
         // Kullanıcı Kontrolü
         CorporateCustomer corporateCustomerInDb = corporateCustomerRepository.findById(id).orElseThrow();
@@ -98,7 +100,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     // Individual Customer
     @Override
-    public GetIndividualCustomerResponseDto getIndividualCustomerById(UUID id) {
+    public GetIndividualCustomerResponseDto getIndividualCustomerById(Long id) {
         GetIndividualCustomerResponseDto getIndividualCustomerResponseDto =
                 IndividualCustomerMapper.INSTANCE.
                         getIndividualCustomerResponseDtoFromIndividualCustomer
@@ -137,7 +139,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public UpdateIndividualCustomerResponseDto updateIndividualCustomer(UpdateIndividualCustomerRequestDto updateIndividualCustomerRequestDto, UUID id) {
+    public UpdateIndividualCustomerResponseDto updateIndividualCustomer(UpdateIndividualCustomerRequestDto updateIndividualCustomerRequestDto, Long id) {
         // IndividualCustomer'ı güncelle
         IndividualCustomer individualCustomerInDb = individualCustomerRepository.findById(id).orElseThrow();
 
@@ -152,7 +154,7 @@ public class CustomerServiceImpl implements CustomerService {
         individualCustomerInDb.setNationality(updateIndividualCustomerRequestDto.getNationality());
         individualCustomerInDb.setNationalityId(updateIndividualCustomerRequestDto.getNationalityId());
 
-
+        individualCustomerRepository.save(individualCustomerInDb);
         // cevabı response IndividualCustomer olarak dön
         UpdateIndividualCustomerResponseDto savedCustomerResponseDto = IndividualCustomerMapper
                 .INSTANCE
@@ -162,7 +164,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void deleteIndividualCustomer(UUID id) {
+    public void deleteIndividualCustomer(Long id) {
 
         // Kullanıcı Kontrolü
         IndividualCustomer individualCustomerInDb = individualCustomerRepository.findById(id).orElseThrow();

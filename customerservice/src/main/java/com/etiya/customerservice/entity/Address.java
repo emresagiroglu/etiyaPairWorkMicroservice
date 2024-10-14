@@ -8,7 +8,7 @@ import org.hibernate.annotations.UuidGenerator;
 
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,10 +17,9 @@ import java.util.UUID;
 @Entity
 public class Address {
     @Id
-    @GeneratedValue
-    @UuidGenerator
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ADDRESS_ID")
-    private UUID id;
+    private Long id;
     @ManyToOne
     @JoinColumn(name = "CUST_ID")
     private Customer customerId;

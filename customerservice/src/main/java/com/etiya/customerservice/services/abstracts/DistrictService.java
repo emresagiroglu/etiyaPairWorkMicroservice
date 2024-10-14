@@ -5,12 +5,12 @@ import com.etiya.customerservice.dto.neighbourhood.UpdateNeighbourhoodResponseDt
 import com.etiya.customerservice.entity.District;
 
 import java.util.List;
-import java.util.UUID;
+
 
 public interface DistrictService {
     List<ListDistrictResponseDto> getAll();
-    GetDistrictResponseDto getById(UUID id);
+    GetDistrictResponseDto getById(Long id);
     CreateDistrictResponseDto save(CreateDistrictRequestDto createDistrictRequestDto);
-    UpdateDistrictResponseDto update(UpdateDistrictRequestDto updateDistrictRequestDto, UUID id);
-    void delete(UUID id);
+    UpdateDistrictResponseDto update(UpdateDistrictRequestDto updateDistrictRequestDto, Long id);
+    void delete(Long id);
 }

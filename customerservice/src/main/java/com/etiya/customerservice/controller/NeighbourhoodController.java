@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
+
 
 @RestController
 @RequiredArgsConstructor
@@ -22,7 +22,7 @@ public class NeighbourhoodController {
         return ResponseEntity.ok(neighbourhoodService.getAll());
     }
     @GetMapping("/{id}")
-    public ResponseEntity<GetNeighbourhoodResponseDto> getById(@PathVariable UUID id){
+    public ResponseEntity<GetNeighbourhoodResponseDto> getById(@PathVariable Long id){
         return ResponseEntity.ok(neighbourhoodService.getById(id));
     }
     @PostMapping
@@ -32,13 +32,13 @@ public class NeighbourhoodController {
     }
     @PutMapping("/{id}")
     public ResponseEntity<UpdateNeighbourhoodResponseDto> updateNeighbourhood(
-            @PathVariable UUID id,
+            @PathVariable Long id,
             @RequestBody UpdateNeighbourhoodRequestDto updateNeighbourhoodRequestDto)
     {
         return ResponseEntity.ok(neighbourhoodService.update(updateNeighbourhoodRequestDto,id));
     }
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteNeighbourhood(@PathVariable UUID id)
+    public ResponseEntity<Void> deleteNeighbourhood(@PathVariable Long id)
     {
         neighbourhoodService.delete(id);
         return ResponseEntity.ok().build();

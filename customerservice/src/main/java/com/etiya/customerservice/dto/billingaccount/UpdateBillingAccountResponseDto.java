@@ -4,13 +4,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class UpdateBillingAccountResponseDto {
-    private Integer customerId;
-    private Integer addressId;
-    private Integer contactId;
+    private Long customerId;
+    private Long addressId;
+    private Long contactId;
     private String accountName;
     private String type;
     private String desc;

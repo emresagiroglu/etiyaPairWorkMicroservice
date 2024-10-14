@@ -8,12 +8,13 @@ import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class CreateContactInformationResponseDto {
 
-    private Integer customerId;
+    private Long customerId;
     private String contactName;
     private String email;
     private Integer homePhone;

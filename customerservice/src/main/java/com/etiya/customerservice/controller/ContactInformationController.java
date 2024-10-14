@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
+
 
 @RestController
 @RequiredArgsConstructor
@@ -21,7 +21,7 @@ public class ContactInformationController {
         return ResponseEntity.ok(contactInformationService.getContactInformationsAll());
     }
     @GetMapping("/{id}")
-    public ResponseEntity<GetContactInformationResponseDto> getById(@PathVariable UUID id){
+    public ResponseEntity<GetContactInformationResponseDto> getById(@PathVariable Long id){
         return ResponseEntity.ok(contactInformationService.getContactInformationById(id));
     }
     @PostMapping
@@ -31,13 +31,13 @@ public class ContactInformationController {
     }
     @PutMapping("/{id}")
     public ResponseEntity<UpdateContactInformationResponseDto> updateContactInformation(
-            @PathVariable UUID id,
+            @PathVariable Long id,
             @RequestBody UpdateContactInformationRequestDto contactInformationDto)
     {
         return ResponseEntity.ok(contactInformationService.updateContactInformation(contactInformationDto,id));
     }
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteContactInformation(@PathVariable UUID id)
+    public ResponseEntity<Void> deleteContactInformation(@PathVariable Long id)
     {
         contactInformationService.deleteContactInformation(id);
         return ResponseEntity.ok().build();

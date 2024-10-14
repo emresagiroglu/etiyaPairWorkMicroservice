@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
+
 
 @RestController
 @RequiredArgsConstructor
@@ -22,7 +22,7 @@ public class CityController {
         return ResponseEntity.ok(cityService.getAll());
     }
     @GetMapping("/{id}")
-    public ResponseEntity<CityDto> getById(@PathVariable UUID id){
+    public ResponseEntity<CityDto> getById(@PathVariable Long id){
         return ResponseEntity.ok(cityService.getById(id));
     }
     @PostMapping
@@ -32,13 +32,13 @@ public class CityController {
     }
     @PutMapping("/{id}")
     public ResponseEntity<CityDto> updateCity(
-            @PathVariable UUID id,
+            @PathVariable Long id,
             @RequestBody CityDto cityDto)
     {
         return ResponseEntity.ok(cityService.update(cityDto,id));
     }
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCity(@PathVariable UUID id)
+    public ResponseEntity<Void> deleteCity(@PathVariable Long id)
     {
         cityService.delete(id);
         return ResponseEntity.ok().build();

@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.util.Date;
-import java.util.UUID;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,10 +17,9 @@ import java.util.UUID;
 public class BillingAccount {
 //TODO : STATUS ID EKLENECEK
     @Id
-    @GeneratedValue
-    @UuidGenerator
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "BIL_ACCNT_ID")
-    private UUID id;
+    private Long id;
     @ManyToOne
     @JoinColumn(name = "CUST_ID")
     private Customer customerId;

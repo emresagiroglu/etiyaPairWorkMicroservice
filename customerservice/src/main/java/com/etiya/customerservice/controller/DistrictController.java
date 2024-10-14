@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
+
 
 @RestController
 @RequiredArgsConstructor
@@ -22,7 +22,7 @@ public class DistrictController {
         return ResponseEntity.ok(districtService.getAll());
     }
     @GetMapping("/{id}")
-    public ResponseEntity<GetDistrictResponseDto> getById(@PathVariable UUID id){
+    public ResponseEntity<GetDistrictResponseDto> getById(@PathVariable Long id){
         return ResponseEntity.ok(districtService.getById(id));
     }
     @PostMapping
@@ -32,13 +32,13 @@ public class DistrictController {
     }
     @PutMapping("/{id}")
     public ResponseEntity<UpdateDistrictResponseDto> updateDistrict(
-            @PathVariable UUID id,
+            @PathVariable Long id,
             @RequestBody UpdateDistrictRequestDto updateDistrictRequestDto)
     {
         return ResponseEntity.ok(districtService.update(updateDistrictRequestDto,id));
     }
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteDistrict(@PathVariable UUID id)
+    public ResponseEntity<Void> deleteDistrict(@PathVariable Long id)
     {
         districtService.delete(id);
         return ResponseEntity.ok().build();

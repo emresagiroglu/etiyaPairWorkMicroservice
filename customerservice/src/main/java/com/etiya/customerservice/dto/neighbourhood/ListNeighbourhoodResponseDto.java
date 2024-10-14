@@ -4,13 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.UUID;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class ListNeighbourhoodResponseDto {
-    private UUID id;
+    private Long id;
     private String name;
-    private Integer districtId;
+    private Long districtId;
 }
