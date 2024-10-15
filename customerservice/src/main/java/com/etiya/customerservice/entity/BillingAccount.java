@@ -1,5 +1,6 @@
 package com.etiya.customerservice.entity;
 
+import com.etiya.customerservice.core.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,12 +15,9 @@ import java.util.Date;
 @Data
 @Table(name = "BIL_ACCNT")
 @Entity
-public class BillingAccount {
+public class BillingAccount extends BaseEntity {
 //TODO : STATUS ID EKLENECEK
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "BIL_ACCNT_ID")
-    private Long id;
+
     @ManyToOne
     @JoinColumn(name = "CUST_ID")
     private Customer customerId;
@@ -37,10 +35,5 @@ public class BillingAccount {
     private String desc;
     @Column(name = "TAX_NUMBER")
     private Integer taxNumber;
-    @Column(name = "CDate")
-    private Date cDate;
-    @Column(name = "UDate")
-    private Date uDate;
-    @Column(name = "DDate")
-    private Date dDate;
+
 }

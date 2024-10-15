@@ -1,6 +1,7 @@
 package com.etiya.customerservice.entity;
 
 
+import com.etiya.customerservice.core.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,11 +16,8 @@ import java.util.List;
 @Data
 @Table(name = "CITY")
 @Entity
-public class City {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "CITY_ID")
-    private Long id;
+public class City extends BaseEntity {
+
     @Column(name = "CITY_NAME")
     private String name;
 

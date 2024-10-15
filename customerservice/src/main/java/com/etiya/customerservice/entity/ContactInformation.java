@@ -1,6 +1,7 @@
 package com.etiya.customerservice.entity;
 
 
+import com.etiya.customerservice.core.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,12 +18,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "CNC_INFO")
-public class ContactInformation {
+public class ContactInformation extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "CNC_INFO_ID")
-    private Long id;
+
     @ManyToOne
     @JoinColumn(name = "CUST_ID")
     private Customer customerId;
@@ -36,12 +34,6 @@ public class ContactInformation {
     private Integer mobilePhone;
     @Column(name = "FAX")
     private Integer fax;
-    @Column(name = "CDATE")
-    private Date createdDate;
-    @Column(name = "UDATE")
-    private Date updatedDate;
-    @Column(name = "DDATE")
-    private Date deletedDate;
 
     @OneToMany(mappedBy = "contactId")
     private List<BillingAccount> billingAccounts;

@@ -14,7 +14,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "CorporateCustomers")
-@PrimaryKeyJoinColumn(name = "customer_id")
 public class CorporateCustomer extends Customer {
 
     @Column(name = "TaxNumber")

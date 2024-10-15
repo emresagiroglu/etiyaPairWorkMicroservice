@@ -17,20 +17,20 @@ public interface IndividualCustomerMapper {
 
     IndividualCustomer createIndividualCustomerFromCreateIndividualCustomerRequestDto
             (CreateIndividualCustomerRequestDto createIndividualCustomerRequestDto);
-    @Mapping(source = "customerId", target = "id")
+    @Mapping(source = "id", target = "id")
     GetIndividualCustomerResponseDto getIndividualCustomerResponseDtoFromIndividualCustomer
             (IndividualCustomer individualCustomer);
-    @Mapping(source = "customerId", target = "id")
+    @Mapping(source = "id", target = "id")
     ListIndividualCustomerResponseDto listIndividualCustomersResponseDtoFromIndividualCustomers(IndividualCustomer individualCustomer);
-    @Mapping(source = "customerId", target = "id")
+    @Mapping(source = "id", target = "id")
     List<ListIndividualCustomerResponseDto> getAllIndividualCustomersResponseDtoFromIndividualCustomers
             (List<IndividualCustomer> individualCustomers);
 
-    @Mapping(source = "customerId", target = "id")
+    @Mapping(source = "id", target = "id")
     CreateIndividualCustomerResponseDto createIndividualCustomerResponseDtoFromIndividualCustomer
             (IndividualCustomer individualCustomer);
 
     IndividualCustomer individualCustomerFromUpdateCustomerRequestDto(UpdateIndividualCustomerRequestDto updateIndividualCustomerRequestDto);
-    @Mapping(source = "customerId", target = "id")
+    @Mapping(source = "id", target = "id")
     UpdateIndividualCustomerResponseDto updateCustomerResponseDtoFromIndividualCustomer(IndividualCustomer individualCustomer);
 }

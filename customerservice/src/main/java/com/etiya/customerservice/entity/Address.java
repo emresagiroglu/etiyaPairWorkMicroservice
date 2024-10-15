@@ -1,5 +1,6 @@
 package com.etiya.customerservice.entity;
 
+import com.etiya.customerservice.core.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,11 +16,7 @@ import java.util.List;
 @Data
 @Table(name = "Address")
 @Entity
-public class Address {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ADDRESS_ID")
-    private Long id;
+public class Address extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "CUST_ID")
     private Customer customerId;
@@ -32,12 +29,7 @@ public class Address {
     private String street;
     @Column(name = "HOUSE_NUMBER")
     private Integer houseNumber;
-    @Column(name = "CDate")
-    private Date cDate;
-    @Column(name = "UDate")
-    private Date uDate;
-    @Column(name = "DDate")
-    private Date dDate;
+
 
     @OneToMany(mappedBy = "addressId")
     private List<BillingAccount> billingAccounts;

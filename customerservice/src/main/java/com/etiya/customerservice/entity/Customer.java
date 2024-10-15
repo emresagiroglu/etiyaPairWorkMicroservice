@@ -1,6 +1,7 @@
 package com.etiya.customerservice.entity;
 
 
+import com.etiya.customerservice.core.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,22 +18,7 @@ import java.util.List;
 @Table(name = "customers")
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Customer {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "customer_id")
-    private Long customerId;
-
-    @Column(name = "CreatedDate")
-    private Date createdDate;
-
-    @Column(name = "UpdatedDate")
-    private Date updatedDate;
-
-    @Column(name = "DeletedDate")
-    private Date deletedDate;
-
+public class Customer extends BaseEntity {
 
     @OneToMany(mappedBy = "customerId")
     private List<Address> addresses;

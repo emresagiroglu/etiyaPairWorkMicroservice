@@ -16,22 +16,22 @@ public interface CorporateCustomerMapper {
 
     CorporateCustomer createCorporateCustomerFromCreateCorporateCustomerRequestDto
             (CreateCorporateCustomerRequestDto createCorporateCustomerRequestDto);
-    @Mapping(source = "customerId", target = "id")
+    @Mapping(source = "id", target = "id")
     GetCorporateCustomerResponseDto getCorporateCustomerResponseDtoFromCorporateCustomer
             (CorporateCustomer corporateCustomer);
-    @Mapping(source = "customerId", target = "id")
+    @Mapping(source = "id", target = "id")
     ListCorporateCustomerResponseDto listCorporateCustomersResponseDtoFromCorporateCustomers(CorporateCustomer corporateCustomer);
-    @Mapping(source = "customerId", target = "id")
+    @Mapping(source = "id", target = "id")
     List<ListCorporateCustomerResponseDto> getAllCorporateCustomersResponseDtoFromCorporateCustomers
             (List<CorporateCustomer> corporateCustomers);
 
     CorporateCustomer corporateCustomerFromUpdateRequestDto(UpdateCorporateCustomerRequestDto dto);
-    @Mapping(source = "customerId", target = "id")
+    @Mapping(source = "id", target = "id")
     CreateCorporateCustomerResponseDto createCorporateCustomerResponseDtoFromCorporateCustomer
             (CorporateCustomer corporateCustomer);
 
     CorporateCustomer corporateCustomerFromUpdateCustomerRequestDto(UpdateCorporateCustomerRequestDto updateCorporateCustomerRequestDto);
-    @Mapping(source = "customerId", target = "id")
+    @Mapping(source = "id", target = "id")
     UpdateCorporateCustomerResponseDto updateCustomerResponseDtoFromCorporateCustomer(CorporateCustomer corporateCustomer);
 
 }
