@@ -12,25 +12,25 @@ import java.util.List;
 public interface AddressMapper {
     AddressMapper INSTANCE = Mappers.getMapper(AddressMapper.class);
 
-    @Mapping(source = "customerId" ,target = "customerId.customerId" )
+    @Mapping(source = "customerId" ,target = "customerId.id" )
     @Mapping(source = "neighbourhoodId" ,target = "neighbourhoodId.id" )
     Address createAddressFromCreateAddressRequestDto(CreateAddressRequestDto createAddressRequestDto);
-    @Mapping(source = "customerId.customerId" , target = "customerId")
+    @Mapping(source = "customerId.id" , target = "customerId")
     @Mapping(source = "neighbourhoodId.id" , target = "neighbourhoodId")
     CreateAddressResponseDto createAddressResponseDtoFromAddress(Address address);
-    @Mapping(source = "customerId.customerId" , target = "customerId")
+    @Mapping(source = "customerId.id" , target = "customerId")
     @Mapping(source = "neighbourhoodId.id" , target = "neighbourhoodId")
     GetAddressResponseDto getAddressResponseDtoFromAddress(Address address);
-    @Mapping(source = "customerId.customerId" , target = "customerId")
+    @Mapping(source = "customerId.id" , target = "customerId")
     @Mapping(source = "neighbourhoodId.id" , target = "neighbourhoodId")
     ListAddressResponseDto addressToListAddressResponseDto(Address address);
-    @Mapping(source = "customerId.customerId" , target = "customerId")
+    @Mapping(source = "customerId.id" , target = "customerId")
     @Mapping(source = "neighbourhoodId.id" , target = "neighbourhoodId")
     List<ListAddressResponseDto> listAddressResponseDtoFromAddressList(List<Address> addressList);
-    @Mapping(source = "customerId.customerId" , target = "customerId")
+    @Mapping(source = "customerId.id" , target = "customerId")
     @Mapping(source = "neighbourhoodId.id" , target = "neighbourhoodId")
     UpdateAddressResponseDto updateAddressResponseDtoFromAddress(Address address);
-    @Mapping(source = "customerId" ,target = "customerId.customerId" )
+    @Mapping(source = "customerId" ,target = "customerId.id" )
     @Mapping(source = "neighbourhoodId" ,target = "neighbourhoodId.id" )
     Address addressFromUpdateAddressRequestDto(UpdateAddressRequestDto updateAddressRequestDto);
 

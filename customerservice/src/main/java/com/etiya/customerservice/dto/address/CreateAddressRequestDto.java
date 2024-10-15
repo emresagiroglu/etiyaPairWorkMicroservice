@@ -25,9 +25,4 @@ public class CreateAddressRequestDto {
     private String street;
     @NotNull
     private Integer houseNumber;
-    @NotNull
-    private Date cDate;
-    private Date uDate;
-    private Date dDate;
-
 }

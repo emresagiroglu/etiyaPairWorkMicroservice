@@ -34,14 +34,5 @@ public class CreateBillingAccountRequestDto {
     @NotBlank
     @NotNull
     private Integer taxNumber;
-    @NotBlank
-    @NotNull
-    private Date cDate;
-    @NotBlank
-    @NotNull
-    private Date uDate;
-    @NotBlank
-    @NotNull
-    private Date dDate;
 
 }

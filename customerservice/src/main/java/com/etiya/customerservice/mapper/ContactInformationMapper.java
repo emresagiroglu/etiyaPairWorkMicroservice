@@ -12,18 +12,18 @@ import java.util.List;
 public interface ContactInformationMapper {
     ContactInformationMapper INSTANCE = Mappers.getMapper(ContactInformationMapper.class);
 
-    @Mapping(source = "customerId" ,target = "customerId.customerId" )
+    @Mapping(source = "customerId" ,target = "customerId.id" )
     ContactInformation createContactInformationFromCreateContactInformationRequestDto(CreateContactInformationRequestDto createContactInformationRequestDto);
-    @Mapping(source = "customerId.customerId" , target = "customerId")
+    @Mapping(source = "customerId.id" , target = "customerId")
     CreateContactInformationResponseDto createContactInformationResponseDtoFromContactInformation(ContactInformation contactInformation);
-    @Mapping(source = "customerId.customerId" , target = "customerId")
+    @Mapping(source = "customerId.id" , target = "customerId")
     GetContactInformationResponseDto getContactInformationResponseDtoFromContactInformation(ContactInformation contactInformation);
-    @Mapping(source = "customerId.customerId" , target = "customerId")
+    @Mapping(source = "customerId.id" , target = "customerId")
     ListContactInformationResponseDto getContactInformationsResponseDtoFromContactInformations(ContactInformation contactInformation);
-    @Mapping(source = "customerId.customerId" , target = "customerId")
+    @Mapping(source = "customerId.id" , target = "customerId")
     List<ListContactInformationResponseDto> getAllContactInformationsResponseDtoFromContactInformations(List<ContactInformation> contactInformations);
-    @Mapping(source = "customerId.customerId" , target = "customerId")
+    @Mapping(source = "customerId.id" , target = "customerId")
     UpdateContactInformationResponseDto updateContactInformationResponseDtoFromContactInformation(ContactInformation contactInformation);
-    @Mapping(source = "customerId" ,target = "customerId.customerId" )
+    @Mapping(source = "customerId" ,target = "customerId.id" )
     ContactInformation contactInformationFromUpdateRequestDto(UpdateContactInformationRequestDto updateContactInformationRequestDto);
 }

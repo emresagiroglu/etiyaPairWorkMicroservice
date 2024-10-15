@@ -16,8 +16,7 @@ import java.util.Date;
 public class CreateContactInformationRequestDto {
     @NotNull
     private Long customerId;
-    @NotBlank
-    @NotNull
+    @NotEmpty
     private String contactName;
     @NotEmpty
     private String email;
@@ -25,14 +24,4 @@ public class CreateContactInformationRequestDto {
     @NotNull
     private Integer mobilePhone;
     private Integer fax;
-    @NotBlank
-    @NotNull
-    private Date createdDate;
-    @NotBlank
-    @NotNull
-    private Date updatedDate;
-    @NotBlank
-    @NotNull
-    private Date deletedDate;
-
 }
