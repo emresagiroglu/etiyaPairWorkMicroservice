@@ -38,5 +38,5 @@ public class IndividualCustomer extends Customer {
     @Column(name = "Nationality")
     private Boolean nationality;
     @Column(name = "NationalityID")
-    private Long nationalityId;
+    private String nationalityId;
 }

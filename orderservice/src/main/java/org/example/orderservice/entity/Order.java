@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.UUID;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -23,7 +23,7 @@ public class Order
     private LocalDate orderDate;
     private float totalPrice;
     private List<Product> products;
-    private UUID customerId;
+    private Long customerId;
     private String customerName;
     private String customerSurname;
 }

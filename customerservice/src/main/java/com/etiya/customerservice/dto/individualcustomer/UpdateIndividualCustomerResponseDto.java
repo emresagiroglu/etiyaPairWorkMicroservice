@@ -9,11 +9,12 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UpdateIndividualCustomerResponseDto {
+    private Long id;
     private String firstName;
     private String middleName;
     private String lastName;
     private Date birthDate;
-    private Character gender;
+    private String gender;
     private String fatherName;
     private String motherName;
     private Boolean nationality;
