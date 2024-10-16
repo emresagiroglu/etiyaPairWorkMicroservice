@@ -1,6 +1,7 @@
 package com.etiya.customerservice.entity;
 
 
+import com.etiya.customerservice.core.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,7 +9,8 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.util.Date;
-import java.util.UUID;
+import java.util.List;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,20 +18,14 @@ import java.util.UUID;
 @Table(name = "customers")
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Customer {
+public class Customer extends BaseEntity {
 
-    @Id
-    @GeneratedValue
-    @UuidGenerator
-    private UUID id;
+    @OneToMany(mappedBy = "customerId")
+    private List<Address> addresses;
 
-    @Column(name = "CreatedDate")
-    private Date createdDate;
+    @OneToMany(mappedBy = "customerId")
+    private List<ContactInformation> contactInformations;
 
-    @Column(name = "UpdatedDate")
-    private Date updatedDate;
-
-    @Column(name = "DeletedDate")
-    private Date deletedDate;
-
+    @OneToMany(mappedBy = "customerId")
+    private List<BillingAccount> billingAccounts;
 }

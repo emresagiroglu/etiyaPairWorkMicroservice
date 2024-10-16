@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.UUID;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -13,8 +13,8 @@ public class ListCorporateCustomerResponseDto {
 
 
 
-    private UUID id;
-    private Long taxNumber;
+    private Long id;
+    private String taxNumber;
     private String contactName;
     private String companyName;
 }

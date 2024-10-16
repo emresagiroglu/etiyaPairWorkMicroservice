@@ -19,5 +19,5 @@ public class UpdateIndividualCustomerRequestDto {
     private String fatherName;
     private String motherName;
     private Boolean nationality;
-    private Long nationalityId;
+    private String nationalityId;
 }

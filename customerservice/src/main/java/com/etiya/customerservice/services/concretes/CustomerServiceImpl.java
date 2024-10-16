@@ -1,4 +1,4 @@
-package com.etiya.customerservice.services;
+package com.etiya.customerservice.services.concretes;
 
 import com.etiya.customerservice.dto.corporatecustomer.*;
 import com.etiya.customerservice.dto.individualcustomer.*;
@@ -9,12 +9,13 @@ import com.etiya.customerservice.mapper.IndividualCustomerMapper;
 import com.etiya.customerservice.repositories.CorporateCustomerRepository;
 import com.etiya.customerservice.repositories.CustomerRepository;
 import com.etiya.customerservice.repositories.IndividualCustomerRepository;
+import com.etiya.customerservice.services.abstracts.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
-import java.util.UUID;
+import java.util.Optional;
+
 
 @Service
 @RequiredArgsConstructor
@@ -30,14 +31,14 @@ public class CustomerServiceImpl implements CustomerService {
         List<CorporateCustomer> corporateCustomerList = corporateCustomerRepository.findAll();
 
         // Gelen cevabı response maple
-        List<ListCorporateCustomerResponseDto> listCorporateCustomerResponseDtoList = CorporateCustomerMapper.INSTANCE.
+        return CorporateCustomerMapper.INSTANCE.
                 getAllCorporateCustomersResponseDtoFromCorporateCustomers(corporateCustomerList);
 
-        return listCorporateCustomerResponseDtoList;
+
     }
 
     @Override
-    public GetCorporateCustomerResponseDto getCorporateCustomerById(UUID id) {
+    public GetCorporateCustomerResponseDto getCorporateCustomerById(Long id) {
 
 
         GetCorporateCustomerResponseDto getCorporateCustomerResponseDto =
@@ -51,6 +52,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CreateCorporateCustomerResponseDto saveCorporateCustomer(CreateCorporateCustomerRequestDto createCorporateCustomerRequestDto) {
+
 
         // gelen requesti corporate customer' a maple
         CorporateCustomer corporateCustomer = CorporateCustomerMapper.INSTANCE.
@@ -67,7 +69,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public UpdateCorporateCustomerResponseDto updateCorporateCustomer(UpdateCorporateCustomerRequestDto updateCorporateCustomerRequestDto, UUID id) {
+    public UpdateCorporateCustomerResponseDto updateCorporateCustomer(UpdateCorporateCustomerRequestDto updateCorporateCustomerRequestDto, Long id) {
 
         // corporateCustomer'ı güncelle
         CorporateCustomer corporateCustomerInDb = corporateCustomerRepository.findById(id).orElseThrow();
@@ -76,6 +78,8 @@ public class CustomerServiceImpl implements CustomerService {
         corporateCustomerInDb.setCompanyName(updateCorporateCustomerRequestDto.getCompanyName());
         corporateCustomerInDb.setTaxNumber(updateCorporateCustomerRequestDto.getTaxNumber());
         corporateCustomerInDb.setContactName(updateCorporateCustomerRequestDto.getContactName());
+
+        corporateCustomerRepository.save(corporateCustomerInDb);
 
         // cevabı response corporateCustomer olarak dön
         UpdateCorporateCustomerResponseDto savedCustomerResponseDto = CorporateCustomerMapper
@@ -86,7 +90,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void deleteCorporateCustomer(UUID id) {
+    public void deleteCorporateCustomer(Long id) {
 
         // Kullanıcı Kontrolü
         CorporateCustomer corporateCustomerInDb = corporateCustomerRepository.findById(id).orElseThrow();
@@ -98,7 +102,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     // Individual Customer
     @Override
-    public GetIndividualCustomerResponseDto getIndividualCustomerById(UUID id) {
+    public GetIndividualCustomerResponseDto getIndividualCustomerById(Long id) {
         GetIndividualCustomerResponseDto getIndividualCustomerResponseDto =
                 IndividualCustomerMapper.INSTANCE.
                         getIndividualCustomerResponseDtoFromIndividualCustomer
@@ -122,6 +126,12 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CreateIndividualCustomerResponseDto saveIndividualCustomer(CreateIndividualCustomerRequestDto createIndividualCustomerRequestDto) {
+        Optional<IndividualCustomer> existingCustomer = individualCustomerRepository.
+                findByNationalityId(createIndividualCustomerRequestDto.getNationalityId());
+
+        if(existingCustomer.isPresent()){
+            throw new IllegalArgumentException("Customer with Nationality ID " + createIndividualCustomerRequestDto.getNationalityId() + " already exists.");
+        }
         // gelen requesti Individual customer' a maple
         IndividualCustomer individualCustomer = IndividualCustomerMapper.INSTANCE.
                 createIndividualCustomerFromCreateIndividualCustomerRequestDto(createIndividualCustomerRequestDto);
@@ -137,7 +147,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public UpdateIndividualCustomerResponseDto updateIndividualCustomer(UpdateIndividualCustomerRequestDto updateIndividualCustomerRequestDto, UUID id) {
+    public UpdateIndividualCustomerResponseDto updateIndividualCustomer(UpdateIndividualCustomerRequestDto updateIndividualCustomerRequestDto, Long id) {
         // IndividualCustomer'ı güncelle
         IndividualCustomer individualCustomerInDb = individualCustomerRepository.findById(id).orElseThrow();
 
@@ -152,7 +162,7 @@ public class CustomerServiceImpl implements CustomerService {
         individualCustomerInDb.setNationality(updateIndividualCustomerRequestDto.getNationality());
         individualCustomerInDb.setNationalityId(updateIndividualCustomerRequestDto.getNationalityId());
 
-
+        individualCustomerRepository.save(individualCustomerInDb);
         // cevabı response IndividualCustomer olarak dön
         UpdateIndividualCustomerResponseDto savedCustomerResponseDto = IndividualCustomerMapper
                 .INSTANCE
@@ -162,7 +172,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void deleteIndividualCustomer(UUID id) {
+    public void deleteIndividualCustomer(Long id) {
 
         // Kullanıcı Kontrolü
         IndividualCustomer individualCustomerInDb = individualCustomerRepository.findById(id).orElseThrow();
