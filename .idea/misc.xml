@@ -9,8 +9,9 @@
         <option value="$PROJECT_DIR$/gatewayservice/pom.xml" />
         <option value="$PROJECT_DIR$/eureka/pom.xml" />
         <option value="$PROJECT_DIR$/configserver/pom.xml" />
-        <option value="$PROJECT_DIR$/../../etiya9.microservices/orderservice/pom.xml" />
+        <option value="$USER_HOME$/etiya9.microservices/orderservice/pom.xml" />
         <option value="$PROJECT_DIR$/orderservice/pom.xml" />
+        <option value="$PROJECT_DIR$/catalogservice/pom.xml" />
       </list>
     </option>
   </component>
