@@ -15,35 +15,35 @@ import java.util.UUID;
 @RequestMapping("/api/categories")
 public class CategoryController {
 
-    private final CategoryService campaignService;
+    private final CategoryService categoryService;
 
     @PostMapping
     public ResponseEntity<CreatedCategoryResponseDto> add(@RequestBody CreateCategoryRequestDto createCategoryRequest){
-        return ResponseEntity.ok(campaignService.add(createCategoryRequest));
+        return ResponseEntity.ok(categoryService.add(createCategoryRequest));
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<GetCategoryResponseDto> getById(@PathVariable UUID id){
-        return ResponseEntity.ok(campaignService.getById(id));
+        return ResponseEntity.ok(categoryService.getById(id));
     }
 
     @GetMapping()
     public ResponseEntity<List<ListCategoryResponseDto>> getAll()
     {
-        return ResponseEntity.ok(campaignService.getAll());
+        return ResponseEntity.ok(categoryService.getAll());
     }
 
 
     @PutMapping("/{id}")
     public ResponseEntity<UpdatedCategoryResponseDto> update(@PathVariable UUID id, @RequestBody UpdateCategoryRequestDto request)
     {
-        return ResponseEntity.ok(campaignService.update(id, request));
+        return ResponseEntity.ok(categoryService.update(id, request));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable UUID id)
     {
-        campaignService.delete(id);
+        categoryService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
