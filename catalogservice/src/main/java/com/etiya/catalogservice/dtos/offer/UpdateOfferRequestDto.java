@@ -12,8 +12,6 @@ import java.util.UUID;
 @AllArgsConstructor
 public class UpdateOfferRequestDto {
 
-    private UUID id;
-
     private String name;
 
     private LocalDateTime startDate;
