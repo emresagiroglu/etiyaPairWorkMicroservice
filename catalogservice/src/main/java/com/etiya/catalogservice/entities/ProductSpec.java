@@ -22,7 +22,7 @@ public class ProductSpec extends BaseEntity {
     @JoinColumn(name = "specification_id")
     private Specification specification;
 
-    @OneToMany(mappedBy = "product_spec")
+    @OneToMany(mappedBy = "productSpec")
     private List<ProductProductSpec> productProductSpecs;
 
 }

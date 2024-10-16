@@ -25,13 +25,11 @@ public class Product extends BaseEntity {
     @OneToMany(mappedBy = "product")
     private List<OfferProduct> offerProducts;
 
-    @OneToMany(mappedBy = "product")
-    private List<ProductSpec> productSpecs;
 
     @OneToMany(mappedBy = "product")
     private List<ProductCampaignPackage> productCampaignPackages;
 
-    @OneToMany(mappedBy = "products")
+    @OneToMany(mappedBy = "product")
     private List<ProductProductSpec> productProductSpecs;
 
     @ElementCollection
