@@ -73,6 +73,19 @@ services:
       - eureka
       - configserver
 
+  identityservice:
+    image: "localhost/identityservice"
+    build: ./identityservice
+    ports:
+      - "8087:8087"
+    networks:
+      - common
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+      - eureka
+      - configserver
+
   orderservice:
     image: "localhost/orderservice"
     build : ./orderservice

@@ -7,9 +7,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="configserver" />
-        <module name="identityservice" />
         <module name="catalogservice" />
+        <module name="configserver" />
         <module name="eureka" />
         <module name="gatewayservice" />
       </profile>
@@ -24,6 +23,16 @@
         </processorPath>
         <module name="customerservice" />
       </profile>
+      <profile name="Annotation profile for identityservice" enabled="true">
+        <sourceOutputDir name="../orderservice/.idea/target/generated-sources/annotations" />
+        <sourceTestOutputDir name="../orderservice/.idea/target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.34/lombok-1.18.34.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct-processor/1.6.0/mapstruct-processor-1.6.0.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.6.0/mapstruct-1.6.0.jar" />
+        </processorPath>
+      </profile>
       <profile name="Annotation profile for productservice" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -37,11 +46,12 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="core" target="1.8" />
+      <module name="identityservice" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="catalogservice" options="-parameters" />
+      <module name="catalogservice" options="" />
       <module name="configserver" options="-parameters" />
       <module name="customerservice" options="-parameters" />
       <module name="eureka" options="-parameters" />

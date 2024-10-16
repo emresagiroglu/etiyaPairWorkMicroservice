@@ -13,7 +13,13 @@
         <option value="$PROJECT_DIR$/orderservice/pom.xml" />
         <option value="$PROJECT_DIR$/identityservice/pom.xml" />
         <option value="$PROJECT_DIR$/catalogservice/pom.xml" />
+        <option value="$PROJECT_DIR$/orderservice/.idea/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/identityservice/pom.xml" />
+      </set>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_X" default="true" project-jdk-name="22" project-jdk-type="JavaSDK">
