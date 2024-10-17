@@ -53,6 +53,7 @@ public class SpecificationServiceImpl implements SpecificationService {
         Specification specification = specificationRepository.findById(id).orElseThrow();
 
         specification.setName(updateSpecificationRequestDto.getName());
+        specification.setDataType(updateSpecificationRequestDto.getDataType());
 
         specificationRepository.save(specification);
 
