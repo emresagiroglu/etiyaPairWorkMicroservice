@@ -43,9 +43,9 @@ public class ProductSpecServiceImpl implements ProductSpecService {
     @Override
     public List<ListProductSpecResponseDto> getAll() {
         List<ProductSpec> productSpecList = productSpecRepository.findAll();
-        return ProductSpecMapper.INSTANCE.listProductSpecResponseDtoFromProductSpec(productSpecList);
+        List<ListProductSpecResponseDto> getAllProductSpecResponseList = ProductSpecMapper.INSTANCE.listProductSpecResponseDtoFromProductSpec(productSpecList);
 
-        //return getAllProductSpecResponseList;
+        return getAllProductSpecResponseList;
     }
 
 
@@ -54,7 +54,8 @@ public class ProductSpecServiceImpl implements ProductSpecService {
         ProductSpec productSpec = productSpecRepository.findById(id).orElseThrow();
 
         productSpec.setValue(updateProductSpecRequestDto.getValue());
-        // productSpec.setSpecification(updateProductSpecRequestDto.getSpecificationId()); hata veriyo sonra bak!
+
+        //spec in update işlemi sonra yapılacak bak!
 
         productSpecRepository.save(productSpec);
 
