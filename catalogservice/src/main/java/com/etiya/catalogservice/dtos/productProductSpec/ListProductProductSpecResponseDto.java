@@ -11,6 +11,8 @@ import java.util.UUID;
 @AllArgsConstructor
 public class ListProductProductSpecResponseDto {
 
+    private UUID id;
+
     private UUID productId;
 
     private UUID productSpecId;
