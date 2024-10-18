@@ -46,16 +46,15 @@ services:
     depends_on:
       - eureka
       - configserver
-  productservice:
-    image: "localhost/productservice"
-    build: ./productservice
+  identityservice:
+    image: "localhost/identityservice"
+    build: ./identityservice
     ports:
-      - "8085:8085"
+      - 8083:8083
     networks:
       - common
     environment:
       - SPRING_PROFILES_ACTIVE=docker
-      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8888/eureka/
     depends_on:
       - eureka
       - configserver
