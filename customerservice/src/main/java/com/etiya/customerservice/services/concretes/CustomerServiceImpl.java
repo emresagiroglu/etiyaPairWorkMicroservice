@@ -3,6 +3,7 @@ package com.etiya.customerservice.services.concretes;
 import com.etiya.customerservice.dto.corporatecustomer.*;
 import com.etiya.customerservice.dto.individualcustomer.*;
 import com.etiya.customerservice.entity.CorporateCustomer;
+import com.etiya.customerservice.entity.Customer;
 import com.etiya.customerservice.entity.IndividualCustomer;
 import com.etiya.customerservice.mapper.CorporateCustomerMapper;
 import com.etiya.customerservice.mapper.IndividualCustomerMapper;
@@ -180,6 +181,11 @@ public class CustomerServiceImpl implements CustomerService {
         // Kullanıcı silinmesi
         individualCustomerRepository.deleteById(id);
 
+    }
+
+    @Override
+    public Customer getCustomerById(Long id) {
+        return customerRepository.findById(id).orElseThrow();
     }
 
 

@@ -13,20 +13,16 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "cart_item")
 public class CartItem extends BaseEntity {
 
 
-    private Long customerId;
-    private UUID productId;
+//    private Cart cartId;
+//    private UUID productId;
+//    private String productName;
     private Integer quantity;
     private Double price;
     private Double discount;
     private Integer totalItemAmount;
-    private Date addedTime;
-    private Date removedTime;
-
 
     // bunu analizciilere sor!
     //TODO: entity yapısı değiştirilsin.!

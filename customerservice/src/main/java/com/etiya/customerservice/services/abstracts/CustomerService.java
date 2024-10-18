@@ -2,6 +2,7 @@ package com.etiya.customerservice.services.abstracts;
 
 import com.etiya.customerservice.dto.corporatecustomer.*;
 import com.etiya.customerservice.dto.individualcustomer.*;
+import com.etiya.customerservice.entity.Customer;
 
 import java.util.List;
 
@@ -28,4 +29,6 @@ public interface CustomerService {
     UpdateIndividualCustomerResponseDto updateIndividualCustomer(UpdateIndividualCustomerRequestDto updateIndividualCustomerRequestDto, Long id);
 
     void deleteIndividualCustomer(Long id);
+
+    Customer getCustomerById(Long id);
 }
