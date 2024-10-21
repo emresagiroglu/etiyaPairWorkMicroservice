@@ -2,9 +2,11 @@ package com.etiya.catalogservice.services.concretes;
 
 import com.etiya.catalogservice.dtos.customerBasedOffer.*;
 import com.etiya.catalogservice.entities.CustomerBasedOffer;
+import com.etiya.catalogservice.entities.Offer;
 import com.etiya.catalogservice.mappers.CustomerBasedOfferMapper;
 import com.etiya.catalogservice.repositories.CustomerBasedOfferRepository;
 import com.etiya.catalogservice.services.abstracts.CustomerBasedOfferService;
+import com.etiya.catalogservice.services.abstracts.OfferService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,7 @@ public class CustomerBasedOfferServiceImpl implements CustomerBasedOfferService 
 
 
     private final CustomerBasedOfferRepository customerBasedOfferRepository;
+    private final OfferService offerService;
 
     @Override
     public CreatedCustomerBasedOfferResponseDto add(CreateCustomerBasedOfferRequestDto createCustomerBasedOfferRequest) {
@@ -52,7 +55,14 @@ public class CustomerBasedOfferServiceImpl implements CustomerBasedOfferService 
     public UpdatedCustomerBasedOfferResponseDto update(UUID id, UpdateCustomerBasedOfferRequestDto updateCustomerBasedOfferRequestDto) {
         CustomerBasedOffer customerBasedOffer = customerBasedOfferRepository.findById(id).orElseThrow();
 
-        //customerId başka servisten gelecek. Offer ı update etme işlemi sonra yapılacak!
+        //customerId başka servisten gelecek.
+
+        //Offer ı güncelleme!
+        Offer offer = offerService.findById(updateCustomerBasedOfferRequestDto.getOfferId());
+        offer.setId(updateCustomerBasedOfferRequestDto.getOfferId());
+
+        customerBasedOffer.setOffer(offer);
+
         customerBasedOffer.setCustomerId(updateCustomerBasedOfferRequestDto.getCustomerId());
 
         customerBasedOfferRepository.save(customerBasedOffer);

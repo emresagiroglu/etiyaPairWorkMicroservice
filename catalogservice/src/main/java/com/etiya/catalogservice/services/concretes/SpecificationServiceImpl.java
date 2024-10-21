@@ -67,5 +67,10 @@ public class SpecificationServiceImpl implements SpecificationService {
         specificationRepository.deleteById(id);
     }
 
+    @Override
+    public Specification findById(UUID id) {
+        return specificationRepository.findById(id).orElseThrow();
+    }
+
 
 }

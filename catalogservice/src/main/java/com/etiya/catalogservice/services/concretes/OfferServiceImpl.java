@@ -68,4 +68,9 @@ public class OfferServiceImpl implements OfferService {
         offerRepository.deleteById(id);
     }
 
+    @Override
+    public Offer findById(UUID id) {
+        return offerRepository.findById(id).orElseThrow();
+    }
+
 }

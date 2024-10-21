@@ -1,10 +1,14 @@
 package com.etiya.catalogservice.services.concretes;
 
 import com.etiya.catalogservice.dtos.productCampaignPackage.*;
+import com.etiya.catalogservice.entities.Campaign;
+import com.etiya.catalogservice.entities.Product;
 import com.etiya.catalogservice.entities.ProductCampaignPackage;
 import com.etiya.catalogservice.mappers.ProductCampaignPackageMapper;
 import com.etiya.catalogservice.repositories.ProductCampaignPackageRepository;
+import com.etiya.catalogservice.services.abstracts.CampaignService;
 import com.etiya.catalogservice.services.abstracts.ProductCampaignPackageService;
+import com.etiya.catalogservice.services.abstracts.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +20,8 @@ import java.util.UUID;
 public class ProductCampaignPackageServiceImpl implements ProductCampaignPackageService {
 
     private final ProductCampaignPackageRepository productCampaignPackageRepository;
+    private final ProductService productService;
+    private final CampaignService campaignService;
 
     @Override
     public CreatedProductCampaignPackageResponseDto add(CreateProductCampaignPackageRequestDto createProductCampaignPackageRequest) {
@@ -51,8 +57,11 @@ public class ProductCampaignPackageServiceImpl implements ProductCampaignPackage
     public UpdatedProductCampaignPackageResponseDto update(UUID id, UpdateProductCampaignPackageRequestDto updateProductCampaignPackageRequestDto) {
         ProductCampaignPackage productCampaignPackage = productCampaignPackageRepository.findById(id).orElseThrow();
 
-        //bu kısımda product ve campaign güncellenecek servisten findById yapılarak.Sonraya bırakıldı!
+        Product product = productService.findById(updateProductCampaignPackageRequestDto.getProductId());
+        Campaign campaign = campaignService.findById(updateProductCampaignPackageRequestDto.getCampaignId());
 
+        productCampaignPackage.setCampaign(campaign);
+        productCampaignPackage.setProduct(product);
 
         productCampaignPackageRepository.save(productCampaignPackage);
 

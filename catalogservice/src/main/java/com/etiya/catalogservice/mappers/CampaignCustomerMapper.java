@@ -25,6 +25,7 @@ public interface CampaignCustomerMapper {
         List<ListCampaignCustomerResponseDto> responseDtos = dtos.stream().map(campaignCustomer ->
                 new ListCampaignCustomerResponseDto(
                         campaignCustomer.getId(),
+                        campaignCustomer.getCampaign().getId(),
                         campaignCustomer.getCustomerId(),
                         campaignCustomer.getAddressId()
                 )).toList();

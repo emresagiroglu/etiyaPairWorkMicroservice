@@ -2,9 +2,11 @@ package com.etiya.catalogservice.services.concretes;
 
 import com.etiya.catalogservice.dtos.productSpec.*;
 import com.etiya.catalogservice.entities.ProductSpec;
+import com.etiya.catalogservice.entities.Specification;
 import com.etiya.catalogservice.mappers.ProductSpecMapper;
 import com.etiya.catalogservice.repositories.ProductSpecRepository;
 import com.etiya.catalogservice.services.abstracts.ProductSpecService;
+import com.etiya.catalogservice.services.abstracts.SpecificationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,7 @@ public class ProductSpecServiceImpl implements ProductSpecService {
 
 
     private final ProductSpecRepository productSpecRepository;
+    private final SpecificationService specificationService;
 
     @Override
     public CreatedProductSpecResponseDto add(CreateProductSpecRequestDto createProductSpecRequest) {
@@ -53,9 +56,10 @@ public class ProductSpecServiceImpl implements ProductSpecService {
     public UpdatedProductSpecResponseDto update(UUID id, UpdateProductSpecRequestDto updateProductSpecRequestDto) {
         ProductSpec productSpec = productSpecRepository.findById(id).orElseThrow();
 
-        productSpec.setValue(updateProductSpecRequestDto.getValue());
+        Specification specification = specificationService.findById(updateProductSpecRequestDto.getSpecificationId());
 
-        //spec in update işlemi sonra yapılacak bak!
+        productSpec.setValue(updateProductSpecRequestDto.getValue());
+        productSpec.setSpecification(specification);
 
         productSpecRepository.save(productSpec);
 
@@ -67,6 +71,11 @@ public class ProductSpecServiceImpl implements ProductSpecService {
     @Override
     public void delete(UUID id) {
         productSpecRepository.deleteById(id);
+    }
+
+    @Override
+    public ProductSpec findById(UUID id) {
+        return productSpecRepository.findById(id).orElseThrow();
     }
 
 }

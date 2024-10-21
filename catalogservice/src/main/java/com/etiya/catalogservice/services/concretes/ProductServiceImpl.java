@@ -1,9 +1,11 @@
 package com.etiya.catalogservice.services.concretes;
 
 import com.etiya.catalogservice.dtos.product.*;
+import com.etiya.catalogservice.entities.Category;
 import com.etiya.catalogservice.entities.Product;
 import com.etiya.catalogservice.mappers.ProductMapper;
 import com.etiya.catalogservice.repositories.ProductRepository;
+import com.etiya.catalogservice.services.abstracts.CategoryService;
 import com.etiya.catalogservice.services.abstracts.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,6 +19,7 @@ public class ProductServiceImpl implements ProductService {
 
 
     private final ProductRepository productRepository;
+    private final CategoryService categoryService;
 
     @Override
     public CreatedProductResponseDto add(CreateProductRequestDto createProductRequest) {
@@ -52,9 +55,10 @@ public class ProductServiceImpl implements ProductService {
     public UpdatedProductResponseDto update(UUID id, UpdateProductRequestDto updateProductRequestDto) {
         Product product = productRepository.findById(id).orElseThrow();
 
-        product.setName(updateProductRequestDto.getName());
+        Category category = categoryService.findById(updateProductRequestDto.getCategoryId());
 
-        //category update leme sonraya bırakıldı!
+        product.setName(updateProductRequestDto.getName());
+        product.setCategory(category);
 
         productRepository.save(product);
 
@@ -66,6 +70,11 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void delete(UUID id) {
         productRepository.deleteById(id);
+    }
+
+    @Override
+    public Product findById(UUID id) {
+        return productRepository.findById(id).orElseThrow();
     }
 
 }

@@ -1,10 +1,12 @@
 package com.etiya.catalogservice.services.concretes;
 
 import com.etiya.catalogservice.dtos.campaignCustomer.*;
+import com.etiya.catalogservice.entities.Campaign;
 import com.etiya.catalogservice.entities.CampaignCustomer;
 import com.etiya.catalogservice.mappers.CampaignCustomerMapper;
 import com.etiya.catalogservice.repositories.CampaignCustomerRepository;
 import com.etiya.catalogservice.services.abstracts.CampaignCustomerService;
+import com.etiya.catalogservice.services.abstracts.CampaignService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,7 @@ import java.util.UUID;
 public class CampaignCustomerServiceImpl implements CampaignCustomerService {
 
     private final CampaignCustomerRepository campaignCustomerRepository;
+    private final CampaignService campaignService;
 
     @Override
     public CreatedCampaignCustomerResponseDto add(CreateCampaignCustomerRequestDto createCampaignCustomerRequest) {
@@ -51,9 +54,11 @@ public class CampaignCustomerServiceImpl implements CampaignCustomerService {
     public UpdatedCampaignCustomerResponseDto update(UUID id, UpdateCampaignCustomerRequestDto updateCampaignCustomerRequestDto) {
         CampaignCustomer campaignCustomer = campaignCustomerRepository.findById(id).orElseThrow();
 
+        Campaign campaign = campaignService.findById(updateCampaignCustomerRequestDto.getCampaignId());
+
         campaignCustomer.setCustomerId(updateCampaignCustomerRequestDto.getCustomerId());
         campaignCustomer.setAddressId(updateCampaignCustomerRequestDto.getAddressId());
-        //campaign in update işlemi sonra yapılacak!
+        campaignCustomer.setCampaign(campaign);
 
         campaignCustomerRepository.save(campaignCustomer);
 

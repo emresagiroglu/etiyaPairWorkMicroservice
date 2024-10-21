@@ -7,6 +7,8 @@ import com.etiya.catalogservice.entities.Product;
 import com.etiya.catalogservice.mappers.OfferProductMapper;
 import com.etiya.catalogservice.repositories.OfferProductRepository;
 import com.etiya.catalogservice.services.abstracts.OfferProductService;
+import com.etiya.catalogservice.services.abstracts.OfferService;
+import com.etiya.catalogservice.services.abstracts.ProductService;
 import jakarta.persistence.Column;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -22,6 +24,8 @@ public class OfferProductServiceImpl implements OfferProductService {
 
 
     private final OfferProductRepository offerProductRepository;
+    private final OfferService offerService;
+    private final ProductService productService;
 
     @Override
     public CreatedOfferProductResponseDto add(CreateOfferProductRequestDto createOfferProductRequest) {
@@ -57,11 +61,15 @@ public class OfferProductServiceImpl implements OfferProductService {
     public UpdatedOfferProductResponseDto update(UUID id, UpdateOfferProductRequestDto updateOfferProductRequestDto) {
         OfferProduct offerProduct = offerProductRepository.findById(id).orElseThrow();
 
+        Product product = productService.findById(updateOfferProductRequestDto.getProductId());
+        Offer offer = offerService.findById(updateOfferProductRequestDto.getOfferId());
+
         offerProduct.setDescription(updateOfferProductRequestDto.getDescription());
         offerProduct.setDiscountDesc(updateOfferProductRequestDto.getDiscountDesc());
         offerProduct.setDiscountPercentage(updateOfferProductRequestDto.getDiscountPercentage());
 
-        //OfferProduct içindeki update offer ve update product işlemi sonra yapılacak!
+        offerProduct.setProduct(product);
+        offerProduct.setOffer(offer);
 
         offerProductRepository.save(offerProduct);
 
