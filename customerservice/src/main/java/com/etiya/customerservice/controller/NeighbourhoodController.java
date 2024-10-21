@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/neighbourhoods")
+@RequestMapping("/api/customers/neighbourhoods")
 public class NeighbourhoodController {
     private final NeighbourhoodService neighbourhoodService;
 
