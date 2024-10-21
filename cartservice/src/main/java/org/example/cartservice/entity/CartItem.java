@@ -7,18 +7,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.example.cartservice.core.BaseEntity;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
-public class CartItem extends BaseEntity {
+public class CartItem implements Serializable {
 
-
-//    private Cart cartId;
-//    private UUID productId;
-//    private String productName;
+    private UUID id;
+    private Cart cartId;
+    private UUID productId;
+    private String productName;
     private Integer quantity;
     private Double price;
     private Double discount;
@@ -26,4 +26,9 @@ public class CartItem extends BaseEntity {
 
     // bunu analizciilere sor!
     //TODO: entity yapısı değiştirilsin.!
+
+    public CartItem()
+    {
+        this.id = UUID.randomUUID();
+    }
 }

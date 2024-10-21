@@ -1,4 +1,4 @@
-package com.basketservice.configuration;
+package org.example.cartservice.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

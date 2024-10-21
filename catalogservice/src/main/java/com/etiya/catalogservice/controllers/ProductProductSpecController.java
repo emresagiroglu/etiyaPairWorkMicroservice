@@ -13,7 +13,7 @@ import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/productProductSpecs")
+@RequestMapping("/api/catalogs/productProductSpecs")
 public class ProductProductSpecController {
 
     private final ProductProductSpecService productProductSpecService;

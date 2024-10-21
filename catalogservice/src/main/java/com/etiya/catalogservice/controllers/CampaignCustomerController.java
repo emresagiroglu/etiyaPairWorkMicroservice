@@ -12,7 +12,7 @@ import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/campaignCustomers")
+@RequestMapping("/api/catalogs/campaignCustomers")
 public class CampaignCustomerController {
 
 

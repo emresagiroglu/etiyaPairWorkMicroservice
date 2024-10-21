@@ -13,7 +13,7 @@ import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/customerBasedOffers")
+@RequestMapping("/api/catalogs/customerBasedOffers")
 public class CustomerBasedOfferController {
 
     private final CustomerBasedOfferService customerBasedOfferService;

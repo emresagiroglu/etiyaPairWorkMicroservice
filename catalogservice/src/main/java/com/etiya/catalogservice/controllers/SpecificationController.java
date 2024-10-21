@@ -13,7 +13,7 @@ import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/specifications")
+@RequestMapping("/api/catalogs/specifications")
 public class SpecificationController {
 
 

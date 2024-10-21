@@ -59,6 +59,7 @@ services:
       - eureka
       - configserver
 
+
   catalogservice:
     image: "localhost/catalogservice"
     build: ./catalogservice
@@ -111,8 +112,30 @@ services:
      - "5432:5432"
    networks:
      - common
-
-
+  cartservice:
+    image: "localhost/cartservice"
+    build: ./cartservice
+    ports:
+      - 8084:8084
+    networks:
+      - common
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+      - eureka
+      - configserver
+  redis:
+    image: redis:latest  # Redis'in en son sürümünü kullanır
+    container_name: redis  # Konteynerin adı
+    ports:
+      - "6379:6379"  # Redis varsayılan portunu dış dünyaya açar
+    environment:
+      - REDIS_PASSWORD=test  # Redis için parola tanımlar
+    volumes:
+      - redis-data:/data  # Redis verilerini kalıcı hale getirir
+    command: [ "redis-server", "--appendonly", "yes" ]  # Verilerin diske yazılması için AOF modunu etkinleştirir
+    networks:
+      - common
   mongo:
     image: mongo
     container_name: mongo
@@ -129,6 +152,7 @@ volumes:
   mysql_data:
   postgres_data:
   mongodb_data:
+  redis-data:
 
 networks:
   common:
