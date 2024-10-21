@@ -9,11 +9,13 @@ import java.util.UUID;
 public interface CampaignService {
 
     CreatedCampaignResponseDto add(CreateCampaignRequestDto createCampaignRequestDto);
+    GetCampaignResponseDto getById(UUID id);
 
-//    UpdatedCampaignResponseDto update(UpdateCampaignRequestDto updateCampaignRequestDto, String id);
-//    List<ListCampaignResponseDto> getAll();
-//    GetCampaignResponseDto getById(String id);
-//    void delete(String id);
+    List<ListCampaignResponseDto> getAll();
+
+    UpdatedCampaignResponseDto update(UUID id, UpdateCampaignRequestDto updateCampaignRequestDto);
+
+    void delete(UUID id);
 
     Campaign findById(UUID id);
 
