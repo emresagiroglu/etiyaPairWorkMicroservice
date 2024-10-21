@@ -9,6 +9,8 @@ import com.etiya.catalogservice.services.abstracts.CampaignService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 @RequiredArgsConstructor
 public class CampaignServiceImpl implements CampaignService {
@@ -25,5 +27,10 @@ public class CampaignServiceImpl implements CampaignService {
 
 
         return response;
+    }
+
+    @Override
+    public Campaign findById(UUID id) {
+        return campaignRepository.findById(id).orElseThrow();
     }
 }

@@ -10,6 +10,9 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ListCampaignCustomerResponseDto {
+
+    private UUID id;
+
     private UUID campaignId;
 
     private UUID customerId;

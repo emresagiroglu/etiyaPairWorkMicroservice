@@ -25,5 +25,4 @@ public class Category extends BaseEntity {
     private List<Product> products;
 
 
-    //Tabloda parent id var. Böyle bir şeye gerek var mı?
 }
