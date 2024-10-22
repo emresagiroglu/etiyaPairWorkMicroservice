@@ -22,7 +22,7 @@ public interface ProductMapper {
     @Mapping(target = "categoryId",source = "category.id")
     default List<ListProductResponseDto> listProductResponseDtoFromProduct(List<Product> dtos){
         List<ListProductResponseDto> responseDtos = dtos.stream().map(product ->
-                new ListProductResponseDto(product.getId(),product.getName(), product.getCategory().getId())).toList();
+                new ListProductResponseDto(product.getId(),product.getName(), product.getCategory().getId(), product.getPrice())).toList();
         return responseDtos;
     }
 

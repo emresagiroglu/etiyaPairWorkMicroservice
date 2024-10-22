@@ -139,6 +139,8 @@ services:
   mongo:
     image: mongo
     container_name: mongo
+    networks:
+      - common
     ports:
       - "27017:27017"
     volumes:

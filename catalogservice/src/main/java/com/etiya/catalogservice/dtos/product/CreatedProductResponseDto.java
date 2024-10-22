@@ -18,4 +18,6 @@ public class CreatedProductResponseDto {
 
     private UUID categoryId;
 
+    private Double price;
+
 }

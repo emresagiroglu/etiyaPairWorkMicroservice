@@ -58,6 +58,7 @@ public class ProductServiceImpl implements ProductService {
         Category category = categoryService.findById(updateProductRequestDto.getCategoryId());
 
         product.setName(updateProductRequestDto.getName());
+        product.setPrice(updateProductRequestDto.getPrice());
         product.setCategory(category);
 
         productRepository.save(product);

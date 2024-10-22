@@ -12,7 +12,7 @@ import java.util.UUID;
 public class GetProductResponseDto {
 
     private String name;
-
     private UUID categoryId;
+    private Double price;
 
 }

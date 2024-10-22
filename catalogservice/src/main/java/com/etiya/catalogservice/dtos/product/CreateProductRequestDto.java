@@ -15,4 +15,6 @@ public class CreateProductRequestDto {
 
     private UUID categoryId;
 
+    private Double price;
+
 }

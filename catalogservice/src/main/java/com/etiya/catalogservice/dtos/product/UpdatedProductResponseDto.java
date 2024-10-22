@@ -14,5 +14,6 @@ public class UpdatedProductResponseDto {
     private String name;
 
     private UUID categoryId;
+    private Double price;
 
 }
