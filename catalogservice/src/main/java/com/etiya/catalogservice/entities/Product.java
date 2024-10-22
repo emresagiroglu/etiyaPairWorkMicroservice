@@ -33,7 +33,7 @@ public class Product extends BaseEntity {
     private List<ProductCampaignPackage> productCampaignPackages;
 
     @OneToMany(mappedBy = "product")
-    private List<ProductProductSpec> productProductSpecs;
+    private List<ProductSpec> productSpecs;
 
     @ElementCollection
     private List<Long> orderItems;

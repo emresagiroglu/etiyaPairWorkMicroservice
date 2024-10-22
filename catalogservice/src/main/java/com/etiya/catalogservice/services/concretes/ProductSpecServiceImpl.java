@@ -1,10 +1,12 @@
 package com.etiya.catalogservice.services.concretes;
 
 import com.etiya.catalogservice.dtos.productSpec.*;
+import com.etiya.catalogservice.entities.Product;
 import com.etiya.catalogservice.entities.ProductSpec;
 import com.etiya.catalogservice.entities.Specification;
 import com.etiya.catalogservice.mappers.ProductSpecMapper;
 import com.etiya.catalogservice.repositories.ProductSpecRepository;
+import com.etiya.catalogservice.services.abstracts.ProductService;
 import com.etiya.catalogservice.services.abstracts.ProductSpecService;
 import com.etiya.catalogservice.services.abstracts.SpecificationService;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +22,7 @@ public class ProductSpecServiceImpl implements ProductSpecService {
 
     private final ProductSpecRepository productSpecRepository;
     private final SpecificationService specificationService;
+    private final ProductService productService;
 
     @Override
     public CreatedProductSpecResponseDto add(CreateProductSpecRequestDto createProductSpecRequest) {
@@ -57,9 +60,11 @@ public class ProductSpecServiceImpl implements ProductSpecService {
         ProductSpec productSpec = productSpecRepository.findById(id).orElseThrow();
 
         Specification specification = specificationService.findById(updateProductSpecRequestDto.getSpecificationId());
+        Product product = productService.findById(updateProductSpecRequestDto.getProductId());
 
         productSpec.setValue(updateProductSpecRequestDto.getValue());
         productSpec.setSpecification(specification);
+        productSpec.setProduct(product);
 
         productSpecRepository.save(productSpec);
 
