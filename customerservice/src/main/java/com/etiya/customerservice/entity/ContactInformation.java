@@ -29,11 +29,11 @@ public class ContactInformation extends BaseEntity {
     @Column(name = "EMAIL")
     private String email;
     @Column(name = "HOME_PHONE")
-    private Integer homePhone;
+    private String homePhone;
     @Column(name = "MOBILE_PHONE")
-    private Integer mobilePhone;
+    private String mobilePhone;
     @Column(name = "FAX")
-    private Integer fax;
+    private String fax;
 
     @OneToMany(mappedBy = "contactId")
     private List<BillingAccount> billingAccounts;

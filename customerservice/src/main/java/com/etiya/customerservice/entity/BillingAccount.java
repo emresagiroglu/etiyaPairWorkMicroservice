@@ -34,6 +34,6 @@ public class BillingAccount extends BaseEntity {
     @Column(name = "DESCRIPTION")
     private String desc;
     @Column(name = "TAX_NUMBER")
-    private Integer taxNumber;
+    private String taxNumber;
 
 }

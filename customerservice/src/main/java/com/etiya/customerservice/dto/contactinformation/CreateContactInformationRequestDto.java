@@ -20,8 +20,8 @@ public class CreateContactInformationRequestDto {
     private String contactName;
     @NotEmpty
     private String email;
-    private Integer homePhone;
+    private String homePhone;
     @NotNull
-    private Integer mobilePhone;
-    private Integer fax;
+    private String mobilePhone;
+    private String fax;
 }

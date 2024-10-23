@@ -28,7 +28,7 @@ public class Address extends BaseEntity {
     @Column(name = "STREET")
     private String street;
     @Column(name = "HOUSE_NUMBER")
-    private Integer houseNumber;
+    private Long houseNumber;
 
 
     @OneToMany(mappedBy = "addressId")

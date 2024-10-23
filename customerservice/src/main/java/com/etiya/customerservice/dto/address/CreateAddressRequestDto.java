@@ -24,5 +24,5 @@ public class CreateAddressRequestDto {
     @NotEmpty
     private String street;
     @NotNull
-    private Integer houseNumber;
+    private Long houseNumber;
 }

@@ -11,9 +11,9 @@ import lombok.NoArgsConstructor;
 @Data
 public class UpdateAddressRequestDto {
 
-            private Long customerId;
-            private Long neighbourhoodId;
-            private String addressName;
-            private String street;
-            private Integer houseNumber;
+    private Long customerId;
+    private Long neighbourhoodId;
+    private String addressName;
+    private String street;
+    private Long houseNumber;
 }

@@ -33,6 +33,6 @@ public class CreateBillingAccountRequestDto {
     private String desc;
     @NotBlank
     @NotNull
-    private Integer taxNumber;
+    private String taxNumber;
 
 }

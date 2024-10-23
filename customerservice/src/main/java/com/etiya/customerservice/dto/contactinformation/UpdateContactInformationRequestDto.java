@@ -13,7 +13,7 @@ public class UpdateContactInformationRequestDto {
     private Long customerId;
     private String contactName;
     private String email;
-    private Integer homePhone;
-    private Integer mobilePhone;
-    private Integer fax;
+    private String homePhone;
+    private String mobilePhone;
+    private String fax;
 }

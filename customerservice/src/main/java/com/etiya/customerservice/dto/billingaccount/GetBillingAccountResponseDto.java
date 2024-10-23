@@ -17,6 +17,6 @@ public class GetBillingAccountResponseDto {
     private String accountName;
     private String type;
     private String desc;
-    private Integer taxNumber;
+    private String taxNumber;
 
 }

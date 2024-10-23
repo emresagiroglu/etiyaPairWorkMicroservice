@@ -10,10 +10,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class GetAddressResponseDto {
-
-            private Long customerId;
-            private Long neighbourhoodId;
-            private String addressName;
-            private String street;
-            private Integer houseNumber;
+    private Long id;
+    private Long customerId;
+    private Long neighbourhoodId;
+    private String addressName;
+    private String street;
+    private Long houseNumber;
 }

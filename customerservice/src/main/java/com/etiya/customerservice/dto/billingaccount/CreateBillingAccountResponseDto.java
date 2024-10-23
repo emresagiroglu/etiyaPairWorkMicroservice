@@ -10,11 +10,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class CreateBillingAccountResponseDto {
+    private Long id;
     private Long customerId;
     private Long addressId;
     private Long contactId;
     private String accountName;
     private String type;
     private String desc;
-    private Integer taxNumber;
+    private String taxNumber;
 }

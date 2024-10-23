@@ -16,5 +16,5 @@ public class UpdateBillingAccountRequestDto {
     private String accountName;
     private String type;
     private String desc;
-    private Integer taxNumber;
+    private String taxNumber;
 }
