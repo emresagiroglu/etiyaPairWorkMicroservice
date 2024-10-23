@@ -13,6 +13,11 @@ public class UpdatedProductSpecResponseDto {
 
     private String value;
 
+    private Boolean isActive;
+
     private UUID specificationId;
+
+    private UUID productId;
+
 
 }

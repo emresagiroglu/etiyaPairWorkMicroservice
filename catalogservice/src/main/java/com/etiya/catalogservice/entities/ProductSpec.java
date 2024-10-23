@@ -18,11 +18,16 @@ public class ProductSpec extends BaseEntity {
     @Column(name = "value")
     private String value;
 
+    @Column(name = "isActive")
+    private Boolean isActive;
+
     @ManyToOne
     @JoinColumn(name = "specification_id")
     private Specification specification;
 
-    @OneToMany(mappedBy = "productSpec")
-    private List<ProductProductSpec> productProductSpecs;
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
+
 
 }

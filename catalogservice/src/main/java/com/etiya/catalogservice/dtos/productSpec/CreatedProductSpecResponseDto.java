@@ -15,5 +15,9 @@ public class CreatedProductSpecResponseDto {
 
     private String value;
 
+    private Boolean isActive;
+
     private UUID specificationId;
+
+    private UUID productId;
 }
