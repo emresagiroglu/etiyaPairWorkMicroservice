@@ -12,4 +12,6 @@ public interface CartService {
     void add(Long customerId, UUID productId);
 
     Map<String, Cart> getItems();
+
+    Cart getCartByCustomerId(Long customerId);
 }

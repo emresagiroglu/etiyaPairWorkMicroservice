@@ -3,6 +3,7 @@ package org.example.orderservice.mapper;
 
 import org.example.orderservice.dto.orderitem.*;
 import org.example.orderservice.entity.OrderItem;
+import org.example.orderservice.entity.response.CartItemResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -26,4 +27,6 @@ public interface OrderItemMapper {
     OrderItem orderItemFromUpdateRequestDto (UpdateOrderItemRequestDto updateOrderItemRequestDto);
 
     UpdateOrderItemResponseDto updateOrderItemResponseDtoFromOrderItem (OrderItem orderItem);
+
+    List<OrderItem> orderItemFromCartItemResponse (List<CartItemResponse> cartItemResponse);
 }

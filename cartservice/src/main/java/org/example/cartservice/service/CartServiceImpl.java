@@ -48,6 +48,11 @@ public class CartServiceImpl implements CartService{
     public Map<String, Cart> getItems() {
         return redisRepository.getAllItems();
     }
+
+    @Override
+    public Cart getCartByCustomerId(Long customerId) {
+        return redisRepository.getCartByCustomerId(customerId);
+    }
 }
 
 

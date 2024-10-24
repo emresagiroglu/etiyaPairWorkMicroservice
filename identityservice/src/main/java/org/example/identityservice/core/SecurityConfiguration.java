@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.identityservice.service.user.UserService;
 import org.springframework.context.annotation.Configuration;
 
-import io.github.halitkalayci.security.BaseJwtService;
+import io.github.emresagiroglu.security.BaseJwtService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -15,7 +15,6 @@ import java.util.UUID;
 public class OrderItem {
     @Id
     private UUID id;
-    private UUID orderId;
     private UUID productId;
     private int quantity;
     private Double price;

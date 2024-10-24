@@ -1,56 +1,10 @@
 spring:
+  config:
+    import: "optional:configserver:"
   application:
     name: gateway
   cloud:
-    gateway:
-      mvc:
-        routes:
-          - id: customer-service.routing
-            uri: lb://customerservice # load-balancing
-            predicates:
-              - Path=/api/customers/**
-          - id: cart-service.routing
-            uri: lb://cartservice # load-balancing
-            predicates:
-              - Path=/api/carts/**
-
-          - id: order-service.routing
-            uri: lb://orderservice # load-balancing
-            predicates:
-              - Path=/api/orders/**
-
-          - id: identity-service.routing
-            uri: lb://identityservice
-            predicates:
-              - Path=/api/v1/auth/**
-
-          - id: catalog-service.routing
-            uri: lb://catalogservice
-            predicates:
-              - Path=/api/catalogs/**
-
-          - id: eureka.routing
-            uri: ${eureka.url}
-            predicates:
-              - Path=/eureka/web
-            filters:
-              - SetPath=/
-          - id: eureka.static-files
-            uri: ${eureka.url}
-            predicates:
-              - Path=/eureka/**
-server:
-  port: 8090
-
-eureka:
-  url: http://localhost:8888
-  instance:
-    hostname: localhost
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    serviceUrl:
-      defaultZone: http://localhost:8888/eureka/
-
-
-##load balancing algorithm
+    config:
+      uri: http://localhost:8001
+      profile: local
+      label: main

@@ -16,7 +16,6 @@ import java.util.UUID;
 public class CartItem implements Serializable {
 
     private UUID id;
-    private Cart cartId;
     private UUID productId;
     private String productName;
     private Integer quantity;

@@ -1,5 +1,5 @@
 package org.example.identityservice.service.auth;
-import io.github.halitkalayci.security.BaseJwtService;
+import io.github.emresagiroglu.security.BaseJwtService;
 import org.example.identityservice.dto.LoginRequestDto;
 import org.example.identityservice.dto.RegisterRequestDto;
 import org.example.identityservice.dto.TokenResponse;
@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
+
 
 @Service
 @RequiredArgsConstructor

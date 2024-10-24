@@ -15,7 +15,8 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CreateOrderRequestDto {
-
+    @NotNull
+    private Long customerId;
     @NotNull
     private Long billingAccountId;
 

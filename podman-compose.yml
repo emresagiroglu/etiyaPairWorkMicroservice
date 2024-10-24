@@ -30,6 +30,7 @@ services:
      - common
    environment:
      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8888/eureka/
+     - SPRING_PROFILES_ACTIVE=docker
    depends_on:
      - eureka
    #entrypoint: ["./wait-for-it.sh","eureka:8888","--timeout=60","--","java","jar","gateway.jar"]

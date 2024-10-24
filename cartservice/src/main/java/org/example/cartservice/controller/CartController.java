@@ -24,4 +24,10 @@ public class CartController {
     public Map<String, Cart> getItems(){
         return cartService.getItems();
     }
+
+    @GetMapping("/{customerId}")
+    public Cart getCartByCustomerId(@PathVariable Long customerId)
+    {
+        return cartService.getCartByCustomerId(customerId);
+    }
 }
