@@ -20,10 +20,10 @@ public class CampaignCustomer extends BaseEntity {
     private Campaign campaign;
 
     @Column(name = "customerId")
-    private UUID customerId;
+    private Long customerId;
 
     @Column(name = "addressId")
-    private UUID addressId;
+    private Long addressId;
 
     //customer id
     //address id var başka mikroserviste!

@@ -44,7 +44,7 @@
         </processorPath>
         <module name="cartservice" />
       </profile>
-      <profile name="Annotation profile for orderservice" enabled="true">
+      <profile name="Annotation profile for identityservice" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -54,8 +54,8 @@
           <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.6.0/mapstruct-1.6.0.jar" />
         </processorPath>
         <module name="customerservice" />
-        <module name="orderservice" />
         <module name="identityservice" />
+        <module name="orderservice" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

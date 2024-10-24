@@ -13,7 +13,7 @@ public class UpdatedCampaignCustomerResponseDto {
 
     private UUID campaignId;
 
-    private UUID customerId;
+    private Long customerId;
 
-    private UUID addressId;
+    private Long addressId;
 }

@@ -15,5 +15,5 @@ public class GetCustomerBasedOfferResponseDto {
 
     private UUID offerId;
 
-    private UUID customerId;
+    private Long customerId;
 }

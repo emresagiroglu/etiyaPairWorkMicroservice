@@ -1,6 +1,7 @@
 package com.etiya.customerservice.services.abstracts;
 
 import com.etiya.customerservice.dto.corporatecustomer.*;
+import com.etiya.customerservice.dto.customer.GetCustomerResponseDto;
 import com.etiya.customerservice.dto.individualcustomer.*;
 import com.etiya.customerservice.entity.Customer;
 
@@ -30,5 +31,5 @@ public interface CustomerService {
 
     void deleteIndividualCustomer(Long id);
 
-    Customer getCustomerById(Long id);
+    GetCustomerResponseDto getCustomerById(Long id);
 }

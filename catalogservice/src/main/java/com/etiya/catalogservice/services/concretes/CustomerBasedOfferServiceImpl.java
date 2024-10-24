@@ -1,8 +1,10 @@
 package com.etiya.catalogservice.services.concretes;
 
+import com.etiya.catalogservice.client.CustomerServiceClient;
 import com.etiya.catalogservice.dtos.customerBasedOffer.*;
 import com.etiya.catalogservice.entities.CustomerBasedOffer;
 import com.etiya.catalogservice.entities.Offer;
+import com.etiya.catalogservice.entities.response.GetCustomerResponse;
 import com.etiya.catalogservice.mappers.CustomerBasedOfferMapper;
 import com.etiya.catalogservice.repositories.CustomerBasedOfferRepository;
 import com.etiya.catalogservice.services.abstracts.CustomerBasedOfferService;
@@ -20,10 +22,12 @@ public class CustomerBasedOfferServiceImpl implements CustomerBasedOfferService 
 
     private final CustomerBasedOfferRepository customerBasedOfferRepository;
     private final OfferService offerService;
+    private final CustomerServiceClient customerServiceClient;
 
     @Override
     public CreatedCustomerBasedOfferResponseDto add(CreateCustomerBasedOfferRequestDto createCustomerBasedOfferRequest) {
         CustomerBasedOffer customerBasedOffer = CustomerBasedOfferMapper.INSTANCE.customerBasedOfferFromCreateCustomerBasedOfferRequestDto(createCustomerBasedOfferRequest);
+        GetCustomerResponse getCustomerResponse = customerServiceClient.getByIdCustomer(createCustomerBasedOfferRequest.getCustomerId());
         CustomerBasedOffer createdCustomerBasedOffer = customerBasedOfferRepository.save(customerBasedOffer);
 
         CreatedCustomerBasedOfferResponseDto response =

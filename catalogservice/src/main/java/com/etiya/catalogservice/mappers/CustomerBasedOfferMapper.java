@@ -23,8 +23,8 @@ public interface CustomerBasedOfferMapper {
         List<ListCustomerBasedOfferResponseDto> responseDtos = dtos.stream().map(customerBasedOffer ->
                 new ListCustomerBasedOfferResponseDto(
                         customerBasedOffer.getId(),
-                        customerBasedOffer.getCustomerId(),
-                        customerBasedOffer.getOffer().getId())).toList();
+                        customerBasedOffer.getOffer().getId(),
+                        customerBasedOffer.getCustomerId())).toList();
         return responseDtos;
     }
 

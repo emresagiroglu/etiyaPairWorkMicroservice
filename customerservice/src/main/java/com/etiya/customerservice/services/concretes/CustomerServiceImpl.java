@@ -1,11 +1,13 @@
 package com.etiya.customerservice.services.concretes;
 
 import com.etiya.customerservice.dto.corporatecustomer.*;
+import com.etiya.customerservice.dto.customer.GetCustomerResponseDto;
 import com.etiya.customerservice.dto.individualcustomer.*;
 import com.etiya.customerservice.entity.CorporateCustomer;
 import com.etiya.customerservice.entity.Customer;
 import com.etiya.customerservice.entity.IndividualCustomer;
 import com.etiya.customerservice.mapper.CorporateCustomerMapper;
+import com.etiya.customerservice.mapper.CustomerMapper;
 import com.etiya.customerservice.mapper.IndividualCustomerMapper;
 import com.etiya.customerservice.repositories.CorporateCustomerRepository;
 import com.etiya.customerservice.repositories.CustomerRepository;
@@ -184,8 +186,13 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Customer getCustomerById(Long id) {
-        return customerRepository.findById(id).orElseThrow();
+    public GetCustomerResponseDto getCustomerById(Long id) {
+
+        GetCustomerResponseDto getCustomerResponseDto = CustomerMapper
+                .INSTANCE
+                .getCustomerResponseDtoFromCustomer(customerRepository.findById(id).orElseThrow());
+
+        return getCustomerResponseDto;
     }
 
 

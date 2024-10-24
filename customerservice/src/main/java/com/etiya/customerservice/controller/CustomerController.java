@@ -1,5 +1,6 @@
 package com.etiya.customerservice.controller;
 
+import com.etiya.customerservice.dto.customer.GetCustomerResponseDto;
 import com.etiya.customerservice.dto.individualcustomer.GetIndividualCustomerResponseDto;
 import com.etiya.customerservice.entity.Customer;
 import com.etiya.customerservice.services.abstracts.CustomerService;
@@ -18,7 +19,7 @@ public class CustomerController {
     private final CustomerService customerService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<Customer> getById(@PathVariable Long id){
+    public ResponseEntity<GetCustomerResponseDto> getById(@PathVariable Long id){
         return ResponseEntity.ok(customerService.getCustomerById(id));
     }
 }

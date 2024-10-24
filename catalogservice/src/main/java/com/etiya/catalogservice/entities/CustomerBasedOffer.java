@@ -20,7 +20,7 @@ public class CustomerBasedOffer extends BaseEntity {
     private Offer offer;
 
     @Column(name = "customerId")
-    private UUID customerId;
+    private Long customerId;
 
     //customer id de var ama orası başka mikroserviste!
 }

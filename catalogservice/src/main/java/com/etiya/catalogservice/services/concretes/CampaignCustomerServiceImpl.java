@@ -1,8 +1,11 @@
 package com.etiya.catalogservice.services.concretes;
 
+import com.etiya.catalogservice.client.CustomerServiceClient;
 import com.etiya.catalogservice.dtos.campaignCustomer.*;
 import com.etiya.catalogservice.entities.Campaign;
 import com.etiya.catalogservice.entities.CampaignCustomer;
+import com.etiya.catalogservice.entities.response.GetAddressResponse;
+import com.etiya.catalogservice.entities.response.GetCustomerResponse;
 import com.etiya.catalogservice.mappers.CampaignCustomerMapper;
 import com.etiya.catalogservice.repositories.CampaignCustomerRepository;
 import com.etiya.catalogservice.services.abstracts.CampaignCustomerService;
@@ -19,10 +22,16 @@ public class CampaignCustomerServiceImpl implements CampaignCustomerService {
 
     private final CampaignCustomerRepository campaignCustomerRepository;
     private final CampaignService campaignService;
+    private final CustomerServiceClient customerServiceClient;
 
     @Override
     public CreatedCampaignCustomerResponseDto add(CreateCampaignCustomerRequestDto createCampaignCustomerRequest) {
         CampaignCustomer campaignCustomer = CampaignCustomerMapper.INSTANCE.campaignCustomerFromCreateCampaignCustomerRequestDto(createCampaignCustomerRequest);
+        GetAddressResponse getAddressResponse = customerServiceClient.getByIdAddress(createCampaignCustomerRequest.getAddressId());
+        GetCustomerResponse getCustomerResponse = customerServiceClient.getByIdCustomer(createCampaignCustomerRequest.getCustomerId());
+        campaignCustomer.setCustomerId(getCustomerResponse.getId());
+        campaignCustomer.setAddressId(getAddressResponse.getId());
+
         CampaignCustomer createdCampaignCustomer = campaignCustomerRepository.save(campaignCustomer);
 
         CreatedCampaignCustomerResponseDto response =

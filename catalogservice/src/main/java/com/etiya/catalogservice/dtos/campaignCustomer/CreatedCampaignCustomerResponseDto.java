@@ -14,7 +14,7 @@ public class CreatedCampaignCustomerResponseDto {
     private UUID id;
     private UUID campaignId;
 
-    private UUID customerId;
+    private Long customerId;
 
-    private UUID addressId;
+    private Long addressId;
 }

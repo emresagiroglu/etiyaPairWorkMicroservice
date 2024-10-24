@@ -13,5 +13,5 @@ public class UpdateCustomerBasedOfferRequestDto {
 
     private UUID offerId;
 
-    private UUID customerId;
+    private Long customerId;
 }
