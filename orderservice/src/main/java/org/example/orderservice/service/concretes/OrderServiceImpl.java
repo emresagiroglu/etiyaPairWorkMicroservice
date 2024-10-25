@@ -34,7 +34,7 @@ public class OrderServiceImpl implements OrderService {
     public CreateOrderResponseDto createOrder(CreateOrderRequestDto createOrderRequestDto) {
         Order order = OrderMapper.INSTANCE.orderFromCreateOrderRequestDto(createOrderRequestDto);
         BillingAccountResponse billingAccountResponse = customerServiceClient.getById(createOrderRequestDto.getBillingAccountId());
-        CartResponse cartResponse = cartServiceClient.getItemListByCustomerId(createOrderRequestDto.getCustomerId());
+        CartResponse cartResponse = cartServiceClient.getCartByCustomerId(createOrderRequestDto.getCustomerId());
         List<OrderItem> orderItem = OrderItemMapper.INSTANCE.orderItemFromCartItemResponse(cartResponse.getCartItemList());
         order.setOrderItemList(orderItem);
 //        order.getOrderItemList().stream()

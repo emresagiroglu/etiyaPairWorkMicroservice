@@ -122,19 +122,19 @@ services:
       - common
     environment:
       - SPRING_PROFILES_ACTIVE=docker
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
     depends_on:
       - eureka
       - configserver
+      - redis
   redis:
     image: redis:latest  # Redis'in en son sürümünü kullanır
     container_name: redis  # Konteynerin adı
     ports:
       - "6379:6379"  # Redis varsayılan portunu dış dünyaya açar
-    environment:
-      - REDIS_PASSWORD=test  # Redis için parola tanımlar
     volumes:
       - redis-data:/data  # Redis verilerini kalıcı hale getirir
-    command: [ "redis-server", "--appendonly", "yes" ]  # Verilerin diske yazılması için AOF modunu etkinleştirir
     networks:
       - common
   mongo:

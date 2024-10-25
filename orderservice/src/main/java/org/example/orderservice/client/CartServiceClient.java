@@ -11,8 +11,8 @@ import java.util.UUID;
 @FeignClient(url = "http://localhost:8090", name = "cartservice")
 public interface CartServiceClient {
 
-    @RequestMapping(method = RequestMethod.GET, value = "api/carts/{id}")
-    CartResponse getItemListByCustomerId(@PathVariable Long id);
+    @RequestMapping(method = RequestMethod.GET, value = "api/carts/{customerId}")
+    CartResponse getCartByCustomerId(@PathVariable Long customerId);
 
 
 }
