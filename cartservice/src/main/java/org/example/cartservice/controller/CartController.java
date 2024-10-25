@@ -1,6 +1,7 @@
 package org.example.cartservice.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.example.cartservice.dto.AddItemRequestDto;
 import org.example.cartservice.entity.Cart;
 import org.example.cartservice.service.CartService;
 import org.springframework.web.bind.annotation.*;
@@ -15,9 +16,9 @@ public class CartController {
     private final CartService cartService;
 
     @PostMapping("/addCart")
-    public void addItem(@RequestParam Long customerId, @RequestParam UUID productId)
+    public void addItem(@RequestBody AddItemRequestDto addItemRequestDto)
     {
-        cartService.add(customerId,productId);
+        cartService.add(addItemRequestDto);
     }
 
     @GetMapping

@@ -1,5 +1,6 @@
 package org.example.cartservice.service;
 
+import org.example.cartservice.dto.AddItemRequestDto;
 import org.example.cartservice.entity.Cart;
 
 import java.util.Map;
@@ -9,7 +10,7 @@ public interface CartService {
 
 
 
-    void add(Long customerId, UUID productId);
+    void add(AddItemRequestDto addItemRequestDto);
 
     Map<String, Cart> getItems();
 

@@ -13,4 +13,5 @@ public class GetProductResponse {
 
     private UUID id;
     private String name;
+    private Double price;
 }

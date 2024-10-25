@@ -15,19 +15,19 @@ import java.util.UUID;
 @AllArgsConstructor
 public class CartItem implements Serializable {
 
-    private UUID id;
+    private String id;
     private UUID productId;
     private String productName;
     private Integer quantity;
     private Double price;
     private Double discount;
-    private Integer totalItemAmount;
+    private Double totalItemAmount;
 
     // bunu analizciilere sor!
     //TODO: entity yapısı değiştirilsin.!
 
     public CartItem()
     {
-        this.id = UUID.randomUUID();
+        this.id = UUID.randomUUID().toString();
     }
 }

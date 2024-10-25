@@ -14,14 +14,15 @@ import java.util.UUID;
 @AllArgsConstructor
 public class Cart implements Serializable {
 
-    private UUID id;
+    private String id;
     private Long customerId;
     private Boolean status;
     private List<CartItem> cartItemList;
+    private Double totalAmount;
 
 
     public Cart() {
-        this.id = UUID.randomUUID();
+        this.id = UUID.randomUUID().toString();
         this.cartItemList = new ArrayList<>();
     }
 }

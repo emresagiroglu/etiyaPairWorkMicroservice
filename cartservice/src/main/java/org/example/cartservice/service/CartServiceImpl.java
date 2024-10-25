@@ -3,6 +3,7 @@ package org.example.cartservice.service;
 import lombok.RequiredArgsConstructor;
 import org.example.cartservice.client.CatalogServiceClient;
 import org.example.cartservice.client.CustomerServiceClient;
+import org.example.cartservice.dto.AddItemRequestDto;
 import org.example.cartservice.entity.Cart;
 import org.example.cartservice.entity.CartItem;
 import org.example.cartservice.entity.response.GetCustomerResponse;
@@ -23,24 +24,32 @@ public class CartServiceImpl implements CartService{
 
 
     @Override
-    public void add(Long customerId, UUID productId) {
-        Cart cart = redisRepository.getCartByCustomerId(customerId);
+    public void add(AddItemRequestDto addItemRequestDto) {
+
+        Cart cart = redisRepository.getCartByCustomerId(addItemRequestDto.getCustomerId());
         if (cart==null){
             cart= new Cart();
-            cart.setCustomerId(customerId);
+            cart.setCustomerId(addItemRequestDto.getCustomerId());
         }
 
         // todo : setleri düzelt
 
         //GetCustomerResponse response = customerServiceClient.getById(customerId);
-        GetProductResponse productResponse = catalogServiceClient.getById(productId);
+        GetProductResponse productResponse = catalogServiceClient.getById(addItemRequestDto.getProductId());
         CartItem cartItem = new CartItem();
-        System.out.println(productResponse);
-        //cartItem.setQuantity(response.getName());
-        //cartItem.setPrice(response.getTotalPrice());
-        cart.setCustomerId(customerId);
-        //basket.setTotalPrice(basket.getTotalPrice()+basketItem.getPrice());
+        cartItem.setProductId(addItemRequestDto.getProductId());
+        cartItem.setPrice(productResponse.getPrice());
+        cartItem.setProductName(productResponse.getName());
+        cartItem.setQuantity(addItemRequestDto.getQuantity());
+        cart.setCustomerId(addItemRequestDto.getCustomerId());
+        cartItem.setTotalItemAmount(cartItem.getQuantity() * cartItem.getPrice());
         cart.getCartItemList().add(cartItem);
+        cart.setTotalAmount(cart.getCartItemList().stream()
+                .mapToDouble(item -> item.getTotalItemAmount())
+                .sum());
+
+
+
         redisRepository.addItem(cart);
     }
 

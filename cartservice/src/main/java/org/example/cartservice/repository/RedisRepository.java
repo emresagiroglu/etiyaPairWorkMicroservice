@@ -15,6 +15,7 @@ public class RedisRepository {
     private RedisTemplate<String, Object> redisTemplate;
     private HashOperations<String, String, Cart> hashOperations;
 
+
     public RedisRepository(RedisTemplate<String, Object> redisTemplate) {
         this.redisTemplate = redisTemplate;
         this.hashOperations = redisTemplate.opsForHash();
@@ -25,7 +26,7 @@ public class RedisRepository {
     }
 
     public void addItem(Cart cart) {
-        this.hashOperations.put(Key, cart.getId().toString() + "_" + cart.getCustomerId(), cart);
+        this.hashOperations.put(Key, cart.getId() + "_" + cart.getCustomerId(), cart);
     }
 
     public Cart getCartByCustomerId(Long customerId) {
