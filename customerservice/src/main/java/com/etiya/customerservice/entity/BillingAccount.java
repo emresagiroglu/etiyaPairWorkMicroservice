@@ -17,7 +17,10 @@ import java.util.Date;
 @Entity
 public class BillingAccount extends BaseEntity {
 //TODO : STATUS ID EKLENECEK
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
     @ManyToOne
     @JoinColumn(name = "CUST_ID")
     private Customer customerId;

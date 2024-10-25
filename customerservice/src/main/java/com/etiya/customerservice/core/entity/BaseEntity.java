@@ -13,12 +13,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @MappedSuperclass
-@EntityListeners(AuditingEntityListener.class)
+
 public class BaseEntity {
-    @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
 
     @CreatedDate
     @Column(name = "created_date", updatable = false)
@@ -29,4 +25,15 @@ public class BaseEntity {
 
     @Column(name = "deleted_date")
     private LocalDateTime deletedDate;
+
+
+    @PrePersist
+    public void onPrePersist() {
+        this.setCreatedDate(LocalDateTime.now());
+    }
+
+    @PreUpdate
+    public void onPreUpdate() {
+        this.setUpdatedDate(LocalDateTime.now());
+    }
 }

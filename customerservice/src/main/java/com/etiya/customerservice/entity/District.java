@@ -17,6 +17,11 @@ import java.util.List;
 @Entity
 public class District extends BaseEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+
     @Column(name = "DISTRICT_NAME")
     private String name;
 

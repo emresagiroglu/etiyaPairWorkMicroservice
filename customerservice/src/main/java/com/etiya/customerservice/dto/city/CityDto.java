@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class CityDto {
-
     @NotBlank
     @NotNull
     private String name;

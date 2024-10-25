@@ -13,12 +13,14 @@ import java.util.List;
 
 
 @AllArgsConstructor
-@NoArgsConstructor
 @Data
 @Table(name = "customers")
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Customer extends BaseEntity {
+public class Customer {
+    @Id
+    @Column(name = "id")
+    private Long id;
 
     @OneToMany(mappedBy = "customerId")
     private List<Address> addresses;
@@ -28,4 +30,12 @@ public class Customer extends BaseEntity {
 
     @OneToMany(mappedBy = "customerId")
     private List<BillingAccount> billingAccounts;
+
+    // Başlangıç ID değeri
+    private static long currentId = 100000000000L;
+
+    // Constructor
+    public Customer() {
+        this.id = currentId++;
+    }
 }
