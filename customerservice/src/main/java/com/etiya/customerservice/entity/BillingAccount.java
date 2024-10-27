@@ -30,6 +30,8 @@ public class BillingAccount extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "CNC_INFO_ID")
     private ContactInformation contactId;
+    @Column(name= "ACCNT_NO")
+    private String accountNumber;
     @Column(name = "ACCNT_NAME")
     private String accountName;
     @Column(name = "BIL_ACCNT_TP")

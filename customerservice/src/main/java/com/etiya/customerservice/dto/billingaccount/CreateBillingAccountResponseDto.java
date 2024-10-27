@@ -14,6 +14,7 @@ public class CreateBillingAccountResponseDto {
     private Long customerId;
     private Long addressId;
     private Long contactId;
+    private String accountNumber;
     private String accountName;
     private String type;
     private String desc;

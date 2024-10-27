@@ -15,6 +15,7 @@ public class ListBillingAccountResponseDto {
     private Long addressId;
     private Long contactId;
     private String accountName;
+    private String accountNumber;
     private String type;
     private String desc;
     private String taxNumber;
