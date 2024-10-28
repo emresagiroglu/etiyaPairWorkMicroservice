@@ -21,6 +21,9 @@ public class CreateBillingAccountRequestDto {
     private Long addressId;
     @NotBlank
     @NotNull
+    private String accountNumber;
+    @NotBlank
+    @NotNull
     private Long contactId;
     @NotBlank
     @NotNull

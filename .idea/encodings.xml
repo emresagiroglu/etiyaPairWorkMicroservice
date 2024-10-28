@@ -4,6 +4,7 @@
     <file url="file://$PROJECT_DIR$/cartservice/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/catalogservice/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/catalogservice/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/common/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/configserver/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/customerservice/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/eureka/src/main/java" charset="UTF-8" />
@@ -14,6 +15,7 @@
     <file url="file://$PROJECT_DIR$/orderservice/.idea/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/orderservice/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/productservice/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/searchservice/src/main/java" charset="UTF-8" />
     <file url="file://$USER_HOME$/etiya9.microservices/orderservice/src/main/java" charset="UTF-8" />
     <file url="file://$USER_HOME$/etiya9.microservices/orderservice/src/main/resources" charset="UTF-8" />
   </component>

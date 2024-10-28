@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/catalogservice/catalogservice.iml" filepath="$PROJECT_DIR$/catalogservice/catalogservice.iml" />
       <module fileurl="file://$PROJECT_DIR$/etiya9.microservices.iml" filepath="$PROJECT_DIR$/etiya9.microservices.iml" />
     </modules>
   </component>

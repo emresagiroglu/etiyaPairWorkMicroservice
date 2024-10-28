@@ -1,8 +1,11 @@
 package com.etiya.customerservice.dto.individualcustomer;
 
+import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Date;
 
 
 @Data
@@ -14,4 +17,5 @@ public class GetIndividualCustomerResponseDto {
     private String firstName;
     private String middleName;
     private String lastName;
+    private String nationalityId;
 }
