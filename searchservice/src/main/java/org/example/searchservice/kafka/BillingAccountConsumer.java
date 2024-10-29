@@ -1,13 +1,13 @@
 package org.example.searchservice.kafka;
 
 import lombok.AllArgsConstructor;
-import org.example.common.kafka.events.billingaccount.BillingAccountCreatedEvent;
 import org.example.searchservice.entity.Customer;
 import org.example.searchservice.service.FilterService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
+import io.github.emresagiroglu
 
 @Service
 @AllArgsConstructor

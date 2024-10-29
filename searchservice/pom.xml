@@ -27,7 +27,7 @@
 		<url/>
 	</scm>
 	<properties>
-		<java.version>23</java.version>
+		<java.version>22</java.version>
 		<spring-cloud.version>2023.0.3</spring-cloud.version>
 	</properties>
 	<dependencies>
@@ -78,9 +78,9 @@
 			<version>2.6.0</version>
 		</dependency>
 		<dependency>
-			<groupId>org.example</groupId>
+			<groupId>io.github.emresagiroglu</groupId>
 			<artifactId>common</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>1.0</version>
 		</dependency>
 	</dependencies>
 	<dependencyManagement>

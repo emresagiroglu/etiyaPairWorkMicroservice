@@ -35,6 +35,16 @@
         </processorPath>
         <module name="cartservice" />
       </profile>
+      <profile name="Annotation profile for searchservice" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.34/lombok-1.18.34.jar" />
+        </processorPath>
+        <module name="searchservice" />
+        <module name="productservice" />
+      </profile>
       <profile name="Annotation profile for orderservice" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -48,19 +58,9 @@
         <module name="orderservice" />
         <module name="identityservice" />
       </profile>
-      <profile name="Annotation profile for searchservice" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="false">
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.34/lombok-1.18.34.jar" />
-        </processorPath>
-        <module name="common" />
-        <module name="searchservice" />
-        <module name="productservice" />
-      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="common" target="1.5" />
       <module name="core" target="1.8" />
     </bytecodeTargetLevel>
   </component>
@@ -68,7 +68,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="cartservice" options="-parameters" />
       <module name="catalogservice" options="-parameters" />
-      <module name="common" options="-parameters" />
+      <module name="common" options="" />
       <module name="configserver" options="-parameters" />
       <module name="customerservice" options="-parameters" />
       <module name="eureka" options="-parameters" />

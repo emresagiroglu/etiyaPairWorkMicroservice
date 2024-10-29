@@ -1,11 +1,11 @@
 package org.example.searchservice.kafka;
 
 import lombok.AllArgsConstructor;
-import org.example.common.kafka.events.contactinformation.ContactInformationUpdatedEvent;
 import org.example.searchservice.entity.Customer;
 import org.example.searchservice.service.FilterService;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
+
 
 @Service
 @AllArgsConstructor
