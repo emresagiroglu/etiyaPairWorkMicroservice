@@ -11,7 +11,6 @@ import com.etiya.customerservice.services.abstracts.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.example.common.kafka.events.billingaccount.BillingAccountCreatedEvent;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 

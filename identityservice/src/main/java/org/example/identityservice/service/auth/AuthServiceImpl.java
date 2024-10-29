@@ -2,6 +2,7 @@ package org.example.identityservice.service.auth;
 import io.github.emresagiroglu.security.BaseJwtService;
 import org.example.identityservice.dto.LoginRequestDto;
 import org.example.identityservice.dto.RegisterRequestDto;
+import org.example.identityservice.dto.RegisterResponseDto;
 import org.example.identityservice.dto.TokenResponse;
 import org.example.identityservice.entity.User;
 import org.example.identityservice.mapper.UserMapper;
@@ -29,7 +30,7 @@ public class AuthServiceImpl implements AuthService {
         return new TokenResponse(baseJwtService.generateToken(user.getUsername()),true);
     }
     @Override
-    public TokenResponse register(RegisterRequestDto registerRequest) {
+    public RegisterResponseDto register(RegisterRequestDto registerRequest) {
 //        User userToAdd =new User();
 //        userToAdd.setEmail(registerRequest.getEmail());
 //        userToAdd.setName(registerRequest.getName());
@@ -48,7 +49,9 @@ public class AuthServiceImpl implements AuthService {
 
         registerRequest.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
         userService.create(registerRequest);
-        return new TokenResponse(baseJwtService.generateToken(registerRequest.getEmail()), true);
+        RegisterResponseDto registerResponseDto = new RegisterResponseDto();
+        registerResponseDto.setEmail(registerRequest.getEmail());
+        return registerResponseDto;
     }
 
 }
