@@ -8,24 +8,37 @@
 		<version>3.3.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>org.example</groupId>
+	<groupId>io.github.emresagiroglu</groupId>
 	<artifactId>common</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0</version>
 	<name>common</name>
-	<description>common</description>
-	<url/>
-	<licenses>
-		<license/>
-	</licenses>
+	<url>http://maven.apache.org</url>
+	<description>Etiya Akademi 9. dönem microservice projesi common package</description>
 	<developers>
-		<developer/>
+		<developer>
+			<id>Pair3</id>
+			<name>Pair3</name>
+			<email>emresagiroglu1@gmail.com</email>
+		</developer>
 	</developers>
+	<licenses>
+		<license>
+			<name>The Apache License, Version 2.0</name>
+			<url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
 	<scm>
-		<connection/>
-		<developerConnection/>
-		<tag/>
-		<url/>
+		<url>https://github.com/emresagiroglu/etiya-microservice-core</url>
+		<connection>scm:git:git://github.com/emresagiroglu/etiya-microservice-common</connection>
 	</scm>
+	<distributionManagement>
+		<repository>
+			<id>central</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+	</distributionManagement>
 	<properties>
 		<java.version>22</java.version>
 	</properties>
