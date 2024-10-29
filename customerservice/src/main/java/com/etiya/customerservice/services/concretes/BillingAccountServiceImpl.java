@@ -9,7 +9,7 @@ import com.etiya.customerservice.repositories.BillingAccountRepository;
 import com.etiya.customerservice.services.abstracts.BillingAccountService;
 import com.etiya.customerservice.services.abstracts.CustomerService;
 import lombok.RequiredArgsConstructor;
-import org.example.common.kafka.events.billingaccount.BillingAccountCreatedEvent;
+import io.github.emresagiroglu.kafka.events.billingaccount.BillingAccountCreatedEvent;
 import org.springframework.stereotype.Service;
 import java.util.List;
 

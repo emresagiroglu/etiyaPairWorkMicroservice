@@ -1,10 +1,8 @@
 package org.example.searchservice.kafka;
 
+import io.github.emresagiroglu.kafka.events.customer.CustomerCreatedEvent;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import org.example.common.kafka.events.customer.CustomerCreatedEvent;
 import org.example.searchservice.entity.Customer;
-
 import org.example.searchservice.service.FilterService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

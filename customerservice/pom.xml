@@ -96,17 +96,11 @@
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
 			<version>2.6.0</version>
 		</dependency>
-		<dependency>
-			<groupId>org.example</groupId>
-			<artifactId>common</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-			<scope>compile</scope>
-		</dependency>
+
 		<dependency>
 			<groupId>io.github.emresagiroglu</groupId>
 			<artifactId>common</artifactId>
 			<version>1.0</version>
-			<scope>compile</scope>
 		</dependency>
 
 

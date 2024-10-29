@@ -1,11 +1,11 @@
 package com.etiya.customerservice.kafka;
 
 
+import io.github.emresagiroglu.kafka.events.customer.CustomerCreatedEvent;
+import io.github.emresagiroglu.kafka.events.customer.CustomerDeletedEvent;
+import io.github.emresagiroglu.kafka.events.customer.CustomerUpdatedEvent;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import org.example.common.kafka.events.customer.CustomerCreatedEvent;
-import org.example.common.kafka.events.customer.CustomerDeletedEvent;
-import org.example.common.kafka.events.customer.CustomerUpdatedEvent;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.messaging.Message;

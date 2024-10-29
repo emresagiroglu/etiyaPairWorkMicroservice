@@ -1,6 +1,7 @@
 package com.etiya.customerservice.kafka;
 
-import org.example.common.kafka.events.contactinformation.ContactInformationUpdatedEvent;
+
+import io.github.emresagiroglu.kafka.events.contactinformation.ContactInformationUpdatedEvent;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.messaging.Message;

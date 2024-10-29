@@ -3,14 +3,13 @@ package com.etiya.customerservice.services.concretes;
 import com.etiya.customerservice.dto.contactinformation.*;
 import com.etiya.customerservice.dto.individualcustomer.GetIndividualCustomerResponseDto;
 import com.etiya.customerservice.entity.ContactInformation;
-import com.etiya.customerservice.entity.IndividualCustomer;
 import com.etiya.customerservice.kafka.CustomerProducer;
 import com.etiya.customerservice.mapper.ContactInformationMapper;
 import com.etiya.customerservice.repositories.ContactInformationRepository;
 import com.etiya.customerservice.services.abstracts.ContactInformationService;
 import com.etiya.customerservice.services.abstracts.CustomerService;
 import lombok.RequiredArgsConstructor;
-import org.example.common.kafka.events.customer.CustomerCreatedEvent;
+import io.github.emresagiroglu.kafka.events.customer.CustomerCreatedEvent;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

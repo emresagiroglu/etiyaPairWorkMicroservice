@@ -5,6 +5,7 @@ import org.example.searchservice.entity.Customer;
 import org.example.searchservice.service.FilterService;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
+import io.github.emresagiroglu.kafka.events.contactinformation.ContactInformationUpdatedEvent;
 
 
 @Service
