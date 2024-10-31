@@ -1,5 +1,6 @@
 package com.etiya.catalogservice.dtos.offerProduct;
 
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,7 +11,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateOfferProductRequestDto {
-
+    @NotEmpty
     private String description;
 
     private int discountPercentage;

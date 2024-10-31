@@ -2,6 +2,7 @@ package com.etiya.catalogservice.controllers;
 
 import com.etiya.catalogservice.dtos.category.*;
 import com.etiya.catalogservice.services.abstracts.CategoryService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +19,7 @@ public class CategoryController {
     private final CategoryService categoryService;
 
     @PostMapping
-    public ResponseEntity<CreatedCategoryResponseDto> add(@RequestBody CreateCategoryRequestDto createCategoryRequest){
+    public ResponseEntity<CreatedCategoryResponseDto> add(@Valid @RequestBody CreateCategoryRequestDto createCategoryRequest){
         return ResponseEntity.ok(categoryService.add(createCategoryRequest));
     }
 

@@ -3,6 +3,7 @@ package com.etiya.catalogservice.controllers;
 import com.etiya.catalogservice.dtos.category.*;
 import com.etiya.catalogservice.dtos.offer.*;
 import com.etiya.catalogservice.services.abstracts.OfferService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +21,7 @@ public class OfferController {
     private final OfferService offerService;
 
     @PostMapping
-    public ResponseEntity<CreatedOfferResponseDto> add(@RequestBody CreateOfferRequestDto createOfferRequest){
+    public ResponseEntity<CreatedOfferResponseDto> add(@Valid @RequestBody CreateOfferRequestDto createOfferRequest){
         return ResponseEntity.ok(offerService.add(createOfferRequest));
     }
 

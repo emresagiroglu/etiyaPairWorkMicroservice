@@ -3,6 +3,7 @@ package com.etiya.catalogservice.controllers;
 import com.etiya.catalogservice.dtos.category.*;
 import com.etiya.catalogservice.dtos.specification.*;
 import com.etiya.catalogservice.services.abstracts.SpecificationService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +21,7 @@ public class SpecificationController {
     private final SpecificationService specificationService;
 
     @PostMapping
-    public ResponseEntity<CreatedSpecificationResponseDto> add(@RequestBody CreateSpecificationRequestDto createSpecificationRequest){
+    public ResponseEntity<CreatedSpecificationResponseDto> add(@Valid @RequestBody CreateSpecificationRequestDto createSpecificationRequest){
         return ResponseEntity.ok(specificationService.add(createSpecificationRequest));
     }
 

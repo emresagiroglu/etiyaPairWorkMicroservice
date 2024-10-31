@@ -14,6 +14,6 @@ public interface FilterService {
     List<SearchResponse> getAll();
     List<SearchResponse> search(
             String nationalityId, String id, String accountNumber,
-            String mobilePhone, String firstName, String lastName, String orderNumber,String sortField, String sortOrder
+            String mobilePhone, String firstName,String middleName, String lastName, String orderNumber,String sortField, String sortOrder
     );
 }

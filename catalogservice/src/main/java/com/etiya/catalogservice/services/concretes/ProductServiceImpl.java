@@ -5,6 +5,7 @@ import com.etiya.catalogservice.entities.Category;
 import com.etiya.catalogservice.entities.Product;
 import com.etiya.catalogservice.mappers.ProductMapper;
 import com.etiya.catalogservice.repositories.ProductRepository;
+import com.etiya.catalogservice.rule.ProductBusinessRules;
 import com.etiya.catalogservice.services.abstracts.CategoryService;
 import com.etiya.catalogservice.services.abstracts.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -20,9 +21,13 @@ public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
     private final CategoryService categoryService;
+    private final ProductBusinessRules productBusinessRules;
 
     @Override
     public CreatedProductResponseDto add(CreateProductRequestDto createProductRequest) {
+        // product name check
+        productBusinessRules.productWithSameName(createProductRequest.getName());
+
         Product product = ProductMapper.INSTANCE.productFromCreateProductRequestDto(createProductRequest);
         Product createdProduct = productRepository.save(product);
 

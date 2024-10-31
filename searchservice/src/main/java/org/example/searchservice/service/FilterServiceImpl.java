@@ -65,13 +65,14 @@ public class FilterServiceImpl implements FilterService{
             String accountNumber,
             String mobilePhone,
             String firstName,
+            String middleName,
             String lastName,
             String orderNumber,
             String sortField, String sortOrder) {
 
         List<Customer> customers =
                 this.filterRepository.searchResult(
-                        nationalityId, id, mobilePhone, accountNumber, firstName, lastName, orderNumber,sortField, sortOrder
+                        nationalityId, id, mobilePhone, accountNumber, firstName,middleName, lastName, orderNumber,sortField, sortOrder
                 );
         List<SearchResponse> searchResponses = new ArrayList<>();
 

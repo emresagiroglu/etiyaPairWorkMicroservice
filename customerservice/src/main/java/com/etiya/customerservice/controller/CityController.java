@@ -1,7 +1,9 @@
 package com.etiya.customerservice.controller;
 
-import com.etiya.customerservice.dto.city.CityDto;
+import com.etiya.customerservice.dto.city.CityRequestDto;
+import com.etiya.customerservice.dto.city.CityResponseDto;
 import com.etiya.customerservice.services.abstracts.CityService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,23 +19,23 @@ public class CityController {
     private final CityService cityService;
 
     @GetMapping()
-    public ResponseEntity<List<CityDto>> getAll()
+    public ResponseEntity<List<CityResponseDto>> getAll()
     {
         return ResponseEntity.ok(cityService.getAll());
     }
     @GetMapping("/{id}")
-    public ResponseEntity<CityDto> getById(@PathVariable Long id){
+    public ResponseEntity<CityResponseDto> getById(@PathVariable Long id){
         return ResponseEntity.ok(cityService.getById(id));
     }
     @PostMapping
-    public ResponseEntity<CityDto> createCity(@RequestBody CityDto cityDto)
+    public ResponseEntity<CityResponseDto> createCity(@Valid @RequestBody CityRequestDto cityDto)
     {
         return ResponseEntity.ok(cityService.save(cityDto));
     }
     @PutMapping("/{id}")
-    public ResponseEntity<CityDto> updateCity(
+    public ResponseEntity<CityResponseDto> updateCity(
             @PathVariable Long id,
-            @RequestBody CityDto cityDto)
+            @RequestBody CityRequestDto cityDto)
     {
         return ResponseEntity.ok(cityService.update(cityDto,id));
     }

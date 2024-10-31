@@ -19,9 +19,11 @@ public class CreateIndividualCustomerRequestDto {
     private String middleName;
     @NotEmpty
     private String lastName;
+    @NotNull
     private Date birthDate;
     @NotNull
     private Character gender;
+
     private String fatherName;
     private String motherName;
     @NotNull

@@ -13,7 +13,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @MappedSuperclass
-public class BaseEntity {
+public class BaseEntity extends io.github.emresagiroglu.entity.BaseEntity {
 
     @Id
     @GeneratedValue
@@ -21,12 +21,5 @@ public class BaseEntity {
     @Column(name = "id")
     private UUID id;
 
-    @Column(name = "created_date")
-    private LocalDateTime createdDate;
 
-    @Column(name = "updated_date")
-    private LocalDateTime updatedDate;
-
-    @Column(name = "deleted_date")
-    private LocalDateTime deletedDate;
 }

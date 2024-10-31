@@ -2,6 +2,7 @@ package com.etiya.catalogservice.controllers;
 
 import com.etiya.catalogservice.dtos.productSpec.*;
 import com.etiya.catalogservice.services.abstracts.ProductSpecService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,7 @@ public class ProductSpecController {
     private final ProductSpecService productSpecService;
 
     @PostMapping
-    public ResponseEntity<CreatedProductSpecResponseDto> add(@RequestBody CreateProductSpecRequestDto createProductSpecRequest){
+    public ResponseEntity<CreatedProductSpecResponseDto> add(@Valid @RequestBody CreateProductSpecRequestDto createProductSpecRequest){
         return ResponseEntity.ok(productSpecService.add(createProductSpecRequest));
     }
 

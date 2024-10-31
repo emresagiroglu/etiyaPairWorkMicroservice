@@ -2,6 +2,7 @@ package com.etiya.catalogservice.controllers;
 
 import com.etiya.catalogservice.dtos.productCampaignPackage.*;
 import com.etiya.catalogservice.services.abstracts.ProductCampaignPackageService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,7 @@ public class ProductCampaignPackageController {
     private final ProductCampaignPackageService productCampaignPackageService;
 
     @PostMapping
-    public ResponseEntity<CreatedProductCampaignPackageResponseDto> add(@RequestBody CreateProductCampaignPackageRequestDto createProductCampaignPackageRequest){
+    public ResponseEntity<CreatedProductCampaignPackageResponseDto> add(@Valid @RequestBody CreateProductCampaignPackageRequestDto createProductCampaignPackageRequest){
         return ResponseEntity.ok(productCampaignPackageService.add(createProductCampaignPackageRequest));
     }
 

@@ -3,6 +3,7 @@ package com.etiya.customerservice.controller;
 import com.etiya.customerservice.dto.disctrict.*;
 import com.etiya.customerservice.entity.District;
 import com.etiya.customerservice.services.abstracts.DistrictService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,7 +27,7 @@ public class DistrictController {
         return ResponseEntity.ok(districtService.getById(id));
     }
     @PostMapping
-    public ResponseEntity<CreateDistrictResponseDto> createDistrict(@RequestBody CreateDistrictRequestDto createDistrictRequestDto)
+    public ResponseEntity<CreateDistrictResponseDto> createDistrict(@Valid @RequestBody CreateDistrictRequestDto createDistrictRequestDto)
     {
         return ResponseEntity.ok(districtService.save(createDistrictRequestDto));
     }

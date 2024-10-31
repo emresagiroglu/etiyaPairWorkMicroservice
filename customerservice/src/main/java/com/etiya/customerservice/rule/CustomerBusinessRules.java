@@ -1,10 +1,12 @@
 package com.etiya.customerservice.rule;
 
+import com.etiya.customerservice.core.exception.type.BusinessException;
 import com.etiya.customerservice.entity.IndividualCustomer;
 import com.etiya.customerservice.repositories.CorporateCustomerRepository;
 import com.etiya.customerservice.repositories.IndividualCustomerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+
 
 import java.util.Optional;
 
@@ -20,7 +22,8 @@ public class CustomerBusinessRules {
         Optional<IndividualCustomer> individualCustomer = individualCustomerRepository.findByNationalityId(nationalityId);
 
         if(individualCustomer.isPresent()){
-            throw new RuntimeException("A customer already exists with this Nationality ID");
+            throw new BusinessException("There is a customer with same Nationality ID.");
+
         }
     }
 }

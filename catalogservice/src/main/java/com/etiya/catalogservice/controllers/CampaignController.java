@@ -5,6 +5,7 @@ import com.etiya.catalogservice.dtos.campaign.CreateCampaignRequestDto;
 import com.etiya.catalogservice.dtos.campaign.CreatedCampaignResponseDto;
 import com.etiya.catalogservice.dtos.campaign.*;
 import com.etiya.catalogservice.services.abstracts.CampaignService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +22,7 @@ public class CampaignController {
     private final CampaignService campaignService;
 
     @PostMapping
-    public ResponseEntity<CreatedCampaignResponseDto> add(@RequestBody CreateCampaignRequestDto createCampaignRequest){
+    public ResponseEntity<CreatedCampaignResponseDto> add(@Valid @RequestBody CreateCampaignRequestDto createCampaignRequest){
         return ResponseEntity.ok(campaignService.add(createCampaignRequest));
     }
 

@@ -1,14 +1,15 @@
 package com.etiya.customerservice.services.abstracts;
 
-import com.etiya.customerservice.dto.city.CityDto;
+import com.etiya.customerservice.dto.city.CityRequestDto;
+import com.etiya.customerservice.dto.city.CityResponseDto;
 
 import java.util.List;
 
 
 public interface CityService {
-    List<CityDto> getAll();
-    CityDto getById(Long id);
-    CityDto save(CityDto cityDto);
-    CityDto update(CityDto cityDto, Long id);
+    List<CityResponseDto> getAll();
+    CityResponseDto getById(Long id);
+    CityResponseDto save(CityRequestDto cityDto);
+    CityResponseDto update(CityRequestDto cityDto, Long id);
     void delete(Long id);
 }

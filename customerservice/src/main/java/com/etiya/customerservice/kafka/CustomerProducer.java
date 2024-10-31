@@ -29,18 +29,33 @@ public class CustomerProducer {
         logger.info(message.toString());
         kafkaTemplate.send(message);
     }
-    public void sendMessage(CustomerUpdatedEvent customerUpdatedEvent){
-        Message<CustomerUpdatedEvent> message = MessageBuilder.withPayload(customerUpdatedEvent)
-                .setHeader(KafkaHeaders.TOPIC, "customer-updated")
-                .build();
-        kafkaTemplate.send(message);
-    }
 
-    public void sendMessage(CustomerDeletedEvent customerDeletedEvent){
 
-        Message<CustomerDeletedEvent> message = MessageBuilder.withPayload(customerDeletedEvent)
-                .setHeader(KafkaHeaders.TOPIC, "customer-deleted")
-                .build();
-        kafkaTemplate.send(message);
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    public void sendMessage(CustomerUpdatedEvent customerUpdatedEvent){
+//        Message<CustomerUpdatedEvent> message = MessageBuilder.withPayload(customerUpdatedEvent)
+//                .setHeader(KafkaHeaders.TOPIC, "customer-updated")
+//                .build();
+//        kafkaTemplate.send(message);
+//    }
+//
+//    public void sendMessage(CustomerDeletedEvent customerDeletedEvent){
+//
+//        Message<CustomerDeletedEvent> message = MessageBuilder.withPayload(customerDeletedEvent)
+//                .setHeader(KafkaHeaders.TOPIC, "customer-deleted")
+//                .build();
+//        kafkaTemplate.send(message);
+//    }
 }

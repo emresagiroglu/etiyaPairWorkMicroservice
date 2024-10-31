@@ -1,6 +1,7 @@
 package com.etiya.customerservice.services.concretes;
 
-import com.etiya.customerservice.dto.city.CityDto;
+import com.etiya.customerservice.dto.city.CityRequestDto;
+import com.etiya.customerservice.dto.city.CityResponseDto;
 import com.etiya.customerservice.entity.City;
 import com.etiya.customerservice.mapper.CityMapper;
 import com.etiya.customerservice.repositories.CityRepository;
@@ -16,24 +17,24 @@ import java.util.List;
 public class CityServiceImpl implements CityService {
     private final CityRepository cityRepository;
 
-    public List<CityDto> getAll() {
+    public List<CityResponseDto> getAll() {
         List<City> cityList = cityRepository.findAll();
-        return CityMapper.INSTANCE.getAllCityFromCityDto(cityList);
+        return CityMapper.INSTANCE.getAllCityResponseDtoFromCityDto(cityList);
     }
-    public CityDto getById(Long id) {
+    public CityResponseDto getById(Long id) {
         City city = cityRepository.findById(id).orElseThrow();
-        return CityMapper.INSTANCE.getCityDtoFromCity(city);
+        return CityMapper.INSTANCE.getCityResponseDtoFromCity(city);
     }
-    public CityDto save(CityDto cityDto) {
-        City city = CityMapper.INSTANCE.getCityFromCityDto(cityDto);
+    public CityResponseDto save(CityRequestDto cityDto) {
+        City city = CityMapper.INSTANCE.getCityFromCityRequestDto(cityDto);
         cityRepository.save(city);
-        return CityMapper.INSTANCE.getCityDtoFromCity(city);
+        return CityMapper.INSTANCE.getCityResponseDtoFromCity(city);
     }
-    public CityDto update(CityDto cityDto, Long id) {
-        City city = CityMapper.INSTANCE.getCityFromCityDto(cityDto);
+    public CityResponseDto update(CityRequestDto cityDto, Long id) {
+        City city = CityMapper.INSTANCE.getCityFromCityRequestDto(cityDto);
         city.setId(id);
         cityRepository.save(city);
-        return CityMapper.INSTANCE.getCityDtoFromCity(city);
+        return CityMapper.INSTANCE.getCityResponseDtoFromCity(city);
     }
     public void delete(Long id) {
         cityRepository.deleteById(id);

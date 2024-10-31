@@ -12,7 +12,6 @@ import java.util.UUID;
 public class UpdateProductRequestDto {
 
     private String name;
-
     private UUID categoryId;
     private Double price;
 }

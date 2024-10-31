@@ -2,6 +2,7 @@ package com.etiya.catalogservice.controllers;
 
 import com.etiya.catalogservice.dtos.customerBasedOffer.*;
 import com.etiya.catalogservice.services.abstracts.CustomerBasedOfferService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,7 @@ public class CustomerBasedOfferController {
     private final CustomerBasedOfferService customerBasedOfferService;
 
     @PostMapping
-    public ResponseEntity<CreatedCustomerBasedOfferResponseDto> add(@RequestBody CreateCustomerBasedOfferRequestDto createCustomerBasedOfferRequest){
+    public ResponseEntity<CreatedCustomerBasedOfferResponseDto> add(@Valid @RequestBody CreateCustomerBasedOfferRequestDto createCustomerBasedOfferRequest){
         return ResponseEntity.ok(customerBasedOfferService.add(createCustomerBasedOfferRequest));
     }
 

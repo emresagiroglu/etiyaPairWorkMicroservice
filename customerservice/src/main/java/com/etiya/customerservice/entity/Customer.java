@@ -1,12 +1,11 @@
 package com.etiya.customerservice.entity;
 
 
-import com.etiya.customerservice.core.entity.BaseEntity;
+import io.github.emresagiroglu.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.hibernate.annotations.UuidGenerator;
+
 
 import java.util.Date;
 import java.util.List;
@@ -17,7 +16,7 @@ import java.util.List;
 @Table(name = "customers")
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Customer {
+public class Customer extends BaseEntity {
     @Id
     @Column(name = "id")
     private Long id;

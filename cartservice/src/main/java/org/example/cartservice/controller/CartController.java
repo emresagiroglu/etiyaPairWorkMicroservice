@@ -1,5 +1,6 @@
 package org.example.cartservice.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.cartservice.dto.AddItemRequestDto;
 import org.example.cartservice.entity.Cart;
@@ -16,7 +17,7 @@ public class CartController {
     private final CartService cartService;
 
     @PostMapping("/addCart")
-    public void addItem(@RequestBody AddItemRequestDto addItemRequestDto)
+    public void addItem(@Valid @RequestBody AddItemRequestDto addItemRequestDto)
     {
         cartService.add(addItemRequestDto);
     }

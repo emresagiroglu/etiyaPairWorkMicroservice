@@ -28,6 +28,25 @@ public class CustomerConsumer {
 
         this.filterService.createCustomer(customer);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //    @KafkaListener(topics = "customer-updated", groupId = "update-customer")
 //    private void consume(CustomerUpdatedEvent customerUpdatedEvent)
 //    {

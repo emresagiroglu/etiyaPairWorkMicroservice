@@ -1,10 +1,11 @@
 package com.etiya.customerservice.services.concretes;
 
+import com.etiya.customerservice.core.exception.type.BusinessException;
 import com.etiya.customerservice.dto.corporatecustomer.*;
 import com.etiya.customerservice.dto.customer.GetCustomerResponseDto;
 import com.etiya.customerservice.dto.individualcustomer.*;
 import com.etiya.customerservice.entity.CorporateCustomer;
-import com.etiya.customerservice.entity.Customer;
+
 import com.etiya.customerservice.entity.IndividualCustomer;
 import com.etiya.customerservice.mapper.CorporateCustomerMapper;
 import com.etiya.customerservice.mapper.CustomerMapper;
@@ -12,6 +13,7 @@ import com.etiya.customerservice.mapper.IndividualCustomerMapper;
 import com.etiya.customerservice.repositories.CorporateCustomerRepository;
 import com.etiya.customerservice.repositories.CustomerRepository;
 import com.etiya.customerservice.repositories.IndividualCustomerRepository;
+import com.etiya.customerservice.rule.CustomerBusinessRules;
 import com.etiya.customerservice.services.abstracts.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -26,6 +28,7 @@ public class CustomerServiceImpl implements CustomerService {
     private final CustomerRepository customerRepository;
     private final CorporateCustomerRepository corporateCustomerRepository;
     private final IndividualCustomerRepository individualCustomerRepository;
+    private final CustomerBusinessRules customerBusinessRules;
 
     // Corporate Customer
     @Override
@@ -129,12 +132,12 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CreateIndividualCustomerResponseDto saveIndividualCustomer(CreateIndividualCustomerRequestDto createIndividualCustomerRequestDto) {
-        Optional<IndividualCustomer> existingCustomer = individualCustomerRepository.
-                findByNationalityId(createIndividualCustomerRequestDto.getNationalityId());
 
-        if(existingCustomer.isPresent()){
-            throw new IllegalArgumentException("Customer with Nationality ID " + createIndividualCustomerRequestDto.getNationalityId() + " already exists.");
-        }
+        // Check if there's a customer with same nationalityId
+       customerBusinessRules.customerWithSameNationalityId(createIndividualCustomerRequestDto.getNationalityId());
+
+
+
         // gelen requesti Individual customer' a maple
         IndividualCustomer individualCustomer = IndividualCustomerMapper.INSTANCE.
                 createIndividualCustomerFromCreateIndividualCustomerRequestDto(createIndividualCustomerRequestDto);

@@ -12,13 +12,9 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class BaseEntity {
+public class BaseEntity extends io.github.emresagiroglu.entity.BaseEntity {
 
     private UUID id;
 
-    private LocalDateTime createdDate;
 
-    private LocalDateTime updatedDate;
-
-    private LocalDateTime deletedDate;
 }

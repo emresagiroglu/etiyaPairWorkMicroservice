@@ -22,6 +22,8 @@ public class CreateAddressRequestDto {
     @NotEmpty
     private String addressName;
     @NotEmpty
+    private String addressDesc;
+    @NotEmpty
     private String street;
     @NotNull
     private Long houseNumber;

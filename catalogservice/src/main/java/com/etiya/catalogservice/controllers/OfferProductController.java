@@ -2,6 +2,7 @@ package com.etiya.catalogservice.controllers;
 
 import com.etiya.catalogservice.dtos.offerProduct.*;
 import com.etiya.catalogservice.services.abstracts.OfferProductService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,7 @@ public class OfferProductController {
     private final OfferProductService offerProductService;
 
     @PostMapping
-    public ResponseEntity<CreatedOfferProductResponseDto> add(@RequestBody CreateOfferProductRequestDto createOfferProductRequest){
+    public ResponseEntity<CreatedOfferProductResponseDto> add(@Valid @RequestBody CreateOfferProductRequestDto createOfferProductRequest){
         return ResponseEntity.ok(offerProductService.add(createOfferProductRequest));
     }
 

@@ -32,7 +32,15 @@ public class IndividualCustomerController {
     @PostMapping
     public ResponseEntity<CreateIndividualCustomerResponseDto> createCustomer(@RequestBody @Valid CreateIndividualCustomerRequestDto createIndividualCustomerRequestDto)
     {
-        return ResponseEntity.ok(customerService.saveIndividualCustomer(createIndividualCustomerRequestDto));
+        CreateIndividualCustomerResponseDto createIndividualCustomerResponseDto = customerService.saveIndividualCustomer(createIndividualCustomerRequestDto);
+        if (createIndividualCustomerResponseDto != null)
+        {
+            return ResponseEntity.status(HttpStatus.CREATED).body(createIndividualCustomerResponseDto);
+        }
+        else
+        {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
     }
 
     @PutMapping("/{id}")

@@ -1,11 +1,10 @@
 package com.etiya.customerservice.entity;
-
-import com.etiya.customerservice.core.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.UuidGenerator;
+import io.github.emresagiroglu.entity.BaseEntity;
 
 import java.util.Date;
 import java.util.List;
@@ -30,6 +29,8 @@ public class Address extends BaseEntity {
     private Neighbourhood neighbourhoodId;
     @Column(name = "ADDR_NAME")
     private String addressName;
+    @Column(name = "ADDR_DESC")
+    private String addressDesc;
     @Column(name = "STREET")
     private String street;
     @Column(name = "HOUSE_NUMBER")

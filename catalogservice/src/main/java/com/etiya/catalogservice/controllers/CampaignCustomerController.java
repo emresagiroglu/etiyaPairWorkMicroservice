@@ -2,6 +2,7 @@ package com.etiya.catalogservice.controllers;
 
 import com.etiya.catalogservice.dtos.campaignCustomer.*;
 import com.etiya.catalogservice.services.abstracts.CampaignCustomerService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,7 @@ public class CampaignCustomerController {
     private final CampaignCustomerService campaignCustomerService;
 
     @PostMapping
-    public ResponseEntity<CreatedCampaignCustomerResponseDto> add(@RequestBody CreateCampaignCustomerRequestDto createCampaignCustomerRequest){
+    public ResponseEntity<CreatedCampaignCustomerResponseDto> add(@Valid @RequestBody CreateCampaignCustomerRequestDto createCampaignCustomerRequest){
         return ResponseEntity.ok(campaignCustomerService.add(createCampaignCustomerRequest));
     }
 
