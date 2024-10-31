@@ -1,9 +1,7 @@
-package com.etiya.customerservice.core.exception;
+package org.example.identityservice.core.exception;
 
-
-
-import com.etiya.customerservice.core.exception.response.BusinessExceptionResponse;
-import com.etiya.customerservice.core.exception.type.BusinessException;
+import org.example.identityservice.core.exception.response.BusinessException;
+import org.example.identityservice.core.exception.response.BusinessExceptionResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -13,9 +11,9 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.HashMap;
 import java.util.Map;
-
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+
 
     // Fallback method
     // Exception handler -> Uygulamada belirlediğim türdeki ex. nerede fırlarsa fırlasın. Bu methoda gelsin.

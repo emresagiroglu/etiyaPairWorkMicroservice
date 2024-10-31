@@ -11,7 +11,7 @@ import java.util.List;
 
 
 @AllArgsConstructor
-@NoArgsConstructor
+
 @Data
 @Table(name = "Address")
 @Entity
@@ -35,9 +35,14 @@ public class Address extends BaseEntity {
     private String street;
     @Column(name = "HOUSE_NUMBER")
     private Long houseNumber;
-
+    @Column(name = "IS_ACTIVE")
+    private Boolean isActive;
 
     @OneToMany(mappedBy = "addressId")
     private List<BillingAccount> billingAccounts;
+
+    public Address(){
+        this.isActive = true;
+    }
 
 }

@@ -1,5 +1,6 @@
 package com.etiya.customerservice.services.concretes;
 
+import com.etiya.customerservice.core.exception.type.BusinessException;
 import com.etiya.customerservice.dto.address.*;
 import com.etiya.customerservice.entity.Address;
 import com.etiya.customerservice.mapper.AddressMapper;
@@ -17,11 +18,13 @@ public class AddressServiceImpl implements AddressService {
 private final AddressRepository addressRepository;
 
     public List<ListAddressResponseDto> getAll() {
-        List<Address> addressList = addressRepository.findAll();
+        List<Address> addressList = addressRepository.findAllByIsActiveTrue().
+                orElseThrow(() -> new BusinessException("There is no active Address."));;
         return AddressMapper.INSTANCE.listAddressResponseDtoFromAddressList(addressList);
     }
     public GetAddressResponseDto getById(Long id) {
-        Address address = addressRepository.findById(id).orElseThrow();
+        Address address = addressRepository.findByIdAndIsActiveTrue(id)
+                .orElseThrow(() -> new BusinessException("There is no active Address with this id: " + id));
         return AddressMapper.INSTANCE.getAddressResponseDtoFromAddress(address);
     }
     public CreateAddressResponseDto save(CreateAddressRequestDto addressDto) {
@@ -36,6 +39,11 @@ private final AddressRepository addressRepository;
         return AddressMapper.INSTANCE.updateAddressResponseDtoFromAddress(address);
     }
     public void delete(Long id) {
-        addressRepository.deleteById(id);
+
+        Address address = addressRepository.findByIdAndIsActiveTrue(id)
+                .orElseThrow(() -> new BusinessException("There is no active Address with this id: " + id));
+        address.setIsActive(false);
+        addressRepository.save(address);
+
     }
 }

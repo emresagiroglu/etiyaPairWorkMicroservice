@@ -1,10 +1,10 @@
-package org.example.orderservice.core.exception.type;
+package org.example.identityservice.core.exception.response;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.BAD_REQUEST)
-public class BusinessException extends RuntimeException{
+public class BusinessException extends RuntimeException {
     public BusinessException(String message) {
         super(message);
     }

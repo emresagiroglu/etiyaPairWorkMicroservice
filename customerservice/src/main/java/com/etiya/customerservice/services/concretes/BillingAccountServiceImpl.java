@@ -1,5 +1,6 @@
 package com.etiya.customerservice.services.concretes;
 
+import com.etiya.customerservice.core.exception.type.BusinessException;
 import com.etiya.customerservice.dto.billingaccount.*;
 import com.etiya.customerservice.dto.individualcustomer.GetIndividualCustomerResponseDto;
 import com.etiya.customerservice.entity.BillingAccount;
@@ -22,11 +23,16 @@ public class BillingAccountServiceImpl implements BillingAccountService {
     private final CustomerService customerService;
 
     public List<ListBillingAccountResponseDto> getBillingAccountsAll() {
-        List<BillingAccount> billingAccountList = billingAccountRepository.findAll();
+        List<BillingAccount> billingAccountList = billingAccountRepository.
+                findAllByIsActiveTrue()
+                .orElseThrow(() -> new BusinessException("There is no active Billing Account"));
         return BillingAccountMapper.INSTANCE.listBillingAccountResponseDtoFromBillingAccountList(billingAccountList);
     }
     public GetBillingAccountResponseDto getBillingAccountById(Long id) {
-        BillingAccount billingAccount = billingAccountRepository.findById(id).orElseThrow();
+        BillingAccount billingAccount = billingAccountRepository.
+                findByIdAndIsActiveTrue(id).
+                orElseThrow(() -> new BusinessException("There is no active Billing Account with this id: " + id));
+
         return BillingAccountMapper.INSTANCE.getBillingAccountResponseDtoFromBillingAccount(billingAccount);
     }
     public CreateBillingAccountResponseDto saveBillingAccount(CreateBillingAccountRequestDto billingAccountDto) {
@@ -56,6 +62,12 @@ public class BillingAccountServiceImpl implements BillingAccountService {
         return BillingAccountMapper.INSTANCE.updateBillingAccountResponseDtoFromBillingAccount(billingAccount);
     }
     public void deleteBillingAccount(Long id) {
-        billingAccountRepository.deleteById(id);
+        BillingAccount billingAccount = billingAccountRepository.
+                findByIdAndIsActiveTrue(id).
+                orElseThrow(() -> new BusinessException("There is no active Billing Account with this id: " + id));
+
+        billingAccount.setIsActive(false);
+
+        billingAccountRepository.save(billingAccount);
     }
 }

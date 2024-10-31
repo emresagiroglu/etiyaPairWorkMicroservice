@@ -24,13 +24,13 @@ public class SearchCustomerController {
             @RequestParam(required = false) String accountNumber,
             @RequestParam(required = false) String mobilePhone,
             @RequestParam(required = false) String firstName,
+            @RequestParam(required = false) String middleName,
             @RequestParam(required = false) String lastName,
-            @RequestParam(required = false) String orderNumber,
             @RequestParam(required = false) String sortField,
             @RequestParam(required = false) String sortOrder
     ) {
         return this.filterService.search(
-                nationalityId, id, accountNumber, mobilePhone, firstName, lastName, orderNumber , sortField, sortOrder
+                nationalityId, id, accountNumber, mobilePhone, firstName,middleName, lastName , sortField, sortOrder
         );
     }
 

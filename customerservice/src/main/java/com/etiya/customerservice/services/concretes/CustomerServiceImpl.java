@@ -6,6 +6,7 @@ import com.etiya.customerservice.dto.customer.GetCustomerResponseDto;
 import com.etiya.customerservice.dto.individualcustomer.*;
 import com.etiya.customerservice.entity.CorporateCustomer;
 
+import com.etiya.customerservice.entity.Customer;
 import com.etiya.customerservice.entity.IndividualCustomer;
 import com.etiya.customerservice.mapper.CorporateCustomerMapper;
 import com.etiya.customerservice.mapper.CustomerMapper;
@@ -109,10 +110,13 @@ public class CustomerServiceImpl implements CustomerService {
     // Individual Customer
     @Override
     public GetIndividualCustomerResponseDto getIndividualCustomerById(Long id) {
+        IndividualCustomer customerInDb = individualCustomerRepository.findByIdAndIsActiveTrue(id)
+                .orElseThrow(() -> new BusinessException("Customer not found..."));
+
         GetIndividualCustomerResponseDto getIndividualCustomerResponseDto =
                 IndividualCustomerMapper.INSTANCE.
                         getIndividualCustomerResponseDtoFromIndividualCustomer
-                                (individualCustomerRepository.findById(id).orElseThrow());
+                                (customerInDb);
 
         return getIndividualCustomerResponseDto;
 
@@ -121,7 +125,8 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public List<ListIndividualCustomerResponseDto> getIndividualCustomersAll() {
         // Individual Customer dönücek
-        List<IndividualCustomer> individualCustomerList = individualCustomerRepository.findAll();
+        List<IndividualCustomer> individualCustomerList = individualCustomerRepository.
+                findAllByIsActiveIsTrue().orElseThrow(() -> new BusinessException("Customer not found..."));
 
         // Gelen cevabı response maple
         List<ListIndividualCustomerResponseDto> listIndividualCustomerResponseDtoList = IndividualCustomerMapper.INSTANCE.
@@ -183,13 +188,15 @@ public class CustomerServiceImpl implements CustomerService {
         // Kullanıcı Kontrolü
         IndividualCustomer individualCustomerInDb = individualCustomerRepository.findById(id).orElseThrow();
 
-        // Kullanıcı silinmesi
-        individualCustomerRepository.deleteById(id);
+        // Kullanıcının isActive değerinin false'a çevirilmesi
+        individualCustomerInDb.setIsActive(false);
+        individualCustomerRepository.save(individualCustomerInDb);
 
     }
 
     @Override
     public GetCustomerResponseDto getCustomerById(Long id) {
+
 
         GetCustomerResponseDto getCustomerResponseDto = CustomerMapper
                 .INSTANCE

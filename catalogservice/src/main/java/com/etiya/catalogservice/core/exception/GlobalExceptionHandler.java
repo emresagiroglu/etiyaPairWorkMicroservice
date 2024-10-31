@@ -45,8 +45,9 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler({RuntimeException.class})
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public String handleRuntimeException(){
-        return "Bilinmedik hata";
+    public BusinessExceptionResponse handleRuntimeException(){
+        String error = "Unknown Exception";
+        return new BusinessExceptionResponse(HttpStatus.BAD_REQUEST.value(),error);
     }
 
 }

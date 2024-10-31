@@ -11,7 +11,6 @@ import java.util.Date;
 
 
 @AllArgsConstructor
-@NoArgsConstructor
 @Data
 @Table(name = "BIL_ACCNT")
 @Entity
@@ -40,5 +39,12 @@ public class BillingAccount extends BaseEntity {
     private String desc;
     @Column(name = "TAX_NUMBER")
     private String taxNumber;
+    @Column(name = "IS_ACTIVE")
+    private Boolean isActive;
+
+    public BillingAccount()
+    {
+        this.isActive = true;
+    }
 
 }

@@ -1,4 +1,4 @@
-package org.example.orderservice.core.exception.response;
+package org.example.identityservice.core.exception.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

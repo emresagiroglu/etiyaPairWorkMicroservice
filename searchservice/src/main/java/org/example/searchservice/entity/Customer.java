@@ -28,8 +28,6 @@ public class Customer {
     private String middleName;
     @Field(name = "lastName")
     private String lastName;
-    @Field(name = "orderNumber")
-    private String orderNumber;
     @Field(name = "deletedDate")
     private LocalDateTime deletedDate;
 }

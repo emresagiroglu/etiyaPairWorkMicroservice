@@ -1,9 +1,11 @@
 package com.etiya.catalogservice.services.concretes;
 
+import com.etiya.catalogservice.core.exception.type.BusinessException;
 import com.etiya.catalogservice.dtos.campaign.CreateCampaignRequestDto;
 import com.etiya.catalogservice.dtos.campaign.CreatedCampaignResponseDto;
 import com.etiya.catalogservice.dtos.campaign.*;
 import com.etiya.catalogservice.entities.Campaign;
+import com.etiya.catalogservice.entities.Offer;
 import com.etiya.catalogservice.mappers.CampaignMapper;
 import com.etiya.catalogservice.repositories.CampaignRepository;
 import com.etiya.catalogservice.services.abstracts.CampaignService;
@@ -44,7 +46,8 @@ public class CampaignServiceImpl implements CampaignService {
 
     @Override
     public List<ListCampaignResponseDto> getAll() {
-        List<Campaign> campaignList = campaignRepository.findAll();
+        List<Campaign> campaignList = campaignRepository.findAllByIsActiveTrue()
+                .orElseThrow(() -> new BusinessException("There is no active Campaigns"));
         List<ListCampaignResponseDto> getAllCampaignResponseList = CampaignMapper.INSTANCE.listCampaignResponseDtoFromCampaign(campaignList);
 
         return getAllCampaignResponseList;
@@ -69,11 +72,17 @@ public class CampaignServiceImpl implements CampaignService {
 
     @Override
     public void delete(UUID id) {
-        campaignRepository.deleteById(id);
+        Campaign campaign = campaignRepository.
+                findByIdAndIsActiveTrue(id).
+                orElseThrow(() -> new BusinessException("There is no active Campaign with this id: " + id));
+        campaign.setIsActive(false);
+        campaignRepository.save(campaign);
     }
 
     @Override
     public Campaign findById(UUID id) {
-        return campaignRepository.findById(id).orElseThrow();
+        return campaignRepository.
+                findByIdAndIsActiveTrue(id).
+                orElseThrow(() -> new BusinessException("There is no active Campaign with this id: " + id));
     }
 }

@@ -13,7 +13,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "offers")
 @Entity
@@ -28,9 +27,16 @@ public class Offer extends BaseEntity {
     @Column(name = "end_date")
     private LocalDateTime endDate;
 
+    @Column(name = "is_active")
+    private Boolean isActive;
+
     @OneToMany(mappedBy = "offer")
     private List<OfferProduct> offerProducts;
 
     @OneToMany(mappedBy = "offer")
     private List<CustomerBasedOffer> customerBasedOffers;
+
+    public Offer(){
+        this.setIsActive(true);
+    }
 }

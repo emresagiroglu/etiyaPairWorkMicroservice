@@ -1,7 +1,6 @@
 package org.example.searchservice.service;
 
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.example.searchservice.dto.SearchResponse;
 import org.example.searchservice.entity.Customer;
 import org.example.searchservice.repository.FilterRepository;
@@ -67,12 +66,12 @@ public class FilterServiceImpl implements FilterService{
             String firstName,
             String middleName,
             String lastName,
-            String orderNumber,
-            String sortField, String sortOrder) {
+            String sortField,
+            String sortOrder) {
 
         List<Customer> customers =
                 this.filterRepository.searchResult(
-                        nationalityId, id, mobilePhone, accountNumber, firstName,middleName, lastName, orderNumber,sortField, sortOrder
+                        nationalityId, id, mobilePhone, accountNumber, firstName,middleName, lastName,sortField, sortOrder
                 );
         List<SearchResponse> searchResponses = new ArrayList<>();
 

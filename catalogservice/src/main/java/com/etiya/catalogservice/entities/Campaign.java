@@ -13,7 +13,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "campaigns")
 @Entity
@@ -33,6 +32,8 @@ public class Campaign extends BaseEntity {
 
     @Column(name = "end_date")
     private LocalDateTime endDate;
+    @Column(name = "is_active")
+    private Boolean isActive;
 
     @OneToMany(mappedBy = "campaign")
     private List<ProductCampaignPackage> productCampaignPackages;
@@ -40,4 +41,7 @@ public class Campaign extends BaseEntity {
     @OneToMany(mappedBy = "campaign")
     private List<CampaignCustomer> campaignCustomers;
 
+    public Campaign(){
+        this.setIsActive(true);
+    }
 }

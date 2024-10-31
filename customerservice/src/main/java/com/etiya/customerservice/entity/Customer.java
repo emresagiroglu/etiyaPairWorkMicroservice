@@ -20,6 +20,8 @@ public class Customer extends BaseEntity {
     @Id
     @Column(name = "id")
     private Long id;
+    @Column(name = "IS_ACTIVE")
+    private Boolean isActive;
 
     @OneToMany(mappedBy = "customerId")
     private List<Address> addresses;
@@ -36,5 +38,6 @@ public class Customer extends BaseEntity {
     // Constructor
     public Customer() {
         this.id = currentId++;
+        this.isActive = true;
     }
 }

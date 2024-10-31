@@ -1,5 +1,6 @@
 package com.etiya.catalogservice.services.concretes;
 
+import com.etiya.catalogservice.core.exception.type.BusinessException;
 import com.etiya.catalogservice.dtos.offer.*;
 import com.etiya.catalogservice.entities.Offer;
 import com.etiya.catalogservice.mappers.OfferMapper;
@@ -10,6 +11,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
+
+
 
 @Service
 @RequiredArgsConstructor
@@ -42,7 +45,8 @@ public class OfferServiceImpl implements OfferService {
 
     @Override
     public List<ListOfferResponseDto> getAll() {
-        List<Offer> offerList = offerRepository.findAll();
+        List<Offer> offerList = offerRepository.findAllByIsActiveTrue()
+                .orElseThrow(() -> new BusinessException("There is no active Offers"));
         List<ListOfferResponseDto> getAllOfferResponseList = OfferMapper.INSTANCE.listOfferResponseDtoFromOffer(offerList);
 
         return getAllOfferResponseList;
@@ -65,12 +69,18 @@ public class OfferServiceImpl implements OfferService {
 
     @Override
     public void delete(UUID id) {
-        offerRepository.deleteById(id);
+        Offer offer = offerRepository.
+                findByIdAndIsActiveTrue(id).
+                orElseThrow(() -> new BusinessException("There is no active Offer with this id: " + id));
+        offer.setIsActive(false);
+        offerRepository.save(offer);
     }
 
     @Override
     public Offer findById(UUID id) {
-        return offerRepository.findById(id).orElseThrow();
+        return offerRepository.
+                findByIdAndIsActiveTrue(id).
+                orElseThrow(() -> new BusinessException("There is no active Offer with this id: " + id));
     }
 
 }

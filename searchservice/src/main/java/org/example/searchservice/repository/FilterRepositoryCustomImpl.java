@@ -16,7 +16,7 @@ public class FilterRepositoryCustomImpl implements FilterRepositoryCustom{
 
     @Override
     public List<Customer> searchResult(
-            String nationalityId, String id, String mobilePhone, String accountNumber, String firstName, String middleName,String lastName, String orderNumber, String sortField, String sortOrder) {
+            String nationalityId, String id, String mobilePhone, String accountNumber, String firstName, String middleName,String lastName, String sortField, String sortOrder) {
 
         List<Criteria> criteriaList = new ArrayList<>();
 
@@ -27,7 +27,6 @@ public class FilterRepositoryCustomImpl implements FilterRepositoryCustom{
         criteriaList.add(firstName != null && !firstName.isEmpty() ? Criteria.where("firstName").regex(firstName, "i") : null);
         criteriaList.add(middleName != null && !middleName.isEmpty() ? Criteria.where("middleName").regex(middleName, "i") : null);
         criteriaList.add(lastName != null && !lastName.isEmpty() ? Criteria.where("lastName").regex(lastName, "i") : null);
-        criteriaList.add(orderNumber != null ? Criteria.where("orderNumber").regex(orderNumber, "i") : null);
 
         criteriaList.removeIf(criteria -> criteria == null);
         criteriaList.add(Criteria.where("deletedDate").is(null));

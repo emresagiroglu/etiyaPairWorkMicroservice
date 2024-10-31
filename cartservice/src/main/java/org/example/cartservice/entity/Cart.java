@@ -1,5 +1,6 @@
 package org.example.cartservice.entity;
 
+import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,7 +17,7 @@ public class Cart implements Serializable {
 
     private String id;
     private Long customerId;
-    private Boolean status;
+    private Boolean isActive;
     private List<CartItem> cartItemList;
     private Double totalAmount;
 
@@ -24,5 +25,6 @@ public class Cart implements Serializable {
     public Cart() {
         this.id = UUID.randomUUID().toString();
         this.cartItemList = new ArrayList<>();
+        this.isActive = true;
     }
 }

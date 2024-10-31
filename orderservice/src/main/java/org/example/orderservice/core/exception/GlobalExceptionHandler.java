@@ -1,9 +1,9 @@
-package com.etiya.customerservice.core.exception;
+package org.example.orderservice.core.exception;
 
 
 
-import com.etiya.customerservice.core.exception.response.BusinessExceptionResponse;
-import com.etiya.customerservice.core.exception.type.BusinessException;
+import org.example.orderservice.core.exception.response.BusinessExceptionResponse;
+import org.example.orderservice.core.exception.type.BusinessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -45,8 +45,9 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler({RuntimeException.class})
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public String handleRuntimeException(){
-        return "Bilinmedik hata";
+    public BusinessExceptionResponse handleRuntimeException(){
+        String error = "Unknown Exception";
+        return new BusinessExceptionResponse(HttpStatus.BAD_REQUEST.value(),error);
     }
 
 }
