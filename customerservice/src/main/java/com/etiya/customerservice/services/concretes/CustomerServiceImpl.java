@@ -8,6 +8,7 @@ import com.etiya.customerservice.entity.CorporateCustomer;
 
 import com.etiya.customerservice.entity.Customer;
 import com.etiya.customerservice.entity.IndividualCustomer;
+import com.etiya.customerservice.kafka.CustomerProducer;
 import com.etiya.customerservice.mapper.CorporateCustomerMapper;
 import com.etiya.customerservice.mapper.CustomerMapper;
 import com.etiya.customerservice.mapper.IndividualCustomerMapper;
@@ -16,9 +17,12 @@ import com.etiya.customerservice.repositories.CustomerRepository;
 import com.etiya.customerservice.repositories.IndividualCustomerRepository;
 import com.etiya.customerservice.rule.CustomerBusinessRules;
 import com.etiya.customerservice.services.abstracts.CustomerService;
+import io.github.emresagiroglu.kafka.events.customer.CustomerDeletedEvent;
+import io.github.emresagiroglu.kafka.events.customer.CustomerUpdatedEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,6 +34,7 @@ public class CustomerServiceImpl implements CustomerService {
     private final CorporateCustomerRepository corporateCustomerRepository;
     private final IndividualCustomerRepository individualCustomerRepository;
     private final CustomerBusinessRules customerBusinessRules;
+    private final CustomerProducer customerProducer;
 
     // Corporate Customer
     @Override
@@ -150,6 +155,7 @@ public class CustomerServiceImpl implements CustomerService {
         // Individual customer'ı savele
         individualCustomerRepository.save(individualCustomer);
 
+
         // dönen cevabı response'a maple
         CreateIndividualCustomerResponseDto createIndividualCustomerResponseDto =
                 IndividualCustomerMapper.INSTANCE.
@@ -174,6 +180,17 @@ public class CustomerServiceImpl implements CustomerService {
         individualCustomerInDb.setNationalityId(updateIndividualCustomerRequestDto.getNationalityId());
 
         individualCustomerRepository.save(individualCustomerInDb);
+
+
+        CustomerUpdatedEvent customerUpdatedEvent = new CustomerUpdatedEvent();
+        customerUpdatedEvent.setId(individualCustomerInDb.getId().toString());
+        customerUpdatedEvent.setFirstName(individualCustomerInDb.getFirstName());
+        customerUpdatedEvent.setMiddleName(individualCustomerInDb.getMiddleName());
+        customerUpdatedEvent.setLastName(individualCustomerInDb.getLastName());
+        customerUpdatedEvent.setNationalityId(individualCustomerInDb.getNationalityId());
+
+        customerProducer.sendMessage(customerUpdatedEvent);
+
         // cevabı response IndividualCustomer olarak dön
         UpdateIndividualCustomerResponseDto savedCustomerResponseDto = IndividualCustomerMapper
                 .INSTANCE
@@ -190,7 +207,13 @@ public class CustomerServiceImpl implements CustomerService {
 
         // Kullanıcının isActive değerinin false'a çevirilmesi
         individualCustomerInDb.setIsActive(false);
+        individualCustomerInDb.setDeletedDate(LocalDateTime.now());
         individualCustomerRepository.save(individualCustomerInDb);
+
+        CustomerDeletedEvent customerDeletedEvent = new CustomerDeletedEvent();
+        customerDeletedEvent.setId(id.toString());
+        customerProducer.sendMessage(customerDeletedEvent);
+
 
     }
 

@@ -46,7 +46,7 @@
         <module name="searchservice" />
         <module name="productservice" />
       </profile>
-      <profile name="Annotation profile for orderservice" enabled="true">
+      <profile name="Annotation profile for customerservice" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />

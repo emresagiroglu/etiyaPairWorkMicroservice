@@ -27,7 +27,7 @@ public class FilterServiceImpl implements FilterService{
 
     @Override
     public void deleteCustomer(Customer customer) {
-        this.filterRepository.save(customer);
+        this.filterRepository.delete(customer);
     }
 
     @Override

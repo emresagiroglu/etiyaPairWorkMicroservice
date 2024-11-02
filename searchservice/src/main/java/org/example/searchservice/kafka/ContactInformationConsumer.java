@@ -13,11 +13,10 @@ import io.github.emresagiroglu.kafka.events.contactinformation.ContactInformatio
 public class ContactInformationConsumer {
     private FilterService filterService;
 
-    @KafkaListener(topics = "contact-information-updated", groupId = "update-contact-information")
+    @KafkaListener(topics = "contact-information-updated", groupId = "group-id")
     private void consume(ContactInformationUpdatedEvent contactInformationUpdatedEvent){
 
         Customer customer = filterService.getById(contactInformationUpdatedEvent.getId());
-        customer.setId(contactInformationUpdatedEvent.getId());
         customer.setPhoneNumber(contactInformationUpdatedEvent.getMobilePhone());
 
         this.filterService.updateCustomer(customer);

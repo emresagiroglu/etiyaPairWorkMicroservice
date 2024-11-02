@@ -44,8 +44,8 @@ public class FilterRepositoryCustomImpl implements FilterRepositoryCustom{
             Sort.Direction direction = "desc".equalsIgnoreCase(sortOrder) ? Sort.Direction.DESC : Sort.Direction.ASC;
 
             switch (sortField) {
-                case "customerId":
-                    query.with(Sort.by(direction, "customerId"));
+                case "id":
+                    query.with(Sort.by(direction, "id"));
                     break;
                 case "firstName":
                     query.with(Sort.by(direction, "firstName"));
@@ -53,8 +53,8 @@ public class FilterRepositoryCustomImpl implements FilterRepositoryCustom{
                 case "lastName":
                     query.with(Sort.by(direction, "lastName"));
                     break;
-                case "id":
-                    query.with(Sort.by(direction, "id"));
+                case "nationalityId":
+                    query.with(Sort.by(direction, "nationalityId"));
                     break;
                 default:
                     // Geçersiz sıralama alanı için varsayılan sıralama (örneğin, customerId'ye göre)
