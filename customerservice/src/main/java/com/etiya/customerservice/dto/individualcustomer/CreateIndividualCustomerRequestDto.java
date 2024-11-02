@@ -23,7 +23,6 @@ public class CreateIndividualCustomerRequestDto {
     private Date birthDate;
     @NotNull
     private Character gender;
-
     private String fatherName;
     private String motherName;
     @NotNull
